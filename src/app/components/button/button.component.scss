@@ -1,0 +1,41 @@
+@import '../../../assets/css/global-styles-components.scss';
+
+.btn {
+  padding: 8px 32px;
+  outline: 0;
+  border: 2px solid;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &--primary {
+    background: $color-primary;
+    color: $color-white;
+    border-color: $color-primary;
+
+    &:hover {
+      background:none;
+      color: $color-black;
+    }
+
+    &:focus {
+      border-color: $color-secondary;
+    }
+  }
+
+  &--secondary {
+    background: $color-secondary;
+    color: $color-white;
+    border-color: $color-secondary;
+
+    &:hover {
+      background:none;
+      color: $color-black;
+    }
+
+    &:focus {
+      border-color: $color-primary;
+    }
+  }
+}
