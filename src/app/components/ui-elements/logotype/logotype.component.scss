@@ -1,0 +1,24 @@
+@import '../../../../assets/css/global-styles-components.scss';
+
+.logotype {
+  font-weight: $font-weight-medium;
+  color: $color-primary;
+  letter-spacing: 1px;
+
+  &::before {
+    content: '///\\/';
+    padding-right: 6px;
+    color:$color-primary-light;
+    letter-spacing: 0;
+    font-size: 14px;
+  }
+
+  &__small{
+    font-size: 12px;
+
+    &::before {
+      padding-right: 4px;
+      font-size: 10px;
+    }
+  }
+}
