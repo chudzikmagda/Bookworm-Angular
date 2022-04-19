@@ -14,23 +14,23 @@ body {
 
 
 a {
-  position: relative;
-  overflow: hidden;
   text-decoration: none;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: -100%;
-    height: 2px;
-    width: 100%;
-    background-color: $color-secondary;
-  }
 
   &:link,
   &:visited {
+    position: relative;
+    overflow: hidden;
     color: $color-primary;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: -101%;
+      height: 2px;
+      width: 100%;
+      background-color: $color-secondary;
+    }
   }
 
   &:focus,
@@ -43,31 +43,11 @@ a {
 
   &:hover {
     color: $color-secondary;
+    transition: color 0.5s ease-in-out;
 
     &::after{
-      animation: underlineAnimation 0.5s;
+      left: 50%;
+      transition: left 0.2s ease-in-out;
     }
-    transition: color 0.5s ease-in-out;
-  }
-}
-
-@keyframes underlineAnimation {
-  0% {
-    left: -100%;
-  }
-
-  100% {
-    left: 100%
-  }
-
-}
-
-@keyframes underlineAnimation2 {
-  0% {
-    left: -100%;
-  }
-
-  100% {
-    left: 0
   }
 }

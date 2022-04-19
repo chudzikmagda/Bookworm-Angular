@@ -1,0 +1,11 @@
+@import '../../../assets/css/global-styles-components.scss';
+
+.footer {
+  @include flex($justifyContent: space-between);
+  width: 100%;
+  padding: 32px;
+
+  &__copyright {
+    display: block;
+  }
+}
