@@ -7,6 +7,7 @@ import { ButtonComponent } from './components/ui-elements/button/button.componen
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LogotypeComponent } from './components/ui-elements/logotype/logotype.component';
+import { TableCellComponent } from './components/ui-elements/table-cell/table-cell.component';
 
 @NgModule({
     declarations: [
@@ -15,6 +16,7 @@ import { LogotypeComponent } from './components/ui-elements/logotype/logotype.co
         HeaderComponent,
         FooterComponent,
         LogotypeComponent,
+        TableCellComponent,
     ],
     imports: [BrowserModule, AppRoutingModule],
     providers: [],

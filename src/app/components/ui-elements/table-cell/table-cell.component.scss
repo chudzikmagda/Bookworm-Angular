@@ -1,0 +1,26 @@
+@import '../../../../assets/css/global-styles-components.scss';
+
+.table-cell {
+    height: 100%;
+    padding: 16px 8px;
+
+    &--tiny {
+        width: 100px;
+    }
+
+    &--basic {
+        width: 150px;
+    }
+
+    &--wide {
+        width: 200px;
+    }
+
+    &--superwide {
+        width: 300px;
+    }
+
+    &--valign-center {
+        @include flex($justifyContent: flex-start);
+    }
+}
