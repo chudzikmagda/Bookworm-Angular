@@ -8,6 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LogotypeComponent } from './components/ui-elements/logotype/logotype.component';
 import { TableCellComponent } from './components/ui-elements/table-cell/table-cell.component';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
     declarations: [
@@ -17,6 +18,7 @@ import { TableCellComponent } from './components/ui-elements/table-cell/table-ce
         FooterComponent,
         LogotypeComponent,
         TableCellComponent,
+        TableComponent,
     ],
     imports: [BrowserModule, AppRoutingModule],
     providers: [],

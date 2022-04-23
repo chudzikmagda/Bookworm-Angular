@@ -1,0 +1,34 @@
+@import '../../../assets/css/global-styles-components.scss';
+
+.table {
+    max-width: 1264px;
+    margin: 32px auto;
+
+    &__row {
+        position: relative;
+        @include flex($alignItems: stretch);
+        width: 100%;
+        padding: 8px 0;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 1px;
+            width: 100%;
+            background-color: $color-primary-light;
+        }
+
+        &--heading {
+            align-items: center;
+            padding: 16px 0;
+            background-color: $color-primary-light;
+            font-weight: $font-weight-medium;
+
+            &::after {
+                content: none;
+            }
+        }
+    }
+}
