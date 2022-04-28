@@ -32,3 +32,10 @@
         }
     }
 }
+
+.book {
+    &__cover {
+        height: auto;
+        width: 150px;
+    }
+}

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { BookService, BookData } from 'src/app/services/books.service';
 
 @Component({
     selector: 'c-table',
@@ -6,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
-    constructor() {}
+    bookSubscription: Subscription;
+    books: BookData[];
 
-    ngOnInit(): void {}
+    constructor(private bookService: BookService) {}
+
+    ngOnInit(): void {
+        this.bookSubscription = this.bookService.getData().subscribe(res => {
+            this.books = res;
+        });
+    }
 }

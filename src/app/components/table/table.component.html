@@ -9,38 +9,14 @@
     <c-table-cell [variant]="'tiny'">Data</c-table-cell>
     <c-table-cell [variant]="'tiny'"></c-table-cell>
   </div>
-  <div class="table__row">
-    <c-table-cell [variant]="'basic'" [valignCenter]="true">Cover</c-table-cell>
-    <c-table-cell [variant]="'wide'">Title</c-table-cell>
-    <c-table-cell [variant]="'basic'">Author</c-table-cell>
-    <c-table-cell [variant]="'tiny'">Language</c-table-cell>
-    <c-table-cell [variant]="'superwide'">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Est sit voluptas rem eos suscipit alias aperiam, at minus commodi? Molestiae fugit ab nulla consequuntur totam reprehenderit possimus tenetur iure saepe.
+  <div class="table__row" *ngFor="let item of books">
+    <c-table-cell [variant]="'basic'" [valignCenter]="true">
+      <img [src]="item.cover" alt="Book" class="book__cover">
     </c-table-cell>
-    <c-table-cell [variant]="'tiny'">Rating</c-table-cell>
-    <c-table-cell [variant]="'tiny'">Data</c-table-cell>
-    <c-table-cell [variant]="'tiny'" [valignCenter]="true"><c-button>Edit</c-button></c-table-cell>
-  </div>
-  <div class="table__row">
-    <c-table-cell [variant]="'basic'" [valignCenter]="true">Cover</c-table-cell>
-    <c-table-cell [variant]="'wide'">Title</c-table-cell>
-    <c-table-cell [variant]="'basic'">Author</c-table-cell>
-    <c-table-cell [variant]="'tiny'">Language</c-table-cell>
-    <c-table-cell [variant]="'superwide'">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Est sit voluptas rem eos suscipit alias aperiam, at minus commodi? Molestiae fugit ab nulla consequuntur totam reprehenderit possimus tenetur iure saepe.
-    </c-table-cell>
-    <c-table-cell [variant]="'tiny'">Rating</c-table-cell>
-    <c-table-cell [variant]="'tiny'">Data</c-table-cell>
-    <c-table-cell [variant]="'tiny'" [valignCenter]="true"><c-button>Edit</c-button></c-table-cell>
-  </div>
-  <div class="table__row">
-    <c-table-cell [variant]="'basic'" [valignCenter]="true">Cover</c-table-cell>
-    <c-table-cell [variant]="'wide'">Title</c-table-cell>
-    <c-table-cell [variant]="'basic'">Author</c-table-cell>
-    <c-table-cell [variant]="'tiny'">Language</c-table-cell>
-    <c-table-cell [variant]="'superwide'">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Est sit voluptas rem eos suscipit alias aperiam, at minus commodi? Molestiae fugit ab nulla consequuntur totam reprehenderit possimus tenetur iure saepe.
-    </c-table-cell>
+    <c-table-cell [variant]="'wide'">{{item.title}}</c-table-cell>
+    <c-table-cell [variant]="'basic'">{{item.author_firstname}} {{item.author_lasttname}}</c-table-cell>
+    <c-table-cell [variant]="'tiny'">{{item.language}}</c-table-cell>
+    <c-table-cell [variant]="'superwide'">{{item.description}}</c-table-cell>
     <c-table-cell [variant]="'tiny'">Rating</c-table-cell>
     <c-table-cell [variant]="'tiny'">Data</c-table-cell>
     <c-table-cell [variant]="'tiny'" [valignCenter]="true"><c-button>Edit</c-button></c-table-cell>
