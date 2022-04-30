@@ -1,7 +1,3 @@
-<button
-  class="btn"
-  (click)="click"
-  [class] = "variant === 'secondary' ? 'btn--secondary' : 'btn--primary'"
-  >
-  <ng-content></ng-content>
+<button (click)="(click)" [ngClass]="setClasses()">
+    <ng-content></ng-content>
 </button>
