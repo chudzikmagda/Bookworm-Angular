@@ -1,26 +1,15 @@
 @import '../../../../assets/css/global-styles-components.scss';
 
 .table-cell {
-    height: 100%;
-    padding: 16px 8px;
+	height: 100%;
+	padding: 8px;
+	justify-items: center;
 
-    &--tiny {
-        width: 100px;
-    }
+	&--valign-center {
+		@include flex($justifyContent: flex-start);
+	}
 
-    &--basic {
-        width: 150px;
-    }
-
-    &--wide {
-        width: 200px;
-    }
-
-    &--superwide {
-        width: 300px;
-    }
-
-    &--valign-center {
-        @include flex($justifyContent: flex-start);
-    }
+	@include from-desktop {
+		padding: 16px;
+	}
 }

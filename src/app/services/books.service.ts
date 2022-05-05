@@ -9,7 +9,7 @@ export interface BookData {
     title: string;
     language: string;
     description: string;
-    like: string;
+    rating: number;
     date_add: string;
     date_edit: string;
     cover: string;

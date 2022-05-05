@@ -2,22 +2,22 @@
   {
     "id": 1,
     "author_firstname": "J. K.",
-    "author_lasttname": "Rowling",
+    "author_lastname": "Rowling",
     "title": "Harry Potter and the Chamber of Secrets",
     "language": "English",
     "description": "Ever since Harry Potter had come home for the summer, the Dursleys had been so mean and hideous that all Harry wanted was to get back to the Hogwarts School for Witchcraft and Wizardry. But just as he’s packing his bags, Harry recieves a warning from a strange impish creature who says that if Harry returns to Hogwarts, disaster will strike.",
-    "like": "yes",
+    "rating": 6.5,
     "date_add": "November 13, 2020, 3:53 am",
     "date_edit": "September 22, 2021, 6:23 am",
     "cover": "assets/images/book_covers/harry-potter.jpg"
   },{
     "id": 2,
     "author_firstname": "Stephen",
-    "author_lasttname": "King",
+    "author_lastname": "King",
     "title": "Misery",
     "language": "English",
     "description": "Paul Sheldon, author of a bestselling series of historical romances, wakes up one winter day in a strange place, a secluded farmhouse in Colorado. He wakes up to unspeakable pain (a dislocated pelvis, a crushed knee, two shattered legs) and to a bizarre greeting from the woman who has saved his life: 'I'm your number one fan!'",
-    "like": "false",
+    "rating": 5.0,
     "date_add": "November 13, 2020, 3:53 am",
     "date_edit": "September 22, 2021, 6:23 am",
     "cover": "assets/images/book_covers/misery.jpg"
@@ -25,11 +25,11 @@
   {
     "id": 3,
     "author_firstname": "Dean",
-    "author_lasttname": "Koontz",
+    "author_lastname": "Koontz",
     "title": "Odd Thomas",
     "language": "English",
     "description": "'The dead don’t talk. I don’t know why.' But they do try to communicate, with a short-order cook in a small desert town serving as their reluctant confidant. Sometimes the silent souls who seek out Odd want justice. Occasionally their otherworldly tips help him prevent a crime. But this time it’s different.",
-    "like": "false",
+    "rating": 5.5,
     "date_add": "November 13, 2020, 2:53 am",
     "date_edit": "September 22, 2021, 6:23 am",
     "cover": "assets/images/book_covers/koontz.jpg"
@@ -37,11 +37,11 @@
   {
     "id": 4,
     "author_firstname": "Clive",
-    "author_lasttname": "Cussler",
+    "author_lastname": "Cussler",
     "title": "Iceberg",
     "language": "English",
     "description": "Just seventy-two hours ago, Dirk Pitt was lying in the hot California sun with a beautiful woman, a Scotch-rocks in one hand, but an urgent call from Admiral James Sandecker, his commander at the National Underwater and Marine Agency (NUMA), brings Pitt out of the warm Pacific breezes and straight into a North Atlantic deep freeze. The reason: the discovery of a long-missing luxury yacht, en route to a secret White House rendezvous, frozen solid in a mil lion-ton tombstone of ice.",
-    "like": "true",
+    "rating": 7.5,
     "date_add": "November 13, 2020, 3:53 am",
     "date_edit": "November 22, 2021, 9:23 am",
     "cover": "assets/images/book_covers/iceberg.jpg"
@@ -49,11 +49,11 @@
   {
     "id": 5,
     "author_firstname": "Ian",
-    "author_lasttname": "McEwan",
+    "author_lastname": "McEwan",
     "title": "Atonement",
     "language": "English",
     "description": "On the hottest day of the summer of 1935, thirteen-year-old Briony Tallis sees her older sister Cecilia strip off her clothes and plunge into the fountain in the garden of their country house. Watching Cecilia is their housekeeper's son Robbie Turner, a childhood friend who, along with Briony's sister, has recently graduated from Cambridge.",
-    "like": "false",
+    "rating": 8.5,
     "date_add": "November 13, 2020, 3:53 am",
     "date_edit": "July 22, 2021, 6:23 am",
     "cover": "assets/images/book_covers/atonement.jpg"
