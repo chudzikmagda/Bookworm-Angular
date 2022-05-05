@@ -1,6 +1,66 @@
-@mixin flex ($direction: row, $justifyContent:center, $alignItems:center) {
-  display: flex;
-  flex-direction: $direction;
-  justify-content: $justifyContent;
-  align-items: $alignItems;
+@mixin from($width) {
+    @media (min-width: $width) {
+        @content;
+    }
+}
+
+@mixin from-orientation($width, $orientation: portrait) {
+    @media (min-width: $width) and (orientation: $orientation) {
+        @content;
+    }
+}
+
+@mixin to($width) {
+    @media (max-width: $width) {
+        @content;
+    }
+}
+
+@mixin to-orientation($width, $orientation: portrait) {
+    @media (max-width: $width) and (orientation: $orientation) {
+        @content;
+    }
+}
+
+@mixin between($min, $max) {
+    @media (min-width: $min) and (max-width: $max) {
+        @content;
+    }
+}
+
+@mixin to-mobile {
+    @include to($mobile-max-width) {
+        @content;
+    }
+}
+
+@mixin to-mobile-horizontal {
+    @include to-orientation($mobile-max-width, horizontal) {
+        @content;
+    }
+}
+
+@mixin from-tablet {
+    @include from($tablet-min-width) {
+        @content;
+    }
+}
+
+@mixin from-tablet-horizontal {
+    @include from-orientation($tablet-min-width, horizontal) {
+        @content;
+    }
+}
+
+@mixin from-desktop {
+    @include from($desktop-min-width) {
+        @content;
+    }
+}
+
+@mixin flex($direction: row, $justifyContent: center, $alignItems: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
 }

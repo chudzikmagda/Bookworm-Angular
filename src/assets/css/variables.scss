@@ -2,10 +2,15 @@ $font-weight-regular: 400;
 $font-weight-medium: 600;
 $font-weight-bold: 800;
 
-$color-primary:#3d3a4b;
-$color-primary-light:#d3c0cd;
-$color-secondary:#d9594c;
-$color-black:#000;
-$color-green:#57886c;
-$color-yellow:#ddca7d;
-$color-white:#fff;
+$color-primary: #3d3a4b;
+$color-primary-light: #d3c0cd;
+$color-secondary: #d9594c;
+$color-black: #000;
+$color-green: #57886c;
+$color-yellow: #ddca7d;
+$color-white: #fff;
+
+$mobile-max-width: 767px;
+$tablet-min-width: 768px;
+$tablet-max-width: 991px;
+$desktop-min-width: 992px;
