@@ -1,0 +1,18 @@
+<div class="stats">
+    <h4 class="stats__heading">Your stats:</h4>
+
+    <div class="stats__data">
+        <span class="stats__category">Books:</span>
+        <span class="stats__value">{{ stats?.booksLength }}</span>
+        <span class="stats__category">Best book:</span>
+        <span class="stats__value">{{ stats?.bestBook }} </span>
+        <span class="stats__category">Last added:</span>
+        <span class="stats__value">
+            "{{ stats?.lastAddedBook?.title }}",
+            {{ stats?.lastAddedBook?.author_firstname }}
+            {{ stats?.lastAddedBook?.author_lastname }}
+        </span>
+        <span class="stats__category">Avg. rating:</span>
+        <span class="stats__value">{{ stats?.avgRating }}</span>
+    </div>
+</div>

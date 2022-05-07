@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 export interface BookData {
     id: string;
     author_firstname: string;
-    author_lasttname: string;
+    author_lastname: string;
     title: string;
     language: string;
     description: string;
@@ -20,7 +20,28 @@ export interface BookData {
 export class BookService {
     constructor(private http: HttpClient) {}
 
+    bestBook(books: BookData[]): string {
+        const ratings: number[] = books.map(item => item.rating);
+        const bestBook: BookData = books[ratings.indexOf(Math.max(...ratings))];
+        return `"${bestBook.title}", ${bestBook.author_firstname} ${bestBook.author_lastname}`;
+    }
+
     getData(): Observable<BookData[]> {
         return this.http.get<BookData[]>('../../assets/store/books-data.json');
+    }
+
+    lastAddedBook(books: BookData[]): BookData {
+        const dates: any[] = books.map(item => new Date(item.date_add));
+        const lastAddedBook =
+            books[
+                dates.indexOf(
+                    dates.reduce((a, b) => {
+                        return new Date(a.MeasureDate) > new Date(b.MeasureDate)
+                            ? a
+                            : b;
+                    })
+                )
+            ];
+        return lastAddedBook;
     }
 }
