@@ -1,11 +1,22 @@
 @import '../../../assets/css/global-styles-components.scss';
 
 .footer {
-  @include flex($justifyContent: space-between);
-  width: 100%;
-  padding: 32px;
+    @include flex($direction: column);
+    width: 100%;
+    padding: 32px;
 
-  &__copyright {
-    display: block;
-  }
+    @include from-desktop {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    &__copyright {
+        display: block;
+        padding-top: 16px;
+        font-size: 14px;
+
+        @include from-desktop {
+            padding-top: 0;
+        }
+    }
 }
