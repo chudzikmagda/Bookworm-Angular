@@ -20,10 +20,9 @@ export interface BookData {
 export class BookService {
     constructor(private http: HttpClient) {}
 
-    bestBook(books: BookData[]): string {
+    bestBook(books: BookData[]): BookData {
         const ratings: number[] = books.map(item => item.rating);
-        const bestBook: BookData = books[ratings.indexOf(Math.max(...ratings))];
-        return `"${bestBook.title}", ${bestBook.author_firstname} ${bestBook.author_lastname}`;
+        return books[ratings.indexOf(Math.max(...ratings))];
     }
 
     getData(): Observable<BookData[]> {

@@ -10,6 +10,7 @@ import { LogotypeComponent } from './components/ui-elements/logotype/logotype.co
 import { TableCellComponent } from './components/ui-elements/table-cell/table-cell.component';
 import { TableComponent } from './components/table/table.component';
 import { StatsComponent } from './components/stats/stats.component';
+import { BestBookComponent } from './components/best-book/best-book.component';
 
 @NgModule({
     declarations: [
@@ -21,6 +22,7 @@ import { StatsComponent } from './components/stats/stats.component';
         TableCellComponent,
         TableComponent,
         StatsComponent,
+        BestBookComponent,
     ],
     imports: [BrowserModule, AppRoutingModule, HttpClientModule],
     providers: [],

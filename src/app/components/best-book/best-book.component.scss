@@ -1,0 +1,55 @@
+@import '../../../assets/css/global-styles-components.scss';
+
+:host(c-best-book) {
+    @include flex;
+    width: 100%;
+    height: 100%;
+
+    .best-book {
+        width: 100%;
+        height: 100%;
+        padding: 8px;
+        border: 2px solid rgba($color-primary, 0.5);
+        border-radius: $border-radius;
+
+        @include from-desktop {
+            @include flex($justifyContent: space-between);
+            gap: 16px;
+            padding: 32px;
+            align-self: center;
+        }
+
+        &__heading {
+            font-weight: $font-weight-medium;
+            margin-top: 0;
+        }
+
+        &__data {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+            gap: 8px;
+        }
+
+        &__cover {
+            @include flex;
+            max-width: 100%;
+
+            @include from-desktop {
+                max-width: 250px;
+            }
+        }
+
+        &__image {
+            height: auto;
+            max-width: 100%;
+            border-radius: $border-radius;
+
+            @include from-desktop {
+                width: 100%;
+                max-width: 200px;
+                height: auto;
+            }
+        }
+    }
+}
