@@ -11,6 +11,7 @@ import { TableCellComponent } from './components/ui-elements/table-cell/table-ce
 import { TableComponent } from './components/table/table.component';
 import { StatsComponent } from './components/stats/stats.component';
 import { BestBookComponent } from './components/best-book/best-book.component';
+import { LastAddedBookComponent } from './components/last-added-book/last-added-book.component';
 
 @NgModule({
     declarations: [
@@ -23,6 +24,7 @@ import { BestBookComponent } from './components/best-book/best-book.component';
         TableComponent,
         StatsComponent,
         BestBookComponent,
+        LastAddedBookComponent,
     ],
     imports: [BrowserModule, AppRoutingModule, HttpClientModule],
     providers: [],
