@@ -12,6 +12,7 @@ import { TableComponent } from './components/table/table.component';
 import { StatsComponent } from './components/stats/stats.component';
 import { BestBookComponent } from './components/best-book/best-book.component';
 import { LastAddedBookComponent } from './components/last-added-book/last-added-book.component';
+import { QuoteComponent } from './components/quote/quote.component';
 
 @NgModule({
     declarations: [
@@ -25,6 +26,7 @@ import { LastAddedBookComponent } from './components/last-added-book/last-added-
         StatsComponent,
         BestBookComponent,
         LastAddedBookComponent,
+        QuoteComponent,
     ],
     imports: [BrowserModule, AppRoutingModule, HttpClientModule],
     providers: [],
