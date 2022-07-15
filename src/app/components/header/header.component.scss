@@ -1,9 +1,22 @@
 @import '../../../assets/css/global-styles-components.scss';
 
 .header {
-  @include flex;
-  height: 48px;
-  background: $color-white;
-  text-align: center;
-  font-size: 16px;
+    background: $color-white;
+
+    &__wrapper {
+        position: relative;
+        @include flex;
+        height: 48px;
+        max-width: 1800px;
+    }
+
+    &__btn {
+        display: none;
+
+        @include from-desktop {
+            position: absolute;
+            right: 16px;
+            display: block;
+        }
+    }
 }
