@@ -3,25 +3,25 @@ import { Quote } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 
 export interface QuoteModel {
-    author?: string;
-    authorSlug?: string;
-    content?: string;
-    dateAdded?: string;
-    length?: number;
-    dateModified?: string;
-    tags?: string[];
-    _id: string;
+	author?: string;
+	authorSlug?: string;
+	content?: string;
+	dateAdded?: string;
+	length?: number;
+	dateModified?: string;
+	tags?: string[];
+	_id: string;
 }
 
 @Injectable({
-    providedIn: 'root',
+	providedIn: 'root',
 })
 export class QuoteService {
-    apiUrl = 'https://api.quotable.io/random?tags=famous-quotes';
+	apiUrl = 'https://api.quotable.io/random?tags=famous-quotes';
 
-    constructor(private http: HttpClient) {}
+	constructor(private http: HttpClient) {}
 
-    getQuote() {
-        return this.http.get<QuoteModel>(this.apiUrl);
-    }
+	getQuote() {
+		return this.http.get<QuoteModel>(this.apiUrl);
+	}
 }

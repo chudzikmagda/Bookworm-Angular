@@ -15,21 +15,21 @@ import { LastAddedBookComponent } from './components/last-added-book/last-added-
 import { QuoteComponent } from './components/quote/quote.component';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        ButtonComponent,
-        HeaderComponent,
-        FooterComponent,
-        LogotypeComponent,
-        TableCellComponent,
-        TableComponent,
-        StatsComponent,
-        BestBookComponent,
-        LastAddedBookComponent,
-        QuoteComponent,
-    ],
-    imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-    providers: [],
-    bootstrap: [AppComponent],
+	declarations: [
+		AppComponent,
+		ButtonComponent,
+		HeaderComponent,
+		FooterComponent,
+		LogotypeComponent,
+		TableCellComponent,
+		TableComponent,
+		StatsComponent,
+		BestBookComponent,
+		LastAddedBookComponent,
+		QuoteComponent,
+	],
+	imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+	providers: [],
+	bootstrap: [AppComponent],
 })
 export class AppModule {}

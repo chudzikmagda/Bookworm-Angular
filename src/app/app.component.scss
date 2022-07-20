@@ -1,85 +1,85 @@
 @import '../assets/css/global-styles-components.scss';
 
 .section {
-    padding: 32px;
+	padding: 32px;
 
-    &--intro {
-        @include flex;
-        height: 100%;
-        width: 100%;
-        padding: 0;
-        background-color: $color-primary-light;
-    }
+	&--intro {
+		@include flex;
+		height: 100%;
+		width: 100%;
+		padding: 0;
+		background-color: $color-primary-light;
+	}
 
-    &__content {
-        display: grid;
-        gap: 32px;
-        max-width: 1600px;
-        padding: 16px;
+	&__content {
+		display: grid;
+		gap: 32px;
+		max-width: 1600px;
+		padding: 16px;
 
-        @include from-desktop {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            grid-template-rows: repeat(2, 1fr);
-            gap: 64px;
-            align-content: center;
-            justify-content: center;
-            height: calc(100vh - 48px);
-            padding: 64px;
-        }
-    }
+		@include from-desktop {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			grid-template-rows: repeat(2, 1fr);
+			gap: 64px;
+			align-content: center;
+			justify-content: center;
+			height: calc(100vh - 48px);
+			padding: 64px;
+		}
+	}
 }
 
 .col {
-    @include flex($direction: column);
+	@include flex($direction: column);
 
-    @include from-desktop {
-        width: 100%;
-        height: 100%;
-    }
+	@include from-desktop {
+		width: 100%;
+		height: 100%;
+	}
 
-    &--image {
-        justify-content: space-between;
-        grid-area: 1 / 1 / 3 / 2;
-    }
+	&--image {
+		justify-content: space-between;
+		grid-area: 1 / 1 / 3 / 2;
+	}
 }
 
 .welcome {
-    max-width: 350px;
+	max-width: 350px;
 
-    @include from-desktop {
-        @include flex($direction: column, $alignItems: flex-start);
-        height: 100%;
-    }
+	@include from-desktop {
+		@include flex($direction: column, $alignItems: flex-start);
+		height: 100%;
+	}
 
-    &__hi {
-        font-weight: $font-weight-bold;
-        margin: 0;
-    }
+	&__hi {
+		font-weight: $font-weight-bold;
+		margin: 0;
+	}
 
-    &__question {
-        margin-top: 8px;
-        margin-bottom: 0;
-        font-weight: $font-weight-medium;
-        color: $color-primary;
-    }
+	&__question {
+		margin-top: 8px;
+		margin-bottom: 0;
+		font-weight: $font-weight-medium;
+		color: $color-primary;
+	}
 }
 
 .hero-img {
-    @include flex;
-    max-width: 100%;
-    padding: 32px 0;
+	@include flex;
+	max-width: 100%;
+	padding: 32px 0;
 
-    @include from-desktop {
-        display: block;
-        max-width: 100%;
-        padding: 0;
-    }
+	@include from-desktop {
+		display: block;
+		max-width: 100%;
+		padding: 0;
+	}
 
-    &__pic {
-        max-width: 80%;
+	&__pic {
+		max-width: 80%;
 
-        @include from-desktop {
-            max-width: 100%;
-        }
-    }
+		@include from-desktop {
+			max-width: 100%;
+		}
+	}
 }

@@ -1,43 +1,43 @@
 <div class="table">
-    <div class="table__row table__row--heading">
-        <div class="table__col-50">
-            <c-table-cell [variant]="'cover'" [valignCenter]="true"
-                >Cover</c-table-cell
-            >
-            <div class="table__col-50--info">
-                <c-table-cell [variant]="'title'" [valignCenter]="true"
-                    >Title</c-table-cell
-                >
-                <c-table-cell [valignCenter]="true">Author</c-table-cell>
-                <c-table-cell [valignCenter]="true">Language</c-table-cell>
-            </div>
-        </div>
-        <c-table-cell [valignCenter]="true">Description</c-table-cell>
-        <c-table-cell [valignCenter]="true">Rating</c-table-cell>
-        <c-table-cell [valignCenter]="true"></c-table-cell>
-    </div>
-    <div class="table__row" *ngFor="let item of books">
-        <div class="table__col-50">
-            <c-table-cell [variant]="'cover'">
-                <img [src]="item.cover" alt="Book" class="book__cover" />
-            </c-table-cell>
-            <div class="table__col-50--info">
-                <c-table-cell [variant]="'title'">{{
-                    item.title
-                }}</c-table-cell>
-                <c-table-cell
-                    >{{ item.author_firstname }}
-                    {{ item.author_lastname }}</c-table-cell
-                >
-                <c-table-cell>{{ item.language }}</c-table-cell>
-            </div>
-        </div>
-        <c-table-cell>{{ item.description }}</c-table-cell>
-        <c-table-cell [valignCenter]="true">{{
-            item.rating | number: '1.1'
-        }}</c-table-cell>
-        <c-table-cell [valignCenter]="true">
-            <c-button [variant]="'icon'">x</c-button>
-        </c-table-cell>
-    </div>
+	<div class="table__row table__row--heading">
+		<div class="table__col-50">
+			<c-table-cell [variant]="'cover'" [valignCenter]="true"
+				>Cover</c-table-cell
+			>
+			<div class="table__col-50--info">
+				<c-table-cell [variant]="'title'" [valignCenter]="true"
+					>Title</c-table-cell
+				>
+				<c-table-cell [valignCenter]="true">Author</c-table-cell>
+				<c-table-cell [valignCenter]="true">Language</c-table-cell>
+			</div>
+		</div>
+		<c-table-cell [valignCenter]="true">Description</c-table-cell>
+		<c-table-cell [valignCenter]="true">Rating</c-table-cell>
+		<c-table-cell [valignCenter]="true"></c-table-cell>
+	</div>
+	<div class="table__row" *ngFor="let item of books">
+		<div class="table__col-50">
+			<c-table-cell [variant]="'cover'">
+				<img [src]="item.cover" alt="Book" class="book__cover" />
+			</c-table-cell>
+			<div class="table__col-50--info">
+				<c-table-cell [variant]="'title'">{{
+					item.title
+				}}</c-table-cell>
+				<c-table-cell
+					>{{ item.author_firstname }}
+					{{ item.author_lastname }}</c-table-cell
+				>
+				<c-table-cell>{{ item.language }}</c-table-cell>
+			</div>
+		</div>
+		<c-table-cell>{{ item.description }}</c-table-cell>
+		<c-table-cell [valignCenter]="true">{{
+			item.rating | number: '1.1'
+		}}</c-table-cell>
+		<c-table-cell [valignCenter]="true">
+			<c-button [variant]="'icon'">x</c-button>
+		</c-table-cell>
+	</div>
 </div>
