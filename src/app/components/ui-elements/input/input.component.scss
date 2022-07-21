@@ -1,0 +1,38 @@
+@import '../../../../assets/css/global-styles-components.scss';
+
+$inputHeight: 52px;
+$inputWidthFromDesktop: 100%;
+
+.input-wrapper {
+	@include flex($direction: column, $alignItems: flex-start);
+	height: auto;
+	width: 100%;
+}
+
+.input-label {
+	margin-bottom: 8px;
+}
+
+.input {
+	width: 100%;
+	height: $inputHeight;
+	padding: 16px;
+	border: 1px solid $color-primary;
+	border-radius: $border-radius;
+	outline: none;
+	font-family: $font-family-basic;
+	font-size: 16px;
+
+	@include from-desktop {
+		width: $inputWidthFromDesktop;
+	}
+
+	&:focus {
+		border-color: $color-secondary;
+	}
+
+	&::placeholder {
+		opacity: 0.7;
+		font-size: 14px;
+	}
+}

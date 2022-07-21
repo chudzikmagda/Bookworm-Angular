@@ -15,6 +15,7 @@ import { BestBookComponent } from './components/best-book/best-book.component';
 import { LastAddedBookComponent } from './components/last-added-book/last-added-book.component';
 import { QuoteComponent } from './components/quote/quote.component';
 import { DialogComponent } from './components/ui-elements/dialog/dialog.component';
+import { InputComponent } from './components/ui-elements/input/input.component';
 
 @NgModule({
 	declarations: [
@@ -30,6 +31,7 @@ import { DialogComponent } from './components/ui-elements/dialog/dialog.componen
 		LastAddedBookComponent,
 		QuoteComponent,
 		DialogComponent,
+  InputComponent,
 	],
 	imports: [
 		AppRoutingModule,

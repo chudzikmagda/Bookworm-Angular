@@ -1,0 +1,13 @@
+<div class="input-wrapper">
+	<label class="input-label">{{ label }}</label>
+	<input
+		type="text"
+		[value]="value"
+		[placeholder]="placeholder"
+		[disabled]="disabled"
+		[required]="required"
+		(input)="onChange(input.value)"
+		(blur)="onTouched()"
+		class="input"
+		#input />
+</div>
