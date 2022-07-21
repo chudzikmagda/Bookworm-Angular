@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ButtonComponent } from './components/ui-elements/button/button.component';
@@ -13,6 +14,7 @@ import { StatsComponent } from './components/stats/stats.component';
 import { BestBookComponent } from './components/best-book/best-book.component';
 import { LastAddedBookComponent } from './components/last-added-book/last-added-book.component';
 import { QuoteComponent } from './components/quote/quote.component';
+import { DialogComponent } from './components/ui-elements/dialog/dialog.component';
 
 @NgModule({
 	declarations: [
@@ -27,8 +29,14 @@ import { QuoteComponent } from './components/quote/quote.component';
 		BestBookComponent,
 		LastAddedBookComponent,
 		QuoteComponent,
+		DialogComponent,
 	],
-	imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+	imports: [
+		AppRoutingModule,
+		BrowserModule,
+		BrowserAnimationsModule,
+		HttpClientModule,
+	],
 	providers: [],
 	bootstrap: [AppComponent],
 })

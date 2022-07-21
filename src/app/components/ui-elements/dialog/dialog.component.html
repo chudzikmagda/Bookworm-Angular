@@ -1,0 +1,14 @@
+<div *ngIf="visible" [@slideInOut] class="dialog-wrapper" #dialog>
+	<dialog open [ngClass]="setClasses()">
+		<div class="dialog__close">
+			<c-button variant="icon" (click)="closeDialog()">
+				<i class="fa-solid fa-xmark"></i>
+			</c-button>
+		</div>
+		<div class="dialog__content">
+			<ng-content></ng-content>
+		</div>
+	</dialog>
+</div>
+
+<div *ngIf="visible" [@fadeInOut] class="dialog-bg"></div>
