@@ -1,0 +1,13 @@
+<div class="textarea-wrapper">
+	<label class="textarea-label"> {{ label }} </label>
+	<textarea
+		type="text"
+		[value]="value"
+		[placeholder]="placeholder"
+		[disabled]="disabled"
+		[required]="required"
+		(input)="onChange(textarea.value)"
+		(blur)="onTouched()"
+		class="textarea"
+		#textarea></textarea>
+</div>
