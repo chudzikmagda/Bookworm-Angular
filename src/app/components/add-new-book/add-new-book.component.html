@@ -1,0 +1,57 @@
+<c-dialog class="add-new-book">
+	<form
+		[formGroup]="addBookForm"
+		(ngSubmit)="addNewBook()"
+		class="add-new-book__form">
+		<h3 class="add-new-book__heading">Add a new book</h3>
+		<c-input
+			label="Title*"
+			placeholder="Add a author of a new book"
+			formControlName="title"
+			[required]="true">
+		</c-input>
+		<c-input
+			label="Author*"
+			placeholder="Add a title of a new book"
+			formControlName="author"
+			[required]="true">
+		</c-input>
+		<c-textarea
+			label="Description"
+			placeholder="Add a short descritpion of a new book"
+			formControlName="description"
+			class="add-new-book__description">
+		</c-textarea>
+		<c-input
+			label="Cover*"
+			placeholder="Add cover image url"
+			class="add-new-book__cover"
+			formControlName="cover"
+			[required]="true">
+		</c-input>
+		<c-input
+			label="Language*"
+			placeholder="Add a language of a new book"
+			formControlName="language"
+			[required]="true">
+		</c-input>
+		<c-input
+			label="Rating*"
+			placeholder="Add a title of a new book"
+			formControlName="rating"
+			[required]="true">
+		</c-input>
+		<div class="add-new-book__btn">
+			<c-button
+				type="text"
+				variant="primary-outline"
+				class="header__btn"
+				(click)="resetForm()">
+				Clear the form
+			</c-button>
+			<c-button type="submit" variant="secondary" class="header__btn">
+				Add a new book
+			</c-button>
+		</div>
+	</form>
+</c-dialog>

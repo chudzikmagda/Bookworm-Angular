@@ -1,0 +1,35 @@
+@import '../../../assets/css/global-styles-components.scss';
+
+.add-new-book {
+	&__heading {
+		margin-top: 0;
+	}
+
+	&__form {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 16px;
+		width: 100%;
+
+		@include from-tablet {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			max-width: 800px;
+		}
+	}
+
+	&__btn {
+		@include flex($justifyContent: flex-end);
+		width: 100%;
+		gap: 16px;
+	}
+
+	&__btn,
+	&__cover,
+	&__description,
+	&__heading {
+		@include from-tablet {
+			grid-column: span 2;
+		}
+	}
+}

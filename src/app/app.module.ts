@@ -17,6 +17,8 @@ import { QuoteComponent } from './components/quote/quote.component';
 import { DialogComponent } from './components/ui-elements/dialog/dialog.component';
 import { InputComponent } from './components/ui-elements/input/input.component';
 import { TextareaComponent } from './components/ui-elements/textarea/textarea.component';
+import { AddNewBookComponent } from './components/add-new-book/add-new-book.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
 	declarations: [
@@ -32,14 +34,16 @@ import { TextareaComponent } from './components/ui-elements/textarea/textarea.co
 		LastAddedBookComponent,
 		QuoteComponent,
 		DialogComponent,
-  InputComponent,
-  TextareaComponent,
+		InputComponent,
+		TextareaComponent,
+		AddNewBookComponent,
 	],
 	imports: [
 		AppRoutingModule,
 		BrowserModule,
 		BrowserAnimationsModule,
 		HttpClientModule,
+		ReactiveFormsModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],

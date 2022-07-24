@@ -1,7 +1,10 @@
 <header class="header">
 	<div class="header__wrapper">
 		<c-logotype class="header__logo"></c-logotype>
-		<c-button variant="secondary" class="header__btn"
+		<c-button
+			variant="secondary"
+			class="header__btn"
+			(click)="addNewBook.openDialog()"
 			>Add a new book</c-button
 		>
 	</div>
