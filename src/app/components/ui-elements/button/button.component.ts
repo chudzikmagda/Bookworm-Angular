@@ -6,15 +6,21 @@ import { Component, Input } from '@angular/core';
 	styleUrls: ['./button.component.scss'],
 })
 export class ButtonComponent {
-	@Input() click!: void;
-	@Input() variant!: string;
+	@Input() click: void;
+	@Input() variant:
+		| 'primary'
+		| 'secondary'
+		| 'primary-outline'
+		| 'secondary-outline'
+		| 'icon';
 
 	setClasses() {
 		return {
 			btn: true,
-			'btn--primary':
-				this.variant !== 'primary' && this.variant !== 'icon',
+			'btn--primary': this.variant === 'primary',
 			'btn--secondary': this.variant === 'secondary',
+			'btn--primary-outline': this.variant === 'primary-outline',
+			'btn--secondary-outline': this.variant === 'secondary-outline',
 			'btn--icon': this.variant === 'icon',
 		};
 	}
