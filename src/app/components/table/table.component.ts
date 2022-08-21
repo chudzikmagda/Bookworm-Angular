@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { BookService, BookData } from 'src/app/services/books.service';
+import { BookData } from 'src/app/models';
+import { BookService } from 'src/app/services/books.service';
 
 @Component({
 	selector: 'c-table',

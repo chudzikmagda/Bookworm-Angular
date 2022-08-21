@@ -1,7 +1,7 @@
-import { isNgTemplate } from '@angular/compiler';
 import { Component, OnDestroy } from '@angular/core';
-import { last, Subscription } from 'rxjs';
-import { BookData, BookService } from '../../services/books.service';
+import { Subscription } from 'rxjs';
+import { BookData } from 'src/app/models';
+import { BookService } from '../../services/books.service';
 
 interface BookStats {
 	booksLength: number;

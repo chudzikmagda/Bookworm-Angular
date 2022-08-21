@@ -1,17 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Quote } from '@angular/compiler';
 import { Injectable } from '@angular/core';
-
-export interface QuoteModel {
-	author?: string;
-	authorSlug?: string;
-	content?: string;
-	dateAdded?: string;
-	length?: number;
-	dateModified?: string;
-	tags?: string[];
-	_id: string;
-}
+import { QuoteModel } from '../models';
 
 @Injectable({
 	providedIn: 'root',

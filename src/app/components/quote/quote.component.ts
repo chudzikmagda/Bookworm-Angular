@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { QuoteModel, QuoteService } from 'src/app/services/quote.service';
+import { QuoteModel } from 'src/app/models';
+import { QuoteService } from 'src/app/services/quote.service';
 
 @Component({
 	selector: 'c-quote',
