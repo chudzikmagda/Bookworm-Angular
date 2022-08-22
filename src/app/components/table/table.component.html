@@ -1,4 +1,4 @@
-<div class="table">
+<div *ngIf="books$ | async as books" class="table">
 	<div class="table__row table__row--heading">
 		<div class="table__col-50">
 			<c-table-cell [variant]="'cover'" [valignCenter]="true"
@@ -16,25 +16,25 @@
 		<c-table-cell [valignCenter]="true">Rating</c-table-cell>
 		<c-table-cell [valignCenter]="true"></c-table-cell>
 	</div>
-	<div class="table__row" *ngFor="let item of books">
+	<div class="table__row" *ngFor="let book of books">
 		<div class="table__col-50">
 			<c-table-cell [variant]="'cover'">
-				<img [src]="item.cover" alt="Book" class="book__cover" />
+				<img [src]="book.cover" alt="Book" class="book__cover" />
 			</c-table-cell>
 			<div class="table__col-50--info">
 				<c-table-cell [variant]="'title'">{{
-					item.title
+					book.title
 				}}</c-table-cell>
 				<c-table-cell
-					>{{ item.author_firstname }}
-					{{ item.author_lastname }}</c-table-cell
+					>{{ book.author_firstname }}
+					{{ book.author_lastname }}</c-table-cell
 				>
-				<c-table-cell>{{ item.language }}</c-table-cell>
+				<c-table-cell>{{ book.language }}</c-table-cell>
 			</div>
 		</div>
-		<c-table-cell>{{ item.description }}</c-table-cell>
+		<c-table-cell>{{ book.description }}</c-table-cell>
 		<c-table-cell [valignCenter]="true">{{
-			item.rating | number: '1.1'
+			book.rating | number: '1.1'
 		}}</c-table-cell>
 		<c-table-cell [valignCenter]="true">
 			<c-button [variant]="'icon'">x</c-button>

@@ -19,5 +19,5 @@ export interface QuoteModel {
 	length?: number;
 	dateModified?: string;
 	tags?: string[];
-	_id: string;
+	_id?: string;
 }

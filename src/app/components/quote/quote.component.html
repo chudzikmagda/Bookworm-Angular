@@ -1,10 +1,10 @@
 <div class="quote">
-	<figure class="quote__content">
+	<figure *ngIf="quote$ | async as quote" class="quote__content">
 		<blockquote>
 			<h5 class="quote__paragraph">
-				{{ quote?.content }}
+				{{ quote.content }}
 			</h5>
 		</blockquote>
-		<figcaption class="quote__source">— {{ quote?.author }} —</figcaption>
+		<figcaption class="quote__source">— {{ quote.author }} —</figcaption>
 	</figure>
 </div>

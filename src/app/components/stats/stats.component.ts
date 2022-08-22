@@ -1,7 +1,9 @@
-import { Component, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 import { BookData } from 'src/app/models';
-import { BookService } from '../../services/books.service';
+import { ActionsService } from 'src/app/services/actions/actions.service';
+import { StateService } from 'src/app/services/state/state.service';
+import { takeUntil, tap } from 'rxjs/operators';
 
 interface BookStats {
 	booksLength: number;
@@ -15,25 +17,24 @@ interface BookStats {
 	templateUrl: './stats.component.html',
 	styleUrls: ['./stats.component.scss'],
 })
-export class StatsComponent implements OnDestroy {
-	stats: BookStats;
-	bookSubscription: Subscription;
+export class StatsComponent implements OnInit, OnDestroy {
 	books: BookData[];
+	stats: BookStats;
+	unsubscribe$: Subject<boolean> = new Subject<boolean>();
 
-	constructor(private bookService: BookService) {}
+	constructor(
+		private stateService: StateService,
+		private actionsService: ActionsService
+	) {}
 
 	ngOnInit() {
-		this.bookSubscription = this.bookService.getData().subscribe(res => {
-			this.books = res;
-			if (this.books.length > 0) {
-				this.stats = {
-					booksLength: this.books.length,
-					bestBook: this.bookService.bestBook(this.books),
-					lastAddedBook: this.bookService.lastAddedBook(this.books),
-					avgRating: this.avgRating(this.books),
-				};
-			}
-		});
+		this.stateService
+			.getBooks()
+			.pipe(
+				takeUntil(this.unsubscribe$),
+				tap((books: BookData[]) => (this.books = books))
+			)
+			.subscribe(() => this.setStats(this.books));
 	}
 
 	avgRating(books: BookData[]): number {
@@ -41,7 +42,19 @@ export class StatsComponent implements OnDestroy {
 		return ratings.reduce((prev, curr) => prev + curr) / books.length;
 	}
 
+	setStats(books: BookData[]): any {
+		if (books.length > 0) {
+			return (this.stats = {
+				booksLength: books.length,
+				bestBook: this.actionsService.bestBook(books),
+				lastAddedBook: this.actionsService.lastAddedBook(books),
+				avgRating: this.avgRating(books),
+			});
+		}
+	}
+
 	ngOnDestroy(): void {
-		this.bookSubscription.unsubscribe();
+		this.unsubscribe$.next(true);
+		this.unsubscribe$.unsubscribe();
 	}
 }

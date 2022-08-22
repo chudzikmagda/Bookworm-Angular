@@ -1,26 +1,28 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { QuoteModel } from 'src/app/models';
-import { QuoteService } from 'src/app/services/quote.service';
+import { ActionsService } from 'src/app/services/actions/actions.service';
+import { StateService } from 'src/app/services/state/state.service';
 
 @Component({
 	selector: 'c-quote',
 	templateUrl: './quote.component.html',
 	styleUrls: ['./quote.component.scss'],
 })
-export class QuoteComponent implements OnInit, OnDestroy {
-	quote: QuoteModel;
-	quoteSubscription: Subscription;
+export class QuoteComponent implements OnInit {
+	quote$: Observable<QuoteModel>;
 
-	constructor(private service: QuoteService) {}
+	constructor(
+		private actionService: ActionsService,
+		private stateService: StateService
+	) {}
 
 	ngOnInit(): void {
-		this.quoteSubscription = this.service
-			.getQuote()
-			.subscribe(res => (this.quote = res));
+		this.loadQuote();
 	}
 
-	ngOnDestroy(): void {
-		this.quoteSubscription.unsubscribe();
+	loadQuote(): void {
+		this.actionService.getQuoteFormApi();
+		this.quote$ = this.stateService.getQuote();
 	}
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { BookData } from 'src/app/models';
-import { BookService } from 'src/app/services/books.service';
+import { ActionsService } from 'src/app/services/actions/actions.service';
+import { StateService } from 'src/app/services/state/state.service';
 
 @Component({
 	selector: 'c-table',
@@ -9,14 +10,20 @@ import { BookService } from 'src/app/services/books.service';
 	styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
-	bookSubscription: Subscription;
+	books$: Observable<BookData[]>;
 	books: BookData[];
 
-	constructor(private bookService: BookService) {}
+	constructor(
+		private actionsService: ActionsService,
+		private stateService: StateService
+	) {}
 
 	ngOnInit(): void {
-		this.bookSubscription = this.bookService.getData().subscribe(res => {
-			this.books = res;
-		});
+		this.loadBookList();
+	}
+
+	loadBookList() {
+		this.actionsService.getBookList();
+		this.books$ = this.stateService.getBooks();
 	}
 }
