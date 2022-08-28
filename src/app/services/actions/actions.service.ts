@@ -3,6 +3,7 @@ import { BookData, QuoteModel } from 'src/app/models';
 import { ApiService } from '../api/api.service';
 import { StateService } from '../state/state.service';
 import { Subscription, tap, take } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
 	providedIn: 'root',
@@ -10,7 +11,8 @@ import { Subscription, tap, take } from 'rxjs';
 export class ActionsService {
 	constructor(
 		private apiService: ApiService,
-		private stateService: StateService
+		private stateService: StateService,
+		private route: Router
 	) {}
 
 	getBookList(): Subscription {
@@ -35,7 +37,7 @@ export class ActionsService {
 		return books[ratings.indexOf(Math.max(...ratings))];
 	}
 
-	lastAddedBook(books: BookData[]): BookData {
+	lastAddedBook(books: BookData[]): any {
 		const dates: any[] = books.map(item => new Date(item.date_add));
 		const lastAddedBook =
 			books[
@@ -48,5 +50,9 @@ export class ActionsService {
 				)
 			];
 		return lastAddedBook;
+	}
+
+	openDialog(path: string) {
+		this.route.navigate([path]);
 	}
 }

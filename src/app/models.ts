@@ -1,3 +1,5 @@
+export const ADD_NEW_BOOK_PATH = 'add-new-book';
+
 export interface BookData {
 	id: string;
 	author_firstname: string;
