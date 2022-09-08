@@ -1,7 +1,7 @@
 export const ADD_NEW_BOOK_PATH = 'add-new-book';
 
 export interface BookData {
-	id: string;
+	id: number;
 	author: string;
 	title: string;
 	language: string;
@@ -11,6 +11,11 @@ export interface BookData {
 	date_edit: string;
 	cover: string;
 }
+
+export type BookForm = Pick<
+	BookData,
+	'id' | 'author' | 'title' | 'language' | 'rating' | 'cover'
+>;
 
 export interface QuoteModel {
 	author?: string;

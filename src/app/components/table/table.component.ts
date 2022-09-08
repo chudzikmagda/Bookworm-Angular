@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { BookData } from 'src/app/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { StateService } from 'src/app/services/state/state.service';
@@ -9,9 +9,10 @@ import { StateService } from 'src/app/services/state/state.service';
 	templateUrl: './table.component.html',
 	styleUrls: ['./table.component.scss'],
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, OnDestroy {
 	books$: Observable<BookData[]>;
 	books: BookData[];
+	destroy$: Subject<boolean> = new Subject<boolean>();
 
 	constructor(
 		private actionsService: ActionsService,
@@ -23,7 +24,12 @@ export class TableComponent implements OnInit {
 	}
 
 	loadBookList() {
-		this.actionsService.getBookList();
+		this.actionsService.getBookList(this.destroy$).subscribe();
 		this.books$ = this.stateService.getBooks();
+	}
+
+	ngOnDestroy() {
+		this.destroy$.next(true);
+		this.destroy$.unsubscribe();
 	}
 }

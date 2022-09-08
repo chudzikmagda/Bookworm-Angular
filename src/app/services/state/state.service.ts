@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { BookData, QuoteModel } from 'src/app/models';
 
 @Injectable({
@@ -13,15 +13,15 @@ export class StateService {
 		return this.books$.asObservable();
 	}
 
-	setBooks(books: BookData[]): any {
-		return this.books$.next(books);
+	setBooks(books: BookData[]): void {
+		return this.books$.next([...this.books$.getValue(), ...books]);
 	}
 
 	getQuote(): Observable<QuoteModel> {
 		return this.quote$.asObservable();
 	}
 
-	setQuote(quote: QuoteModel): any {
+	setQuote(quote: QuoteModel): void {
 		return this.quote$.next(quote);
 	}
 }

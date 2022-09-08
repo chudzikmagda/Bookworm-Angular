@@ -33,3 +33,11 @@
 		}
 	}
 }
+
+.error {
+	&__message {
+		font-size: $font-size-small;
+		color: $color-danger;
+		padding-top: 4px;
+	}
+}

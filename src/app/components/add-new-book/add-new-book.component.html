@@ -4,18 +4,40 @@
 		(ngSubmit)="addNewBook()"
 		class="add-new-book__form">
 		<h3 class="add-new-book__heading">Add a new book</h3>
-		<c-input
-			label="Title*"
-			placeholder="Add a author of a new book"
-			formControlName="title"
-			[required]="true">
-		</c-input>
-		<c-input
-			label="Author*"
-			placeholder="Add a title of a new book"
-			formControlName="author"
-			[required]="true">
-		</c-input>
+		<div>
+			<c-input
+				label="Title*"
+				placeholder="Add a author of a new book"
+				formControlName="title">
+			</c-input>
+			<div
+				*ngIf="title?.invalid && (title?.dirty || title?.touched)"
+				class="error">
+				<p *ngIf="title?.errors?.['required']" class="error__message">
+					{{ errors.required }}
+				</p>
+				<p *ngIf="title?.errors?.['minlength']" class="error__message">
+					{{ errors.minLength }}
+				</p>
+			</div>
+		</div>
+		<div>
+			<c-input
+				label="Author*"
+				placeholder="Add a title of a new book"
+				formControlName="author">
+			</c-input>
+			<div
+				*ngIf="author?.invalid && (author?.dirty || author?.touched)"
+				class="error">
+				<p *ngIf="author?.errors?.['required']" class="error__message">
+					{{ errors.required }}
+				</p>
+				<p *ngIf="author?.errors?.['minlength']" class="error__message">
+					{{ errors.minLength }}
+				</p>
+			</div>
+		</div>
 		<c-textarea
 			label="Description"
 			placeholder="Add a short descritpion of a new book"
@@ -23,24 +45,48 @@
 			class="add-new-book__description">
 		</c-textarea>
 		<c-input
-			label="Cover*"
+			label="Cover"
 			placeholder="Add cover image url"
 			class="add-new-book__cover"
-			formControlName="cover"
-			[required]="true">
+			formControlName="cover">
 		</c-input>
-		<c-input
-			label="Language*"
-			placeholder="Add a language of a new book"
-			formControlName="language"
-			[required]="true">
-		</c-input>
-		<c-input
-			label="Rating*"
-			placeholder="Add a title of a new book"
-			formControlName="rating"
-			[required]="true">
-		</c-input>
+		<div>
+			<c-input
+				label="Language*"
+				placeholder="Add a language of a new book"
+				formControlName="language">
+			</c-input>
+			<div
+				*ngIf="
+					language?.invalid && (language?.dirty || language?.touched)
+				"
+				class="error">
+				<p
+					*ngIf="language?.errors?.['required']"
+					class="error__message">
+					{{ errors.required }}
+				</p>
+				<p
+					*ngIf="language?.errors?.['minlength']"
+					class="error__message">
+					{{ errors.minLength }}
+				</p>
+			</div>
+		</div>
+		<div>
+			<c-input
+				label="Rating*"
+				placeholder="Add a title of a new book"
+				formControlName="rating">
+			</c-input>
+			<div
+				*ngIf="rating?.invalid && (rating?.dirty || rating?.touched)"
+				class="error">
+				<p *ngIf="rating?.errors?.['required']" class="error__message">
+					{{ errors.required }}
+				</p>
+			</div>
+		</div>
 		<div class="add-new-book__btn">
 			<c-button
 				type="text"

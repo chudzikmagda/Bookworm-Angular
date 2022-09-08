@@ -1,19 +1,6 @@
-import {
-	Component,
-	ElementRef,
-	EventEmitter,
-	Input,
-	Output,
-	ViewChild,
-} from '@angular/core';
-import { Location } from '@angular/common';
-import {
-	trigger,
-	state,
-	style,
-	animate,
-	transition,
-} from '@angular/animations';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { trigger, style, animate, transition } from '@angular/animations';
+import { ActionsService } from 'src/app/services/actions/actions.service';
 
 @Component({
 	selector: 'c-dialog',
@@ -48,12 +35,11 @@ import {
 })
 export class DialogComponent {
 	@Input() variant: 'center' | 'bottom' = 'bottom';
-	@ViewChild('dialog') dialog: ElementRef;
 	@Input() visible = true;
 	@Output() visibleChange: EventEmitter<boolean> =
 		new EventEmitter<boolean>();
 
-	constructor(private location: Location) {}
+	constructor(private actionService: ActionsService) {}
 
 	setClasses() {
 		return {
@@ -64,9 +50,6 @@ export class DialogComponent {
 	}
 
 	closeDialog() {
-		this.visible = false;
-		this.visibleChange.emit(this.visible);
-		this.dialog.nativeElement.remove();
-		this.location.back();
+		this.actionService.closeDialog(this.visible, this.visibleChange);
 	}
 }
