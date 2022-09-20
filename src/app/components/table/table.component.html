@@ -16,7 +16,7 @@
 		<c-table-cell [valignCenter]="true">Rating</c-table-cell>
 		<c-table-cell [valignCenter]="true"></c-table-cell>
 	</div>
-	<div class="table__row" *ngFor="let book of books">
+	<div *ngFor="let book of books" [id]="book.id" class="table__row" #tabelRow>
 		<div class="table__col-50">
 			<c-table-cell [variant]="'cover'">
 				<img [src]="book.cover" alt="Book" class="book__cover" />
@@ -34,7 +34,9 @@
 			book.rating | number: '1.1'
 		}}</c-table-cell>
 		<c-table-cell [valignCenter]="true">
-			<c-button [variant]="'icon'">x</c-button>
+			<c-button [variant]="'icon'" (click)="deleteBook(tabelRow)"
+				>x</c-button
+			>
 		</c-table-cell>
 	</div>
 </div>

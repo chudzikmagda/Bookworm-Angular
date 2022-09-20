@@ -1,5 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	OnDestroy,
+	OnInit,
+} from '@angular/core';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { BookData } from 'src/app/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { StateService } from 'src/app/services/state/state.service';
@@ -8,11 +13,12 @@ import { StateService } from 'src/app/services/state/state.service';
 	selector: 'c-table',
 	templateUrl: './table.component.html',
 	styleUrls: ['./table.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableComponent implements OnInit, OnDestroy {
 	books$: Observable<BookData[]>;
 	books: BookData[];
-	destroy$: Subject<boolean> = new Subject<boolean>();
+	private destroy$: Subject<boolean> = new Subject<boolean>();
 
 	constructor(
 		private actionsService: ActionsService,
@@ -20,11 +26,19 @@ export class TableComponent implements OnInit, OnDestroy {
 	) {}
 
 	ngOnInit(): void {
+		this.stateService
+			.getBooks()
+			.pipe(takeUntil(this.destroy$))
+			.subscribe((books: BookData[]) => (this.books = books));
 		this.loadBookList();
 	}
 
+	deleteBook(tableRow: HTMLElement) {
+		this.actionsService.deleteBook(+tableRow.id, this.books);
+		this.books$ = this.stateService.getBooks();
+	}
+
 	loadBookList() {
-		this.actionsService.getBookList(this.destroy$).subscribe();
 		this.books$ = this.stateService.getBooks();
 	}
 

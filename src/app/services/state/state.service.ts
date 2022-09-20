@@ -14,7 +14,7 @@ export class StateService {
 	}
 
 	setBooks(books: BookData[]): void {
-		return this.books$.next([...this.books$.getValue(), ...books]);
+		return this.books$.next(books);
 	}
 
 	getQuote(): Observable<QuoteModel> {

@@ -53,7 +53,7 @@ export class AddNewBookComponent implements OnInit, OnDestroy {
 				id: this.newBookId,
 				date_add: this.setCurrentDateAndTime(),
 			};
-			this.actionsService.addNewBook([this.newBook]);
+			this.actionsService.addNewBook(this.newBook);
 			this.resetForm();
 			this.actionsService.closeDialog(this.visible, this.visibleChange);
 		}

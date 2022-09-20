@@ -1,4 +1,4 @@
-import { ElementRef, EventEmitter, Injectable } from '@angular/core';
+import { EventEmitter, Injectable, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
 import { BookData, QuoteModel } from 'src/app/models';
 import { ApiService } from '../api/api.service';
@@ -17,7 +17,10 @@ import { Router } from '@angular/router';
 @Injectable({
 	providedIn: 'root',
 })
-export class ActionsService {
+export class ActionsService implements OnDestroy {
+	private books: BookData[];
+	private destroy$: Subject<boolean> = new Subject<boolean>();
+
 	constructor(
 		private apiService: ApiService,
 		private location: Location,
@@ -34,8 +37,18 @@ export class ActionsService {
 		);
 	}
 
-	addNewBook(books: BookData[]): void {
-		return this.stateService.setBooks(books);
+	addNewBook(book: BookData): void {
+		this.stateService
+			.getBooks()
+			.pipe(takeUntil(this.destroy$))
+			.subscribe((books: BookData[]) => (this.books = books));
+		return this.stateService.setBooks([...this.books, book]);
+	}
+
+	deleteBook(id: number, books: BookData[]): void {
+		return this.stateService.setBooks(
+			books.filter((book: BookData) => book.id !== id)
+		);
 	}
 
 	bestBook(books: BookData[]): BookData {
@@ -82,5 +95,10 @@ export class ActionsService {
 		visible = false;
 		visibleChange.emit(visible);
 		this.location.back();
+	}
+
+	ngOnDestroy() {
+		this.destroy$.next(true);
+		this.destroy$.unsubscribe();
 	}
 }
