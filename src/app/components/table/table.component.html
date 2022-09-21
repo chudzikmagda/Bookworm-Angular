@@ -19,7 +19,16 @@
 	<div *ngFor="let book of books" [id]="book.id" class="table__row" #tabelRow>
 		<div class="table__col-50">
 			<c-table-cell [variant]="'cover'">
-				<img [src]="book.cover" alt="Book" class="book__cover" />
+				<img
+					*ngIf="book.cover"
+					[src]="book.cover"
+					alt="Book"
+					class="book__cover" />
+				<span class="book__no-img">
+					<i
+						*ngIf="!book.cover"
+						class="fa-regular fa-image book__no-img-icon"></i>
+				</span>
 			</c-table-cell>
 			<div class="table__col-50--info">
 				<c-table-cell [variant]="'title'">{{

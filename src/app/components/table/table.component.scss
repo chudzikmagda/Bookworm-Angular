@@ -83,4 +83,15 @@
 		max-width: 100%;
 		height: auto;
 	}
+
+	&__no-img {
+		@include flex;
+		width: 100%;
+		height: 100%;
+	}
+
+	&__no-img-icon {
+		font-size: 3rem;
+		color: $color-primary-light;
+	}
 }
