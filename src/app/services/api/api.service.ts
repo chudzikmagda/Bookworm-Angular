@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { BookData, QuoteModel } from 'src/app/models';
+import { BookData, QuoteModel } from 'src/app/models/models';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class ApiService {
-	apiUrl = 'https://api.quotable.io/random?tags=famous-quotes';
+	private apiUrl = 'https://api.quotable.io/random?tags=famous-quotes';
 
 	constructor(private http: HttpClient) {}
 

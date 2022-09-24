@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ADD_NEW_BOOK_PATH } from 'src/app/models';
+import { ADD_NEW_BOOK_PATH } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { ActionsService } from 'src/app/services/actions/actions.service';
 	styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-	addNewBookPath = ADD_NEW_BOOK_PATH;
+	private addNewBookPath = ADD_NEW_BOOK_PATH;
 
 	constructor(private actionsService: ActionsService) {}
 

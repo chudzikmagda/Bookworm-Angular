@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { BookData } from 'src/app/models';
+import { BookData } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { StateService } from 'src/app/services/state/state.service';
 import { takeUntil, tap } from 'rxjs/operators';
@@ -18,9 +18,9 @@ interface BookStats {
 	styleUrls: ['./stats.component.scss'],
 })
 export class StatsComponent implements OnInit, OnDestroy {
-	books: BookData[];
 	stats: BookStats;
-	unsubscribe$: Subject<boolean> = new Subject<boolean>();
+	private books: BookData[];
+	private unsubscribe$: Subject<boolean> = new Subject<boolean>();
 
 	constructor(
 		private stateService: StateService,
@@ -37,12 +37,12 @@ export class StatsComponent implements OnInit, OnDestroy {
 			.subscribe(() => this.setStats(this.books));
 	}
 
-	avgRating(books: BookData[]): number {
+	private avgRating(books: BookData[]): number {
 		const ratings: number[] = books.map(item => item.rating);
 		return ratings.reduce((prev, curr) => prev + curr) / books.length;
 	}
 
-	setStats(books: BookData[]): any {
+	private setStats(books: BookData[]): any {
 		if (books.length > 0) {
 			return (this.stats = {
 				booksLength: books.length,

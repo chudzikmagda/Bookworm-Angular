@@ -7,7 +7,7 @@ import {
 	Output,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BookData } from 'src/app/models';
+import { BookData } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { Subject, Subscription, takeUntil } from 'rxjs';
 

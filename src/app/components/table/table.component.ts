@@ -5,7 +5,7 @@ import {
 	OnInit,
 } from '@angular/core';
 import { Observable, Subject, takeUntil } from 'rxjs';
-import { BookData } from 'src/app/models';
+import { BookData } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { StateService } from 'src/app/services/state/state.service';
 
@@ -17,7 +17,7 @@ import { StateService } from 'src/app/services/state/state.service';
 })
 export class TableComponent implements OnInit, OnDestroy {
 	books$: Observable<BookData[]>;
-	books: BookData[];
+	private books: BookData[];
 	private destroy$: Subject<boolean> = new Subject<boolean>();
 
 	constructor(
@@ -38,7 +38,7 @@ export class TableComponent implements OnInit, OnDestroy {
 		this.books$ = this.stateService.getBooks();
 	}
 
-	loadBookList() {
+	private loadBookList() {
 		this.books$ = this.stateService.getBooks();
 	}
 

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { tap } from 'rxjs';
-import { BookData } from 'src/app/models';
+import { BookData } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { ApiService } from 'src/app/services/api/api.service';
 
@@ -11,9 +11,9 @@ import { ApiService } from 'src/app/services/api/api.service';
 	styleUrls: ['./best-book.component.scss'],
 })
 export class BestBookComponent implements OnInit, OnDestroy {
-	books: BookData[];
 	bestBook: BookData;
-	unsubscribe$: Subject<boolean> = new Subject<boolean>();
+	private books: BookData[];
+	private unsubscribe$: Subject<boolean> = new Subject<boolean>();
 
 	constructor(
 		private apiService: ApiService,
@@ -27,7 +27,7 @@ export class BestBookComponent implements OnInit, OnDestroy {
 				takeUntil(this.unsubscribe$),
 				tap((books: BookData[]) => (this.books = books))
 			)
-			.subscribe(res => {
+			.subscribe(() => {
 				if (this.books.length > 0) {
 					this.bestBook = this.actionsService.bestBook(this.books);
 				}

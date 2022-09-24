@@ -1,6 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
-import { BookData } from './models';
 import { ActionsService } from './services/actions/actions.service';
 
 @Component({

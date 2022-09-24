@@ -2,13 +2,13 @@
 	<div class="best-book__data">
 		<h4 class="best-book__heading">Best book:</h4>
 		<span class="best-book__category">
-			"{{ bestBook.title }}", <br />
-			{{ bestBook.author }}
+			"{{ bestBook?.title }}", <br />
+			{{ bestBook?.author }}
 		</span>
 	</div>
 	<picture class="best-book__cover">
 		<img
-			[src]="bestBook.cover"
+			[src]="bestBook?.cover"
 			alt="Best book cover"
 			class="best-book__image" />
 	</picture>

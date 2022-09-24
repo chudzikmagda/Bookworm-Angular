@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
-import { QuoteModel } from 'src/app/models';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { QuoteModel } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { StateService } from 'src/app/services/state/state.service';
 

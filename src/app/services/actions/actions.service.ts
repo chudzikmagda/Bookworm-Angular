@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
-import { BookData, QuoteModel } from 'src/app/models';
+import { BookData, QuoteModel } from 'src/app/models/models';
 import { ApiService } from '../api/api.service';
 import { StateService } from '../state/state.service';
 import {
