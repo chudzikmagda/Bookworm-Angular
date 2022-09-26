@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable, OnDestroy } from '@angular/core';
-import { Location } from '@angular/common';
+import { Location, ViewportScroller } from '@angular/common';
 import { BookData, QuoteModel } from 'src/app/models/models';
 import { ApiService } from '../api/api.service';
 import { StateService } from '../state/state.service';
@@ -25,7 +25,8 @@ export class ActionsService implements OnDestroy {
 		private apiService: ApiService,
 		private location: Location,
 		private route: Router,
-		private stateService: StateService
+		private stateService: StateService,
+		private scroller: ViewportScroller
 	) {}
 
 	getBookList(destroy$: Subject<boolean>): Observable<BookData[]> {
@@ -95,6 +96,10 @@ export class ActionsService implements OnDestroy {
 		visible = false;
 		visibleChange.emit(visible);
 		this.location.back();
+	}
+
+	scrollToTheId(id: string): void {
+		this.scroller.scrollToAnchor(id);
 	}
 
 	ngOnDestroy() {

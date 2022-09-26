@@ -35,6 +35,11 @@
 			margin-top: 0;
 			font-family: $font-family-serif;
 			font-weight: $font-weight-bold;
+			font-size: 22px;
+
+			@include from-desktop {
+				font-size: 1.75vw;
+			}
 		}
 
 		&__source {

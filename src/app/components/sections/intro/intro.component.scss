@@ -1,0 +1,69 @@
+@import '../../../../assets/css/sections.scss';
+
+.welcome {
+	@include flex($direction: column);
+	height: 100%;
+	width: 100%;
+	gap: 32px;
+
+	@include from-desktop {
+		flex-direction: row;
+		gap: 64px;
+	}
+
+	&__msg {
+		@include flex($direction: column, $justifyContent: center);
+		height: 50%;
+
+		@include from-desktop {
+			height: 100%;
+			width: 50%;
+		}
+	}
+
+	&__copy {
+		@include flex($direction: column);
+		gap: 32px;
+
+		@include from-desktop {
+			align-items: flex-start;
+		}
+	}
+
+	&__hi {
+		font-size: 7vw;
+		font-weight: 800;
+		margin: 0;
+	}
+
+	&__question {
+		margin: 0;
+		text-align: center;
+
+		@include from-desktop {
+			margin-bottom: 64px;
+			font-size: 2vw;
+			text-align: left;
+		}
+	}
+}
+
+.hero-img {
+	@include flex;
+	width: 100%;
+	height: 50%;
+	align-items: flex-end;
+
+	@include from-desktop {
+		height: 100%;
+		width: 50%;
+	}
+
+	&__pic {
+		max-width: 80%;
+
+		@include from-desktop {
+			width: 100%;
+		}
+	}
+}

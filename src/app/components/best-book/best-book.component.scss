@@ -13,7 +13,7 @@
 		border-radius: $border-radius;
 
 		@include from-desktop {
-			@include flex($justifyContent: space-between);
+			@include flex;
 			gap: 16px;
 			padding: 32px;
 			align-self: center;
@@ -29,6 +29,10 @@
 			grid-template-columns: 1fr;
 			grid-template-rows: auto;
 			gap: 8px;
+
+			@include from-desktop {
+				width: 250px;
+			}
 		}
 
 		&__cover {
@@ -42,7 +46,7 @@
 
 		&__image {
 			height: auto;
-			max-width: 100%;
+			max-width: 50%;
 			border-radius: $border-radius;
 
 			@include from-desktop {

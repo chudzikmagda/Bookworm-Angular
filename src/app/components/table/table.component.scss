@@ -39,6 +39,7 @@
 			background-color: $color-primary-light;
 			font-weight: $font-weight-medium;
 			padding: 16px 0;
+			border-radius: $border-radius;
 
 			@include from-desktop {
 				position: sticky;
@@ -82,6 +83,7 @@
 	&__cover {
 		max-width: 100%;
 		height: auto;
+		border-radius: $border-radius;
 	}
 
 	&__no-img {

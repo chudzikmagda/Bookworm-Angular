@@ -27,3 +27,9 @@ export interface QuoteModel {
 	tags?: string[];
 	_id?: string;
 }
+
+export enum SectionNames {
+	Intro = 'Intro',
+	Summary = 'Summary',
+	BookList = 'BookList',
+}

@@ -6,11 +6,11 @@
 	&__wrapper {
 		position: relative;
 		@include flex;
-		height: 48px;
+		height: $menuHeightMobile;
 		margin: 0 auto;
 
 		@include from-desktop {
-			height: 68px;
+			height: $menuHeightDesktop;
 		}
 	}
 

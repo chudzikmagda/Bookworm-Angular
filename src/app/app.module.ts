@@ -19,6 +19,10 @@ import { InputComponent } from './components/ui-elements/input/input.component';
 import { TextareaComponent } from './components/ui-elements/textarea/textarea.component';
 import { AddNewBookComponent } from './components/add-new-book/add-new-book.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BooksComponent } from './components/sections/books/books.component';
+import { IntroComponent } from './components/sections/intro/intro.component';
+import { SummaryComponent } from './components/sections/summary/summary.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
 	declarations: [
@@ -37,6 +41,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 		InputComponent,
 		TextareaComponent,
 		AddNewBookComponent,
+		BooksComponent,
+		IntroComponent,
+		SummaryComponent,
 	],
 	imports: [
 		AppRoutingModule,

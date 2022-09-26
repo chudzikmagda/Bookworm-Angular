@@ -1,0 +1,21 @@
+<section class="section section--intro" [id]="sectionName.Intro">
+	<div class="welcome">
+		<div class="welcome__msg">
+			<div class="welcome__copy">
+				<h2 class="welcome__hi">Hi Johnny,</h2>
+				<h4 class="welcome__question">
+					how many pages did you read yesterday?
+				</h4>
+				<c-button variant="primary" (click)="goToSummary()"
+					>Check your stats</c-button
+				>
+			</div>
+		</div>
+		<picture class="hero-img">
+			<img
+				src="../assets/images/intro-image.svg"
+				class="hero-img__pic"
+				alt="Bookworm" />
+		</picture>
+	</div>
+</section>
