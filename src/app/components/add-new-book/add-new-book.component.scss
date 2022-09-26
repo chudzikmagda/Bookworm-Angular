@@ -17,6 +17,9 @@
 			max-width: 800px;
 		}
 	}
+	&__form-item {
+		height: 96px;
+	}
 
 	&__btn {
 		@include flex($justifyContent: flex-end);
@@ -38,6 +41,7 @@
 	&__message {
 		font-size: $font-size-small;
 		color: $color-danger;
-		padding-top: 4px;
+		padding-top: 2px;
+		margin-bottom: 0;
 	}
 }

@@ -33,7 +33,8 @@ $dialog-shadow-color: rgba($color-primary, 0.3);
 		align-self: flex-end;
 
 		@include from-desktop {
-			min-height: 50%;
+			@include flex($direction: column, $alignItems: initial);
+			min-height: 70%;
 		}
 	}
 
@@ -54,5 +55,9 @@ $dialog-shadow-color: rgba($color-primary, 0.3);
 		width: 100%;
 		height: 100%;
 		padding: 16px 0;
+
+		@include from-desktop {
+			margin: auto;
+		}
 	}
 }
