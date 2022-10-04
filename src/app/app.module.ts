@@ -22,7 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BooksComponent } from './components/sections/books/books.component';
 import { IntroComponent } from './components/sections/intro/intro.component';
 import { SummaryComponent } from './components/sections/summary/summary.component';
-import { RouterModule } from '@angular/router';
+import { GoToTopComponent } from './components/go-to-top/go-to-top.component';
 
 @NgModule({
 	declarations: [
@@ -44,6 +44,7 @@ import { RouterModule } from '@angular/router';
 		BooksComponent,
 		IntroComponent,
 		SummaryComponent,
+		GoToTopComponent,
 	],
 	imports: [
 		AppRoutingModule,
