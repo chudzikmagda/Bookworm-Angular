@@ -53,5 +53,82 @@
 		"date_add": "November 13, 2020, 3:53 am",
 		"date_edit": "July 22, 2021, 6:23 am",
 		"cover": "assets/images/book_covers/atonement.jpg"
+	},
+	{
+		"id": 6,
+		"author": "Yann Martel",
+		"title": "Life of Pi",
+		"language": "English",
+		"description": "Life of Pi is a fantasy adventure novel by Yann Martel published in 2001. The protagonist, Piscine Molitor Pi Patel, a Tamil boy from Pondicherry, explores issues of spirituality and practicality from an early age. He survives 227 days after a shipwreck while stranded on a boat in the Pacific Ocean with a Bengal tiger named Richard Parker.",
+		"rating": 7.5,
+		"date_add": "September 13, 2022, 3:53 pm",
+		"date_edit": "September 14, 2022, 3:53 pm",
+		"cover": "assets/images/book_covers/life-of-pi-yann-martel.jpg"
+	},
+	{
+		"id": 7,
+		"author": "The Help",
+		"title": "Kathryn Stockett",
+		"language": "English",
+		"description": "Twenty-two-year-old Skeeter has just returned home after graduating from Ole Miss. She may have a degree, but it is 1962, Mississippi, and her mother will not be happy till Skeeter has a ring on her finger. Skeeter would normally find solace with her beloved maid Constantine, the woman who raised her, but Constantine has disappeared and no one will tell Skeeter where she has gone.",
+		"rating": 9.5,
+		"date_add": "September 14, 2022, 3:53 pm",
+		"date_edit": "September 15, 2022, 3:53 pm",
+		"cover": "assets/images/book_covers/help-stockett.jpg"
+	},
+	{
+		"id": 8,
+		"author": "Gillian Flynn",
+		"title": "Gone Girl",
+		"language": "English",
+		"description": "These are the questions Nick Dunne finds himself asking on the morning of his fifth wedding anniversary when his wife Amy suddenly disappears. The police suspect Nick. Amy's friends reveal that she was afraid of him, that she kept secrets from him. He swears it isn't true. A police examination of his computer shows strange searches. He says they weren't made by him. And then there are the persistent calls on his mobile phone.",
+		"rating": 6.5,
+		"date_add": "September 9, 2022, 3:53 pm",
+		"date_edit": "September 14, 2022, 3:53 pm",
+		"cover": "assets/images/book_covers/gone-girl-flynn.jpg"
+	},
+	{
+		"id": 9,
+		"author": "Alice Sebold",
+		"title": "The Lovely Bones",
+		"language": "English",
+		"description": "So begins the story of Susie Salmon, who is adjusting to her new home in heaven, a place that is not at all what she expected, even as she is watching life on earth continue without her -- her friends trading rumors about her disappearance, her killer trying to cover his tracks, her grief-stricken family unraveling. Out of unspeakable tragedy and loss, The Lovely Bones succeeds, miraculously, in building a tale filled with hope, humor, suspense, even joy. ",
+		"rating": 9.5,
+		"date_add": "September 11, 2022, 3:53 pm",
+		"date_edit": "September 12, 2022, 3:53 pm",
+		"cover": "assets/images/book_covers/lovely-bones-sebold.jpg"
+	},
+	{
+		"id": 10,
+		"author": "Elizabeth Gilbert",
+		"title": "Eat, Pray, Love",
+		"language": "English",
+		"description": "A celebrated writer's irresistible, candid, and eloquent account of her pursuit of worldly pleasure, spiritual devotion, and what she really wanted out of life.",
+		"rating": 9.5,
+		"date_add": "September 1, 2022, 3:53 pm",
+		"date_edit": "September 2, 2022, 3:53 pm",
+		"cover": "assets/images/book_covers/eat-pray-love-gilbert.jpg"
+	},
+	{
+		"id": 10,
+		"author": "Michelle Obama",
+		"title": "Becoming",
+		"language": "English",
+		"description": "In a life filled with meaning and accomplishment, Michelle Obama has emerged as one of the most iconic and compelling women of our era. As First Lady of the United States of America—the first African American to serve in that role—she helped create the most welcoming and inclusive White House in history, while also establishing herself as a powerful advocate for women and girls in the U.S. and around the world, dramatically changing the ways that families pursue healthier and more active lives, and standing with her husband as he led America through some of its most harrowing moments. Along the way, she showed us a few dance moves, crushed Carpool Karaoke, and raised two down-to-earth daughters under an unforgiving media glare.",
+		"rating": 9,
+		"date_add": "September 11, 2022, 3:53 pm",
+		"date_edit": "September 12, 2022, 3:53 pm",
+		"cover": "assets/images/book_covers/becoming-obama.jpg"
+	},
+	{
+		"id": 10,
+		"author": "Walter Isaacson",
+		"title": "Steve Jobs",
+		"language": "English",
+		"description": "Walter Isaacson's worldwide bestselling biography of Apple cofounder Steve Jobs. Based on more than forty interviews with Steve Jobs conducted over two years--as well as interviews with more than 100 family members, friends, adversaries, competitors, and colleagues--Walter Isaacson has written a riveting story of the roller-coaster life and searingly intense personality of a creative entrepreneur whose passion for perfection and ferocious drive revolutionized six industries: personal computers, animated movies, music, phones, tablet computing, and digital publishing. Isaacson's portrait touched millions of readers.",
+		"rating": 8,
+		"date_add": "September 1, 2022, 3:53 pm",
+		"date_edit": "September 2, 2022, 3:53 pm",
+		"cover": "assets/images/book_covers/steve-jobs-isasscson.jpg"
 	}
 ]
