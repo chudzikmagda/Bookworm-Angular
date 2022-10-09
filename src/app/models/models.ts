@@ -32,4 +32,5 @@ export enum SectionNames {
 	Intro = 'Intro',
 	Summary = 'Summary',
 	BookList = 'BookList',
+	MotivationalQuote = 'MotivationalQuote',
 }

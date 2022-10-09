@@ -7,7 +7,8 @@ import { BookData, QuoteModel } from 'src/app/models/models';
 })
 export class StateService {
 	private books$ = new BehaviorSubject<BookData[]>([]);
-	private quote$ = new BehaviorSubject<QuoteModel>([]);
+	private quoteSummary$ = new BehaviorSubject<QuoteModel>([]);
+	private quoteSection$ = new BehaviorSubject<QuoteModel>([]);
 
 	getBooks(): Observable<BookData[]> {
 		return this.books$.asObservable();
@@ -17,11 +18,19 @@ export class StateService {
 		return this.books$.next(books);
 	}
 
-	getQuote(): Observable<QuoteModel> {
-		return this.quote$.asObservable();
+	getSummaryQuote(): Observable<QuoteModel> {
+		return this.quoteSummary$.asObservable();
 	}
 
-	setQuote(quote: QuoteModel): void {
-		return this.quote$.next(quote);
+	setSummaryQuote(quote: QuoteModel): void {
+		return this.quoteSummary$.next(quote);
+	}
+
+	getSectionQuote(): Observable<QuoteModel> {
+		return this.quoteSection$.asObservable();
+	}
+
+	setSectionQuote(quote: QuoteModel): void {
+		return this.quoteSection$.next(quote);
 	}
 }

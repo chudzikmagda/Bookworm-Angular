@@ -22,7 +22,7 @@ export class QuoteComponent implements OnInit {
 	}
 
 	loadQuote(): void {
-		this.actionService.getQuoteFormApi();
-		this.quote$ = this.stateService.getQuote();
+		this.actionService.getSummaryQuoteFormApi('famous-quotes');
+		this.quote$ = this.stateService.getSummaryQuote();
 	}
 }

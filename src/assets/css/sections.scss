@@ -27,34 +27,9 @@
 		height: auto;
 	}
 
-	&__content {
-		display: grid;
-		gap: 32px;
-		max-width: 1920px;
-		padding: 16px;
-
-		@include from-desktop {
-			grid-template-columns: repeat(3, minmax(0, 1fr));
-			grid-template-rows: repeat(2, 1fr);
-			gap: 64px;
-			align-content: center;
-			justify-content: center;
-			height: calc(100vh - 48px);
-			padding: 64px;
-		}
-	}
-}
-
-.col {
-	@include flex($direction: column);
-
-	@include from-desktop {
-		width: 100%;
-		height: 100%;
-	}
-
-	&--image {
-		justify-content: space-between;
-		grid-area: 1 / 1 / 3 / 2;
+	&--motivational-quote {
+		@include flex;
+		height: calc(100vh - $menuHeightDesktop);
+		background-color: $color-primary;
 	}
 }

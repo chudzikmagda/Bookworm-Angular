@@ -1,0 +1,13 @@
+<section
+	*ngIf="quote$ | async as quote"
+	class="section section--motivational-quote"
+	[id]="sectionName.MotivationalQuote">
+	<div class="quote">
+		<blockquote>
+			<h3 class="quote__paragraph">
+				{{ quote.content }}
+			</h3>
+		</blockquote>
+		<figcaption class="quote__author">— {{ quote.author }} —</figcaption>
+	</div>
+</section>

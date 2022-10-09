@@ -23,6 +23,7 @@ import { BooksComponent } from './components/sections/books/books.component';
 import { IntroComponent } from './components/sections/intro/intro.component';
 import { SummaryComponent } from './components/sections/summary/summary.component';
 import { GoToTopComponent } from './components/go-to-top/go-to-top.component';
+import { MotivateQuoteComponent } from './components/sections/motivational-quote/motivational-quote.component';
 
 @NgModule({
 	declarations: [
@@ -45,6 +46,7 @@ import { GoToTopComponent } from './components/go-to-top/go-to-top.component';
 		IntroComponent,
 		SummaryComponent,
 		GoToTopComponent,
+		MotivateQuoteComponent,
 	],
 	imports: [
 		AppRoutingModule,

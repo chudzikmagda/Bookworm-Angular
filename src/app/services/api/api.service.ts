@@ -7,7 +7,7 @@ import { BookData, QuoteModel } from 'src/app/models/models';
 	providedIn: 'root',
 })
 export class ApiService {
-	private apiUrl = 'https://api.quotable.io/random?tags=famous-quotes';
+	private apiUrl = 'https://api.quotable.io/random?tags=';
 
 	constructor(private http: HttpClient) {}
 
@@ -15,7 +15,7 @@ export class ApiService {
 		return this.http.get<BookData[]>('../../assets/store/books-data.json');
 	}
 
-	getQuote() {
-		return this.http.get<QuoteModel>(this.apiUrl);
+	getQuote(tags: string) {
+		return this.http.get<QuoteModel>(`${this.apiUrl}${tags}`);
 	}
 }

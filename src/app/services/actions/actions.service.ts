@@ -78,12 +78,26 @@ export class ActionsService implements OnDestroy {
 			.pipe(map((books: BookData[]) => books.length));
 	}
 
-	getQuoteFormApi(): Subscription {
+	getSummaryQuoteFormApi(tags: string): Subscription {
 		return this.apiService
-			.getQuote()
+			.getQuote(tags)
 			.pipe(
 				take(1),
-				tap((quote: QuoteModel) => this.stateService.setQuote(quote))
+				tap((quote: QuoteModel) =>
+					this.stateService.setSummaryQuote(quote)
+				)
+			)
+			.subscribe();
+	}
+
+	getSectionQuoteFormApi(tags: string): Subscription {
+		return this.apiService
+			.getQuote(tags)
+			.pipe(
+				take(1),
+				tap((quote: QuoteModel) =>
+					this.stateService.setSectionQuote(quote)
+				)
 			)
 			.subscribe();
 	}
