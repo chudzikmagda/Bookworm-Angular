@@ -1,4 +1,4 @@
-import { EventEmitter, Injectable, OnDestroy } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Location, ViewportScroller } from '@angular/common';
 import { BookData, QuoteModel } from 'src/app/models/models';
 import { ApiService } from '../api/api.service';
@@ -17,9 +17,8 @@ import { Router } from '@angular/router';
 @Injectable({
 	providedIn: 'root',
 })
-export class ActionsService implements OnDestroy {
+export class ActionsService {
 	private books: BookData[];
-	private destroy$: Subject<boolean> = new Subject<boolean>();
 
 	constructor(
 		private apiService: ApiService,
@@ -38,10 +37,10 @@ export class ActionsService implements OnDestroy {
 		);
 	}
 
-	addNewBook(book: BookData): void {
+	addNewBook(book: BookData, destroy$: Subject<boolean>): void {
 		this.stateService
 			.getBooks()
-			.pipe(takeUntil(this.destroy$))
+			.pipe(takeUntil(destroy$))
 			.subscribe((books: BookData[]) => (this.books = books));
 		return this.stateService.setBooks([...this.books, book]);
 	}
@@ -80,7 +79,7 @@ export class ActionsService implements OnDestroy {
 
 	getSummaryQuoteFormApi(tags: string): Subscription {
 		return this.apiService
-			.getQuote(tags)
+			.getQuotes(tags)
 			.pipe(
 				take(1),
 				tap((quote: QuoteModel) =>
@@ -92,7 +91,7 @@ export class ActionsService implements OnDestroy {
 
 	getSectionQuoteFormApi(tags: string): Subscription {
 		return this.apiService
-			.getQuote(tags)
+			.getQuotes(tags)
 			.pipe(
 				take(1),
 				tap((quote: QuoteModel) =>
@@ -114,10 +113,5 @@ export class ActionsService implements OnDestroy {
 
 	scrollToTheId(id: string): void {
 		this.scroller.scrollToAnchor(id);
-	}
-
-	ngOnDestroy() {
-		this.destroy$.next(true);
-		this.destroy$.unsubscribe();
 	}
 }

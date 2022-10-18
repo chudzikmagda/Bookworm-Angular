@@ -15,7 +15,7 @@ export class ApiService {
 		return this.http.get<BookData[]>('../../assets/store/books-data.json');
 	}
 
-	getQuote(tags: string) {
+	getQuotes(tags: string) {
 		return this.http.get<QuoteModel>(`${this.apiUrl}${tags}`);
 	}
 }
