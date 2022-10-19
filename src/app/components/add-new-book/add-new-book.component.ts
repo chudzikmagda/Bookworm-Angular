@@ -7,14 +7,9 @@ import {
 	Output,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BookData } from 'src/app/models/models';
+import { BookData, Errors } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { Subject, Subscription, takeUntil } from 'rxjs';
-
-interface Errors {
-	required: string;
-	minLength: string;
-}
 
 @Component({
 	selector: 'c-add-new-book',
@@ -54,7 +49,6 @@ export class AddNewBookComponent implements OnInit, OnDestroy {
 				date_add: this.setCurrentDateAndTime(),
 			};
 			this.actionsService.addNewBook(this.newBook, this.destroy$);
-			this.resetForm();
 			this.actionsService.closeDialog(this.visible, this.visibleChange);
 		}
 	}

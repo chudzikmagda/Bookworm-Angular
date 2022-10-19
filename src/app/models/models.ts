@@ -34,3 +34,8 @@ export enum SectionNames {
 	BookList = 'BookList',
 	MotivationalQuote = 'MotivationalQuote',
 }
+
+export interface Errors {
+	required: string;
+	minLength: string;
+}
