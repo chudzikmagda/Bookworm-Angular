@@ -71,7 +71,7 @@ export class ActionsService {
 		return lastAddedBook;
 	}
 
-	getLastBookId(): any {
+	getLastBookId(): Observable<number> {
 		return this.stateService
 			.getBooks()
 			.pipe(map((books: BookData[]) => books.length));
