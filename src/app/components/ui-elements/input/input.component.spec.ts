@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { InputComponent } from './input.component';
 
-fdescribe('InputComponent', () => {
+describe('InputComponent', () => {
 	let component: InputComponent;
 	let fixture: ComponentFixture<InputComponent>;
 
