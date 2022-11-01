@@ -50,6 +50,7 @@ export class DialogComponent {
 	}
 
 	closeDialog() {
+		this.visible = false;
 		this.actionService.closeDialog(this.visible, this.visibleChange);
 	}
 }

@@ -106,7 +106,6 @@ export class ActionsService {
 	}
 
 	closeDialog(visible: boolean, visibleChange: EventEmitter<boolean>) {
-		visible = false;
 		visibleChange.emit(visible);
 		this.location.back();
 	}
