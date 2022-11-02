@@ -1,25 +1,51 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { By } from '@angular/platform-browser';
+import { ActionsService } from 'src/app/services/actions/actions.service';
 import { IntroComponent } from './intro.component';
 
 describe('IntroComponent', () => {
-  let component: IntroComponent;
-  let fixture: ComponentFixture<IntroComponent>;
+	let component: IntroComponent;
+	let fixture: ComponentFixture<IntroComponent>;
+	let fakeActionsService: ActionsService;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ IntroComponent ]
-    })
-    .compileComponents();
-  });
+	beforeEach(() => {
+		fakeActionsService = jasmine.createSpyObj('ActionsService', [
+			'scrollToTheId',
+		]);
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(IntroComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+		TestBed.configureTestingModule({
+			declarations: [IntroComponent],
+			providers: [
+				{
+					provide: ActionsService,
+					useValue: fakeActionsService,
+				},
+			],
+		}).compileComponents();
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+		fixture = TestBed.createComponent(IntroComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
+
+	it('should create IntroComponent', () => {
+		expect(component).toBeTruthy();
+	});
+
+	it('should set section name', () => {
+		const section: HTMLElement = fixture.debugElement.query(
+			By.css('.section--intro')
+		).nativeElement;
+
+		expect(section.id).toEqual(component.sectionName.Intro);
+	});
+
+	it('should scroll to the summary section', () => {
+		component.goToSummary();
+
+		fixture.detectChanges();
+
+		expect(window.dispatchEvent(new Event('scroll'))).toBeTrue;
+		expect(fakeActionsService.scrollToTheId).toHaveBeenCalledTimes(1);
+	});
 });
