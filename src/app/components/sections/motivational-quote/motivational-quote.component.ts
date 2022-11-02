@@ -23,9 +23,8 @@ export class MotivateQuoteComponent implements OnInit {
 		this.loadQuote();
 	}
 
-	loadQuote(): void {
+	private loadQuote(): void {
 		this.actionService.getSectionQuoteFormApi('happiness');
 		this.quote$ = this.stateService.getSectionQuote();
-		this.quote$.subscribe(item => console.log(item));
 	}
 }
