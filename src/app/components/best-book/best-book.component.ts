@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { tap } from 'rxjs';
 import { BookData } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
@@ -21,17 +21,26 @@ export class BestBookComponent implements OnInit, OnDestroy {
 	) {}
 
 	ngOnInit(): void {
-		this.apiService
-			.getBookData()
-			.pipe(
-				takeUntil(this.unsubscribe$),
-				tap((books: BookData[]) => (this.books = books))
-			)
-			.subscribe(() => {
-				if (this.books.length > 0) {
-					this.bestBook = this.actionsService.bestBook(this.books);
-				}
-			});
+		this.loadBestBook();
+	}
+
+	private loadBestBook(): void {
+		this.getBookList().subscribe(() => {
+			if (this.books.length > 0) {
+				this.setBestBook(this.books);
+			}
+		});
+	}
+
+	private getBookList(): Observable<BookData[]> {
+		return this.apiService.getBookData().pipe(
+			takeUntil(this.unsubscribe$),
+			tap((books: BookData[]) => (this.books = books))
+		);
+	}
+
+	private setBestBook(books: BookData[]): BookData {
+		return (this.bestBook = this.actionsService.bestBook(books));
 	}
 
 	ngOnDestroy(): void {
