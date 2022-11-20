@@ -101,4 +101,8 @@ button {
 			color: $color-secondary;
 		}
 	}
+
+	&--disabled {
+		opacity: 0.4;
+	}
 }

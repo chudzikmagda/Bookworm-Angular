@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ButtonComponent {
 	@Input() click: void;
+	@Input() disabled: boolean;
 	@Input() variant:
 		| 'primary'
 		| 'secondary'
@@ -22,6 +23,7 @@ export class ButtonComponent {
 			'btn--primary-outline': this.variant === 'primary-outline',
 			'btn--secondary-outline': this.variant === 'secondary-outline',
 			'btn--icon': this.variant === 'icon',
+			'btn--disabled': this.disabled,
 		};
 	}
 }
