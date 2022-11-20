@@ -1,4 +1,4 @@
-<div *ngIf="books$ | async as books" class="table">
+<div *ngIf="booksToDisplay" class="table">
 	<div class="table__row table__row--heading">
 		<div class="table__col-50">
 			<c-table-cell [variant]="'cover'" [valignCenter]="true"
@@ -16,7 +16,11 @@
 		<c-table-cell [valignCenter]="true">Rating</c-table-cell>
 		<c-table-cell [valignCenter]="true"></c-table-cell>
 	</div>
-	<div *ngFor="let book of books" [id]="book.id" class="table__row" #tabelRow>
+	<div
+		*ngFor="let book of booksToDisplay"
+		[id]="book.id"
+		class="table__row"
+		#tabelRow>
 		<div class="table__col-50">
 			<c-table-cell [variant]="'cover'">
 				<img
@@ -49,3 +53,9 @@
 		</c-table-cell>
 	</div>
 </div>
+<c-pagination
+	[currentPage]="currentPage"
+	[totalPages]="totalPages"
+	(goToPage)="onPageChange($event)"
+	(nextPage)="onPageChange($event, 1)"
+	(prevPage)="onPageChange($event, -1)"></c-pagination>

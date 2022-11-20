@@ -1,0 +1,31 @@
+<nav class="pagination">
+	<ul class="pagination__items">
+		<li>
+			<c-button
+				[attr.aria-disabled]="currentPage === 1"
+				[disabled]="currentPage === 1"
+				(click)="onPrevPageChange()"
+				variant="icon">
+				<i class="fa-regular fa-circle-left"></i>
+			</c-button>
+		</li>
+		<li *ngFor="let page of pages" class="pagination__item">
+			<a
+				[class.pagination__currentPage]="page === currentPage"
+				tabindex="0"
+				(click)="onGoToChange(page)"
+				(keyup.enter)="onGoToChange(page)">
+				{{ page }}</a
+			>
+		</li>
+		<li>
+			<c-button
+				[attr.aria-disabled]="currentPage === totalPages"
+				[disabled]="currentPage === totalPages"
+				(click)="onNextPageChange()"
+				variant="icon">
+				<i class="fa-regular fa-circle-right"></i>
+			</c-button>
+		</li>
+	</ul>
+</nav>

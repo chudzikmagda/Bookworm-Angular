@@ -24,6 +24,7 @@ import { IntroComponent } from './components/sections/intro/intro.component';
 import { SummaryComponent } from './components/sections/summary/summary.component';
 import { GoToTopComponent } from './components/go-to-top/go-to-top.component';
 import { MotivateQuoteComponent } from './components/sections/motivational-quote/motivational-quote.component';
+import { PaginationComponent } from './components/ui-elements/pagination/pagination.component';
 
 @NgModule({
 	declarations: [
@@ -47,6 +48,7 @@ import { MotivateQuoteComponent } from './components/sections/motivational-quote
 		SummaryComponent,
 		GoToTopComponent,
 		MotivateQuoteComponent,
+  PaginationComponent,
 	],
 	imports: [
 		AppRoutingModule,
