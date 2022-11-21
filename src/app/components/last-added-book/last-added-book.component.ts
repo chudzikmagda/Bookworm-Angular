@@ -3,7 +3,6 @@ import { Subject, takeUntil } from 'rxjs';
 import { tap } from 'rxjs';
 import { BookData } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
-import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
 	selector: 'c-last-added-book',
@@ -15,25 +14,26 @@ export class LastAddedBookComponent implements OnInit, OnDestroy {
 	private books: BookData[];
 	private unsubscribe$: Subject<boolean> = new Subject<boolean>();
 
-	constructor(
-		private apiService: ApiService,
-		private actionsService: ActionsService
-	) {}
+	constructor(private actionsService: ActionsService) {}
 
 	ngOnInit(): void {
-		this.apiService
-			.getBookData()
+		this.loadLastAddedBook();
+	}
+
+	private loadLastAddedBook() {
+		this.actionsService
+			.getBookList(this.unsubscribe$)
 			.pipe(
 				takeUntil(this.unsubscribe$),
-				tap((books: BookData[]) => (this.books = books))
+				tap((books: BookData[]) => (this.books = books)),
+				tap(() => this.setLastAddedBook(this.books))
 			)
-			.subscribe(() => {
-				if (this.books.length > 0) {
-					this.lastAddedBook = this.actionsService.lastAddedBook(
-						this.books
-					);
-				}
-			});
+			.subscribe();
+	}
+
+	private setLastAddedBook(books: BookData[]) {
+		if (books.length > 0)
+			this.lastAddedBook = this.actionsService.lastAddedBook(books);
 	}
 
 	ngOnDestroy(): void {
