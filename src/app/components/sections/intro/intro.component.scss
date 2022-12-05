@@ -46,6 +46,11 @@
 			text-align: left;
 		}
 	}
+
+	&__btns {
+		@include flex;
+		gap: 32px;
+	}
 }
 
 .hero-img {

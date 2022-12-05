@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActionsService } from 'src/app/services/actions/actions.service';
-import { SectionNames } from 'src/app/models/models';
+import { ADD_NEW_BOOK_PATH, SectionNames } from 'src/app/models/models';
 
 @Component({
 	selector: 'c-intro',
@@ -9,10 +9,15 @@ import { SectionNames } from 'src/app/models/models';
 })
 export class IntroComponent {
 	sectionName: typeof SectionNames = SectionNames;
+	private addNewBookPath = ADD_NEW_BOOK_PATH;
 
 	constructor(private actionService: ActionsService) {}
 
 	goToSummary(): void {
 		this.actionService.scrollToTheId(SectionNames.Summary);
+	}
+
+	openDialog() {
+		this.actionService.openDialog(this.addNewBookPath);
 	}
 }
