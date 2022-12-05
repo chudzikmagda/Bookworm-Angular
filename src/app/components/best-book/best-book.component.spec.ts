@@ -7,7 +7,7 @@ import { ActionsService } from 'src/app/services/actions/actions.service';
 import { ApiService } from 'src/app/services/api/api.service';
 import { BestBookComponent } from './best-book.component';
 
-fdescribe('BestBookComponent', () => {
+describe('BestBookComponent', () => {
 	let component: BestBookComponent;
 	let fixture: ComponentFixture<BestBookComponent>;
 	let fakeApiService: jasmine.SpyObj<ApiService>;
