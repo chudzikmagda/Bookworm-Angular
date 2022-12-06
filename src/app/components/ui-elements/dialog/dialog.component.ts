@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
-import { ActionsService } from 'src/app/services/actions/actions.service';
+import { DialogService } from './service/dialog.service';
 
 @Component({
 	selector: 'c-dialog',
@@ -39,7 +39,7 @@ export class DialogComponent {
 	@Output() visibleChange: EventEmitter<boolean> =
 		new EventEmitter<boolean>();
 
-	constructor(private actionService: ActionsService) {}
+	constructor(private dialogService: DialogService) {}
 
 	setClasses() {
 		return {
@@ -51,6 +51,6 @@ export class DialogComponent {
 
 	closeDialog() {
 		this.visible = false;
-		this.actionService.closeDialog(this.visible, this.visibleChange);
+		this.dialogService.closeDialog(this.visible, this.visibleChange);
 	}
 }

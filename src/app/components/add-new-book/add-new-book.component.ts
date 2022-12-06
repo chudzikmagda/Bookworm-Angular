@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BookData, Errors } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { Subject, Subscription, takeUntil } from 'rxjs';
+import { DialogService } from '../ui-elements/dialog/service/dialog.service';
 
 @Component({
 	selector: 'c-add-new-book',
@@ -32,7 +33,8 @@ export class AddNewBookComponent implements OnInit, OnDestroy {
 
 	constructor(
 		private fb: FormBuilder,
-		private actionsService: ActionsService
+		private actionsService: ActionsService,
+		private dialogService: DialogService
 	) {}
 
 	ngOnInit(): void {
@@ -49,7 +51,7 @@ export class AddNewBookComponent implements OnInit, OnDestroy {
 				date_add: this.setCurrentDateAndTime(),
 			};
 			this.actionsService.addNewBook(this.newBook, this.destroy$);
-			this.actionsService.closeDialog(this.visible, this.visibleChange);
+			this.dialogService.closeDialog(this.visible, this.visibleChange);
 		}
 	}
 

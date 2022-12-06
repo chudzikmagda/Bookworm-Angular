@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ADD_NEW_BOOK_PATH } from 'src/app/models/models';
-import { ActionsService } from 'src/app/services/actions/actions.service';
+import { DialogService } from '../ui-elements/dialog/service/dialog.service';
 
 @Component({
 	selector: 'c-header',
@@ -10,9 +10,9 @@ import { ActionsService } from 'src/app/services/actions/actions.service';
 export class HeaderComponent {
 	private addNewBookPath = ADD_NEW_BOOK_PATH;
 
-	constructor(private actionsService: ActionsService) {}
+	constructor(private dialogService: DialogService) {}
 
 	openDialog() {
-		this.actionsService.openDialog(this.addNewBookPath);
+		this.dialogService.openDialog(this.addNewBookPath);
 	}
 }

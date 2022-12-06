@@ -1,5 +1,5 @@
-import { EventEmitter, Injectable } from '@angular/core';
-import { Location, ViewportScroller } from '@angular/common';
+import { Injectable } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
 import { BookData, QuoteModel } from 'src/app/models/models';
 import { ApiService } from '../api/api.service';
 import { StateService } from '../state/state.service';
@@ -12,7 +12,6 @@ import {
 	Subject,
 	map,
 } from 'rxjs';
-import { Router } from '@angular/router';
 
 @Injectable({
 	providedIn: 'root',
@@ -22,8 +21,6 @@ export class ActionsService {
 
 	constructor(
 		private apiService: ApiService,
-		private location: Location,
-		private route: Router,
 		private stateService: StateService,
 		private scroller: ViewportScroller
 	) {}
@@ -99,15 +96,6 @@ export class ActionsService {
 				)
 			)
 			.subscribe();
-	}
-
-	openDialog(path: string): void {
-		this.route.navigate([path]);
-	}
-
-	closeDialog(visible: boolean, visibleChange: EventEmitter<boolean>) {
-		visibleChange.emit(visible);
-		this.location.back();
 	}
 
 	scrollToTheId(id: string): void {
