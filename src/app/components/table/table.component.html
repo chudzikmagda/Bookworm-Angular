@@ -1,4 +1,7 @@
 <div *ngIf="booksToDisplay" class="table">
+	<c-search-bar
+		[books]="books"
+		(filteredBook)="onSearchBook($event)"></c-search-bar>
 	<div class="table__row table__row--heading">
 		<div class="table__col-50">
 			<c-table-cell [variant]="'cover'" [valignCenter]="true"

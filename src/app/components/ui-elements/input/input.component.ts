@@ -7,10 +7,12 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
 	styleUrls: ['./input.component.scss'],
 })
 export class InputComponent implements ControlValueAccessor {
+	@Input() class: string;
+	@Input() disabled: boolean;
 	@Input() label = '';
 	@Input() placeholder = '';
 	@Input() required: true | false = false;
-	@Input() disabled: boolean;
+	@Input() type: string;
 	value = '';
 
 	constructor(

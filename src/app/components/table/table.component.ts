@@ -18,10 +18,11 @@ import { StateService } from 'src/app/services/state/state.service';
 })
 export class TableComponent implements OnInit, OnDestroy {
 	currentPage: number = 1;
-	public books: BookData[] = [];
-	public booksToDisplay: BookData[] = [];
-	public booksPerPage: number = 5;
-	public totalPages: number;
+	books: BookData[] = [];
+	booksToDisplay: BookData[] = [];
+	booksPerPage: number = 5;
+	totalPages: number;
+
 	private destroy$: Subject<boolean> = new Subject<boolean>();
 
 	constructor(
@@ -36,17 +37,25 @@ export class TableComponent implements OnInit, OnDestroy {
 
 	deleteBook(tableRow: HTMLElement) {
 		this.actionsService.deleteBook(+tableRow.id, this.books);
-		this.setBooksToDisplay();
+		this.setBooksToDisplay(this.books);
 	}
 
 	onPageChange(page: number, change: number = 0) {
 		this.currentPage = page + change;
-		this.setBooksToDisplay();
+		this.setBooksToDisplay(this.books);
 	}
 
-	private paginate(currentPage: number, booksPerPage: number): BookData[] {
+	onSearchBook(books: BookData[]) {
+		this.booksToDisplay = books;
+	}
+
+	private paginate(
+		books: BookData[],
+		booksPerPage: number,
+		currentPage: number
+	): BookData[] {
 		return [
-			...this.books
+			...books
 				.slice((currentPage - 1) * booksPerPage)
 				.slice(0, booksPerPage),
 		];
@@ -56,20 +65,21 @@ export class TableComponent implements OnInit, OnDestroy {
 		this.stateService
 			.getBooks()
 			.pipe(
-				tap(books => {
+				tap((books: BookData[]) => {
 					this.books = books;
 					this.totalPages = this.setTotalPages();
 				}),
-				tap(() => this.setBooksToDisplay()),
+				tap((books: BookData[]) => this.setBooksToDisplay(books)),
 				takeUntil(this.destroy$)
 			)
 			.subscribe();
 	}
 
-	private setBooksToDisplay(): void {
+	private setBooksToDisplay(books: BookData[]): void {
 		this.booksToDisplay = this.paginate(
-			this.currentPage,
-			this.booksPerPage
+			books,
+			this.booksPerPage,
+			this.currentPage
 		);
 		this.cdRef.markForCheck();
 	}

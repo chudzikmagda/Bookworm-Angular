@@ -1,7 +1,7 @@
 <div class="input-wrapper">
 	<label class="input-label">{{ label }}</label>
 	<input
-		type="text"
+		[type]="type || 'type'"
 		[value]="value"
 		[placeholder]="placeholder"
 		[disabled]="disabled"
@@ -9,5 +9,6 @@
 		(input)="onChange(input.value)"
 		(blur)="onTouched()"
 		class="input"
+		[class]="class"
 		#input />
 </div>

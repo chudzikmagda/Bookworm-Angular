@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
 export class ButtonComponent {
 	@Input() click: void;
 	@Input() disabled: boolean;
+	@Input() class: string;
 	@Input() variant:
 		| 'primary'
 		| 'secondary'

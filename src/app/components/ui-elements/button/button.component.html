@@ -1,3 +1,7 @@
-<button (click)="(click)" [ngClass]="setClasses()">
+<button
+	type="button"
+	(click)="(click)"
+	[class]="class"
+	[ngClass]="setClasses()">
 	<ng-content></ng-content>
 </button>

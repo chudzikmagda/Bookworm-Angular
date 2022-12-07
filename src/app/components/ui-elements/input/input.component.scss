@@ -35,4 +35,20 @@ $inputWidthFromDesktop: 100%;
 		opacity: 0.7;
 		font-size: 14px;
 	}
+
+	&[type='search'] {
+		padding-right: 0;
+
+		&::-webkit-search-cancel-button {
+			-webkit-appearance: none;
+			height: 1.2rem;
+			width: 1.2rem;
+			background: url(../../../../assets/images/icons/xmark-solid.svg)
+				no-repeat;
+			opacity: 0;
+		}
+		&:focus::-webkit-search-cancel-button {
+			opacity: 1;
+		}
+	}
 }

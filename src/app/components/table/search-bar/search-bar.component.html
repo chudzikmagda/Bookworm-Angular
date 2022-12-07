@@ -1,0 +1,16 @@
+<div class="search-bar">
+	<form [formGroup]="searchForm" class="search-bar__form">
+		<c-input
+			type="search"
+			placeholder="Search for any book or author ..."
+			class="search-bar__input"
+			formControlName="input"></c-input>
+		<c-button
+			variant="icon"
+			class="search-bar__btn"
+			[disabled]="!searchForm.valid"
+			(click)="onSearchBtnClick()"
+			><i class="fa-solid fa-magnifying-glass"></i
+		></c-button>
+	</form>
+</div>
