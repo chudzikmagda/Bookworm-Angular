@@ -10,6 +10,10 @@ body {
 	font-family: $font-family-basic;
 	font-weight: 400;
 	line-height: 1.75;
+
+	&.dialog-open {
+		overflow-y: hidden;
+	}
 }
 
 a {

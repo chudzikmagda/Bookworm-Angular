@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+	Component,
+	EventEmitter,
+	Input,
+	OnDestroy,
+	OnInit,
+	Output,
+	Renderer2,
+} from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { DialogService } from './service/dialog.service';
 
@@ -33,13 +41,20 @@ import { DialogService } from './service/dialog.service';
 		]),
 	],
 })
-export class DialogComponent {
+export class DialogComponent implements OnInit, OnDestroy {
 	@Input() variant: 'center' | 'bottom' = 'bottom';
 	@Input() visible = true;
 	@Output() visibleChange: EventEmitter<boolean> =
 		new EventEmitter<boolean>();
 
-	constructor(private dialogService: DialogService) {}
+	constructor(
+		private dialogService: DialogService,
+		private renderer: Renderer2
+	) {}
+
+	ngOnInit(): void {
+		this.renderer.addClass(document.body, 'dialog-open');
+	}
 
 	setClasses() {
 		return {
@@ -52,5 +67,9 @@ export class DialogComponent {
 	closeDialog() {
 		this.visible = false;
 		this.dialogService.closeDialog(this.visible, this.visibleChange);
+	}
+
+	ngOnDestroy(): void {
+		this.renderer.removeClass(document.body, 'dialog-open');
 	}
 }
