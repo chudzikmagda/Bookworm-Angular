@@ -6,7 +6,7 @@ import {
 	OnInit,
 	Output,
 } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { BookData, Errors } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { Subject, Subscription, takeUntil } from 'rxjs';
@@ -22,7 +22,7 @@ export class AddNewBookComponent implements OnInit, OnDestroy {
 	@Output() visibleChange: EventEmitter<boolean> =
 		new EventEmitter<boolean>();
 
-	addBookForm: FormGroup;
+	addBookForm: UntypedFormGroup;
 	errors: Errors = {
 		required: 'This field is required.',
 		minLength: 'Value is too short. A minimum length is 2.',
@@ -32,7 +32,7 @@ export class AddNewBookComponent implements OnInit, OnDestroy {
 	private newBookId: number;
 
 	constructor(
-		private fb: FormBuilder,
+		private fb: UntypedFormBuilder,
 		private actionsService: ActionsService,
 		private dialogService: DialogService
 	) {}
@@ -75,7 +75,7 @@ export class AddNewBookComponent implements OnInit, OnDestroy {
 		this.addBookForm.reset();
 	}
 
-	private loadForm(): FormGroup {
+	private loadForm(): UntypedFormGroup {
 		return (this.addBookForm = this.fb.group({
 			author: ['', [Validators.required, Validators.minLength(2)]],
 			cover: [''],

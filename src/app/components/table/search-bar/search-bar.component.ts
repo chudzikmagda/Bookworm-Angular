@@ -1,5 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+	UntypedFormBuilder,
+	UntypedFormGroup,
+	Validators,
+} from '@angular/forms';
 import { BookData } from 'src/app/models/models';
 
 @Component({
@@ -11,9 +15,9 @@ export class SearchBarComponent implements OnInit {
 	@Input() books: BookData[] = [];
 	@Output() filteredBook: EventEmitter<BookData[]> = new EventEmitter();
 
-	searchForm: FormGroup;
+	searchForm: UntypedFormGroup;
 
-	constructor(private fb: FormBuilder) {}
+	constructor(private fb: UntypedFormBuilder) {}
 
 	ngOnInit(): void {
 		this.searchForm = this.createForm();
@@ -37,7 +41,7 @@ export class SearchBarComponent implements OnInit {
 		});
 	}
 
-	private createForm(): FormGroup {
+	private createForm(): UntypedFormGroup {
 		return this.fb.group({
 			input: ['', Validators.required],
 		});

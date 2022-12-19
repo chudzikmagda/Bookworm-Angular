@@ -1,6 +1,6 @@
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { of } from 'rxjs';
@@ -193,25 +193,25 @@ describe('AddNewBookComponent', () => {
 	});
 });
 
-const emptyAddBookForm = (): FormGroup => {
-	return new FormGroup({
-		author: new FormControl(''),
-		cover: new FormControl(''),
-		description: new FormControl(''),
-		language: new FormControl(''),
-		rating: new FormControl(''),
-		title: new FormControl(''),
+const emptyAddBookForm = (): UntypedFormGroup => {
+	return new UntypedFormGroup({
+		author: new UntypedFormControl(''),
+		cover: new UntypedFormControl(''),
+		description: new UntypedFormControl(''),
+		language: new UntypedFormControl(''),
+		rating: new UntypedFormControl(''),
+		title: new UntypedFormControl(''),
 	});
 };
 
-const filledAddBookForm = (): FormGroup => {
-	return new FormGroup({
-		author: new FormControl('John Smith'),
-		cover: new FormControl(''),
-		description: new FormControl('Lorem ipsum'),
-		language: new FormControl('English'),
-		rating: new FormControl('9.9'),
-		title: new FormControl('Fake title'),
+const filledAddBookForm = (): UntypedFormGroup => {
+	return new UntypedFormGroup({
+		author: new UntypedFormControl('John Smith'),
+		cover: new UntypedFormControl(''),
+		description: new UntypedFormControl('Lorem ipsum'),
+		language: new UntypedFormControl('English'),
+		rating: new UntypedFormControl('9.9'),
+		title: new UntypedFormControl('Fake title'),
 	});
 };
 
