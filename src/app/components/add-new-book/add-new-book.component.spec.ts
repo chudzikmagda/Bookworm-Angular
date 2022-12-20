@@ -1,6 +1,6 @@
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { UntypedFormControl, UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { of } from 'rxjs';
@@ -11,6 +11,7 @@ import { DialogComponent } from '../ui-elements/dialog/dialog.component';
 import { InputComponent } from '../ui-elements/input/input.component';
 import { TextareaComponent } from '../ui-elements/textarea/textarea.component';
 import { AddNewBookComponent } from './add-new-book.component';
+import { AddNewForm } from './models/models';
 
 describe('AddNewBookComponent', () => {
 	let component: AddNewBookComponent;
@@ -73,7 +74,7 @@ describe('AddNewBookComponent', () => {
 	it('should return rating from form', () => {
 		component.addBookForm = filledAddBookForm();
 
-		expect(component.rating?.value).toEqual('9.9');
+		expect(component.rating?.value).toEqual(9.9);
 	});
 
 	it('should return author from form', () => {
@@ -83,16 +84,25 @@ describe('AddNewBookComponent', () => {
 	});
 
 	it('should reset form values', () => {
-		component.addBookForm = filledAddBookForm();
+		component.addBookForm.patchValue({
+			author: 'author',
+			cover: 'cover',
+			description: 'description',
+			language: 'lang',
+			rating: 10,
+			title: 'title',
+		});
+		fixture.detectChanges();
 
 		component.resetForm();
+		fixture.detectChanges();
 
-		expect(component.addBookForm.get('author')?.value).toBeNull();
-		expect(component.addBookForm.get('cover')?.value).toBeNull();
-		expect(component.addBookForm.get('description')?.value).toBeNull();
-		expect(component.addBookForm.get('language')?.value).toBeNull();
-		expect(component.addBookForm.get('rating')?.value).toBeNull();
-		expect(component.addBookForm.get('title')?.value).toBeNull();
+		expect(component.addBookForm.get('author')?.value).toBe('');
+		expect(component.addBookForm.get('cover')?.value).toBe('');
+		expect(component.addBookForm.get('description')?.value).toBe('');
+		expect(component.addBookForm.get('language')?.value).toBe('');
+		expect(component.addBookForm.get('rating')?.value).toBe(0);
+		expect(component.addBookForm.get('title')?.value).toBe('');
 	});
 
 	it('should add new book when form is valid', () => {
@@ -101,7 +111,7 @@ describe('AddNewBookComponent', () => {
 			cover: '',
 			description: 'Lorem ipsum',
 			language: 'English',
-			rating: '9.9',
+			rating: 9.9,
 			title: 'Fake title',
 		};
 		component.addBookForm = filledAddBookForm();
@@ -119,7 +129,7 @@ describe('AddNewBookComponent', () => {
 			cover: '',
 			description: '',
 			language: '',
-			rating: '',
+			rating: 0,
 			title: '',
 		};
 		component.ngOnInit();
@@ -149,12 +159,11 @@ describe('AddNewBookComponent', () => {
 		expect(component.addBookForm.get('language')?.value).toEqual('');
 		expect(component.addBookForm.get('language')?.valid).toBeFalse();
 		expect(component.addBookForm.get('rating')?.touched).toBeTrue();
-		expect(component.addBookForm.get('rating')?.value).toEqual('');
-		expect(component.addBookForm.get('rating')?.valid).toBeFalse();
+		expect(component.addBookForm.get('rating')?.value).toEqual(0);
 		expect(component.addBookForm.get('title')?.touched).toBeTrue();
 		expect(component.addBookForm.get('title')?.value).toEqual('');
 		expect(component.addBookForm.get('title')?.valid).toBeFalse();
-		expect(errorMsg.length).toBe(4);
+		expect(errorMsg.length).toBe(3);
 
 		errorMsg.forEach(item => {
 			expect(item.nativeElement.innerHTML).toContain(
@@ -193,25 +202,29 @@ describe('AddNewBookComponent', () => {
 	});
 });
 
-const emptyAddBookForm = (): UntypedFormGroup => {
-	return new UntypedFormGroup({
-		author: new UntypedFormControl(''),
-		cover: new UntypedFormControl(''),
-		description: new UntypedFormControl(''),
-		language: new UntypedFormControl(''),
-		rating: new UntypedFormControl(''),
-		title: new UntypedFormControl(''),
+const emptyAddBookForm = (): FormGroup<AddNewForm> => {
+	return new FormGroup({
+		author: new FormControl<string>('', { nonNullable: true }),
+		cover: new FormControl<string>('', { nonNullable: true }),
+		description: new FormControl<string>('', {
+			nonNullable: true,
+		}),
+		language: new FormControl<string>('', { nonNullable: true }),
+		rating: new FormControl<number>(0, { nonNullable: true }),
+		title: new FormControl<string>('', { nonNullable: true }),
 	});
 };
 
-const filledAddBookForm = (): UntypedFormGroup => {
-	return new UntypedFormGroup({
-		author: new UntypedFormControl('John Smith'),
-		cover: new UntypedFormControl(''),
-		description: new UntypedFormControl('Lorem ipsum'),
-		language: new UntypedFormControl('English'),
-		rating: new UntypedFormControl('9.9'),
-		title: new UntypedFormControl('Fake title'),
+const filledAddBookForm = (): FormGroup<AddNewForm> => {
+	return new FormGroup({
+		author: new FormControl<string>('John Smith', { nonNullable: true }),
+		cover: new FormControl<string>('', { nonNullable: true }),
+		description: new FormControl<string>('Lorem ipsum', {
+			nonNullable: true,
+		}),
+		language: new FormControl<string>('English', { nonNullable: true }),
+		rating: new FormControl<number>(9.9, { nonNullable: true }),
+		title: new FormControl<string>('Fake title', { nonNullable: true }),
 	});
 };
 

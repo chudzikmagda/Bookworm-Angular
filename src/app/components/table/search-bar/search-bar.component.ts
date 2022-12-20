@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
-	UntypedFormBuilder,
-	UntypedFormGroup,
+	FormControl,
+	FormGroup,
+	NonNullableFormBuilder,
 	Validators,
 } from '@angular/forms';
 import { BookData } from 'src/app/models/models';
@@ -15,9 +16,9 @@ export class SearchBarComponent implements OnInit {
 	@Input() books: BookData[] = [];
 	@Output() filteredBook: EventEmitter<BookData[]> = new EventEmitter();
 
-	searchForm: UntypedFormGroup;
+	searchForm: FormGroup<{ input: FormControl<string> }>;
 
-	constructor(private fb: UntypedFormBuilder) {}
+	constructor(private fb: NonNullableFormBuilder) {}
 
 	ngOnInit(): void {
 		this.searchForm = this.createForm();
@@ -32,7 +33,7 @@ export class SearchBarComponent implements OnInit {
 	}
 
 	private phraseSearch(): BookData[] {
-		const searchValue = this.searchForm.get('input')?.value;
+		const searchValue = this.searchForm.get('input')?.getRawValue();
 		return this.books.filter((book: BookData) => {
 			return (
 				book.author.toLowerCase().includes(searchValue.toLowerCase()) ||
@@ -41,7 +42,7 @@ export class SearchBarComponent implements OnInit {
 		});
 	}
 
-	private createForm(): UntypedFormGroup {
+	private createForm(): FormGroup<{ input: FormControl<string> }> {
 		return this.fb.group({
 			input: ['', Validators.required],
 		});
