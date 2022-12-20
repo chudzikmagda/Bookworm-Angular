@@ -3,13 +3,7 @@ import { Subject, takeUntil, tap } from 'rxjs';
 import { BookData } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { StateService } from 'src/app/services/state/state.service';
-
-interface BookStats {
-	booksLength: number;
-	bestBook: BookData;
-	lastAddedBook: BookData;
-	avgRating: number;
-}
+import { BookStats } from './models/models';
 
 @Component({
 	selector: 'c-stats',
@@ -31,9 +25,9 @@ export class StatsComponent implements OnInit, OnDestroy {
 			.getBooks()
 			.pipe(
 				takeUntil(this.unsubscribe$),
-				tap((books: BookData[]) => (this.books = books))
+				tap((books: BookData[]) => this.setStats(books))
 			)
-			.subscribe(() => this.setStats(this.books));
+			.subscribe();
 	}
 
 	private avgRating(books: BookData[]): number {
@@ -41,14 +35,17 @@ export class StatsComponent implements OnInit, OnDestroy {
 		return ratings.reduce((prev, curr) => prev + curr) / books.length;
 	}
 
-	private setStats(books: BookData[]): any {
+	private setStats(books: BookData[]): void {
 		if (books.length > 0) {
-			return (this.stats = {
+			this.stats = {
 				booksLength: books.length,
-				bestBook: this.actionsService.bestBook(books),
-				lastAddedBook: this.actionsService.lastAddedBook(books),
-				avgRating: this.avgRating(books),
-			});
+				bestBook:
+					this.actionsService.bestBook(books) ?? 'Add new book...',
+				lastAddedBook:
+					this.actionsService.lastAddedBook(books) ??
+					'Add new book...',
+				avgRating: this.avgRating(books) ?? 0,
+			};
 		}
 	}
 
