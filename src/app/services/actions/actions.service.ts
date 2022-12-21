@@ -25,9 +25,8 @@ export class ActionsService {
 		private scroller: ViewportScroller
 	) {}
 
-	getBookList(destroy$: Subject<boolean>): Observable<BookData[]> {
+	getBookList(): Observable<BookData[]> {
 		return this.apiService.getBookData().pipe(
-			takeUntil(destroy$),
 			tap((books: BookData[]) => {
 				this.stateService.setBooks(books);
 			})

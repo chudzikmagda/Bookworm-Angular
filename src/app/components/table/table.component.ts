@@ -8,7 +8,6 @@ import {
 import { Subject, takeUntil, tap } from 'rxjs';
 import { BookData } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
-import { StateService } from 'src/app/services/state/state.service';
 
 @Component({
 	selector: 'c-table',
@@ -27,7 +26,6 @@ export class TableComponent implements OnInit, OnDestroy {
 
 	constructor(
 		private actionsService: ActionsService,
-		private stateService: StateService,
 		private cdRef: ChangeDetectorRef
 	) {}
 
@@ -62,8 +60,8 @@ export class TableComponent implements OnInit, OnDestroy {
 	}
 
 	private loadBookList() {
-		this.stateService
-			.getBooks()
+		this.actionsService
+			.getBookList()
 			.pipe(
 				tap((books: BookData[]) => {
 					this.books = books;

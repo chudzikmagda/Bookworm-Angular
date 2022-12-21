@@ -22,7 +22,7 @@ export class LastAddedBookComponent implements OnInit, OnDestroy {
 
 	private loadLastAddedBook() {
 		this.actionsService
-			.getBookList(this.unsubscribe$)
+			.getBookList()
 			.pipe(
 				takeUntil(this.unsubscribe$),
 				tap((books: BookData[]) => (this.books = books)),
