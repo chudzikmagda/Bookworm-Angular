@@ -25,12 +25,16 @@ export class ActionsService {
 		private scroller: ViewportScroller
 	) {}
 
-	getBookList(): Observable<BookData[]> {
+	getBookListFromApi(): Observable<BookData[]> {
 		return this.apiService.getBookData().pipe(
 			tap((books: BookData[]) => {
 				this.stateService.setBooks(books);
 			})
 		);
+	}
+
+	getBooks(): Observable<BookData[]> {
+		return this.stateService.getBooks();
 	}
 
 	addNewBook(book: BookData, destroy$: Subject<boolean>): void {

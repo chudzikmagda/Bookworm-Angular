@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActionsService } from './services/actions/actions.service';
 
 @Component({
@@ -6,8 +6,14 @@ import { ActionsService } from './services/actions/actions.service';
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-	constructor(private actionsService: ActionsService) {
-		this.actionsService.getBookList().subscribe();
+export class AppComponent implements OnInit {
+	constructor(private actionsService: ActionsService) {}
+
+	ngOnInit(): void {
+		this.loadSampleData();
+	}
+
+	private loadSampleData(): void {
+		this.actionsService.getBookListFromApi().subscribe();
 	}
 }

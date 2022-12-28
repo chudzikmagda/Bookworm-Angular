@@ -61,7 +61,7 @@ export class TableComponent implements OnInit, OnDestroy {
 
 	private loadBookList() {
 		this.actionsService
-			.getBookList()
+			.getBooks()
 			.pipe(
 				tap((books: BookData[]) => {
 					this.books = books;

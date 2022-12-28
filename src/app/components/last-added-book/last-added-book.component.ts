@@ -11,8 +11,9 @@ import { ActionsService } from 'src/app/services/actions/actions.service';
 })
 export class LastAddedBookComponent implements OnInit, OnDestroy {
 	lastAddedBook: BookData;
+
 	private books: BookData[];
-	private unsubscribe$: Subject<boolean> = new Subject<boolean>();
+	private destroy$: Subject<boolean> = new Subject<boolean>();
 
 	constructor(private actionsService: ActionsService) {}
 
@@ -22,9 +23,9 @@ export class LastAddedBookComponent implements OnInit, OnDestroy {
 
 	private loadLastAddedBook() {
 		this.actionsService
-			.getBookList()
+			.getBooks()
 			.pipe(
-				takeUntil(this.unsubscribe$),
+				takeUntil(this.destroy$),
 				tap((books: BookData[]) => (this.books = books)),
 				tap(() => this.setLastAddedBook(this.books))
 			)
@@ -37,7 +38,7 @@ export class LastAddedBookComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnDestroy(): void {
-		this.unsubscribe$.next(true);
-		this.unsubscribe$.unsubscribe();
+		this.destroy$.next(true);
+		this.destroy$.unsubscribe();
 	}
 }
