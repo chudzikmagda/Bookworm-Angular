@@ -105,4 +105,11 @@ button {
 	&--disabled {
 		opacity: 0.4;
 	}
+
+	&--large {
+		@include from-tablet {
+			padding: 16px 32px;
+			font-size: $font-size-big;
+		}
+	}
 }

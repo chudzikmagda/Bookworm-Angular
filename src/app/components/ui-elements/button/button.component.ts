@@ -17,6 +17,8 @@ export class ButtonComponent {
 		| 'secondary-outline'
 		| 'icon';
 
+	@Input() size: 'large' | 'small';
+
 	setClasses() {
 		return {
 			btn: true,
@@ -26,6 +28,8 @@ export class ButtonComponent {
 			'btn--secondary-outline': this.variant === 'secondary-outline',
 			'btn--icon': this.variant === 'icon',
 			'btn--disabled': this.disabled,
+			'btn--large': this.size === 'large',
+			'btn--small': this.size === 'small',
 		};
 	}
 }
