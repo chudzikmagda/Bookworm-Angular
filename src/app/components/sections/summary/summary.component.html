@@ -2,7 +2,9 @@
 	<div class="summary">
 		<c-stats></c-stats>
 		<c-best-book></c-best-book>
-		<c-quote></c-quote>
+		<ng-container *ngIf="quote$ | async as quote">
+			<c-quote [quote]="quote"></c-quote>
+		</ng-container>
 		<c-last-added-book></c-last-added-book>
 	</div>
 </section>
