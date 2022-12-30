@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { QuoteModel } from 'src/app/models/models';
+import { Quote } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { StateService } from 'src/app/services/state/state.service';
 
@@ -10,7 +10,7 @@ import { StateService } from 'src/app/services/state/state.service';
 	styleUrls: ['./quote.component.scss'],
 })
 export class QuoteComponent implements OnInit {
-	quote$: Observable<QuoteModel>;
+	quote$: Observable<Quote>;
 
 	constructor(
 		private actionService: ActionsService,

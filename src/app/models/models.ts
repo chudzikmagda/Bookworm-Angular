@@ -17,7 +17,7 @@ export type BookForm = Pick<
 	'id' | 'author' | 'title' | 'language' | 'rating' | 'cover'
 >;
 
-export interface QuoteModel {
+export interface Quote {
 	author?: string;
 	authorSlug?: string;
 	content?: string;

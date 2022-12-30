@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs';
-import { QuoteModel } from 'src/app/models/models';
+import { Quote } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { StateService } from 'src/app/services/state/state.service';
 
@@ -12,7 +12,7 @@ describe('MotivateQuoteComponent', () => {
 	let fixture: ComponentFixture<MotivateQuoteComponent>;
 	let fakeActionsService: ActionsService;
 	let fakeStateService: StateService;
-	let fakeQuote$ = new BehaviorSubject<QuoteModel[]>([]);
+	let fakeQuote$ = new BehaviorSubject<Quote[]>([]);
 
 	beforeEach(() => {
 		fakeActionsService = jasmine.createSpyObj('ActionsService', [
@@ -64,14 +64,14 @@ describe('MotivateQuoteComponent', () => {
 
 		component.quote$ = fakeQuote$;
 
-		component.quote$.subscribe((data: QuoteModel) => {
+		component.quote$.subscribe((data: Quote) => {
 			expect(data.length).toEqual(1);
 			done();
 		});
 	});
 });
 
-const quoteMock: QuoteModel[] = [
+const quoteMock: Quote[] = [
 	{
 		author: 'Alfred Tennyson',
 		authorSlug: 'alfred-tennyson',

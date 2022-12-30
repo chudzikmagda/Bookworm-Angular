@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { BookData, QuoteModel } from 'src/app/models/models';
+import { BookData, Quote } from 'src/app/models/models';
 
 @Injectable({
 	providedIn: 'root',
@@ -16,6 +16,6 @@ export class ApiService {
 	}
 
 	getQuotes(tags: string) {
-		return this.http.get<QuoteModel>(`${this.apiUrl}${tags}`);
+		return this.http.get<Quote>(`${this.apiUrl}${tags}`);
 	}
 }
