@@ -1,0 +1,23 @@
+@import '../../../../../assets/css/global-styles-components.scss';
+
+:host(c-table-cell) {
+	width: 100%;
+
+	.table-cell {
+		height: 100%;
+		padding: 8px;
+		justify-items: center;
+
+		@include from-desktop {
+			padding: 16px;
+		}
+
+		&--valign-center {
+			@include flex($justifyContent: flex-start);
+		}
+
+		&--cover {
+			width: 100%;
+		}
+	}
+}

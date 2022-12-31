@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ViewportScroller } from '@angular/common';
-import { BookData, Quote } from 'src/app/models/models';
 import { ApiService } from '../api/api.service';
 import { StateService } from '../state/state.service';
 import {
@@ -12,6 +11,7 @@ import {
 	Subject,
 	map,
 } from 'rxjs';
+import { BookData, Quote } from 'src/app/models/models';
 
 @Injectable({
 	providedIn: 'root',
