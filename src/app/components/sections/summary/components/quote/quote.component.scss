@@ -18,17 +18,19 @@
 		}
 
 		&::before {
-			content: '\0022';
+			content: url('../../../../../../assets/images/icons/quotation-mark.svg');
 			position: absolute;
-			right: 16px;
-			font-family: $font-family-serif;
-			font-size: 200px;
-			color: rgba($color-secondary, 0.2);
+			top: -16px;
+
+			@include from-tablet {
+				top: -32px;
+			}
 		}
 
 		&__content {
 			max-width: 600px;
 			text-align: center;
+			z-index: 1;
 		}
 
 		&__paragraph {
