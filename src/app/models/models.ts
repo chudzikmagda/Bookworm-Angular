@@ -18,14 +18,14 @@ export type BookForm = Pick<
 >;
 
 export interface Quote {
-	author?: string;
-	authorSlug?: string;
-	content?: string;
-	dateAdded?: string;
-	length?: number;
-	dateModified?: string;
-	tags?: string[];
-	_id?: string;
+	author: string;
+	authorSlug: string;
+	content: string;
+	dateAdded: string;
+	length: number;
+	dateModified: string;
+	tags: string[];
+	_id: string;
 }
 
 export enum SectionNames {

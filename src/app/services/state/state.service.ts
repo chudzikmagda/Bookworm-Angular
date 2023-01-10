@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { BookData, Quote } from 'src/app/models/models';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class StateService {
-	private books$ = new BehaviorSubject<BookData[]>([]);
-	private quoteSummary$ = new BehaviorSubject<Quote>([]);
-	private quoteSection$ = new BehaviorSubject<Quote>([]);
+	private books$ = new Subject<BookData[]>();
+	private quoteSummary$ = new Subject<Quote>();
+	private quoteSection$ = new Subject<Quote>();
 
 	getBooks(): Observable<BookData[]> {
 		return this.books$.asObservable();
