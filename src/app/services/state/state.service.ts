@@ -7,6 +7,7 @@ import { BookData, Quote } from 'src/app/models/models';
 })
 export class StateService {
 	private books$ = new Subject<BookData[]>();
+	private booksToDisplay$ = new Subject<BookData[]>();
 	private quoteSummary$ = new Subject<Quote>();
 	private quoteSection$ = new Subject<Quote>();
 
@@ -16,6 +17,14 @@ export class StateService {
 
 	setBooks(books: BookData[]): void {
 		return this.books$.next(books);
+	}
+
+	getBooksToDisplay(): Observable<BookData[]> {
+		return this.booksToDisplay$.asObservable();
+	}
+
+	setBooksToDisplay(books: BookData[]): void {
+		return this.booksToDisplay$.next(books);
 	}
 
 	getSummaryQuote(): Observable<Quote> {

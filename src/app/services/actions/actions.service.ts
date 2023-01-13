@@ -37,6 +37,18 @@ export class ActionsService {
 		return this.stateService.getBooks();
 	}
 
+	setBooks(books: BookData[]): void {
+		return this.stateService.setBooks([...books]);
+	}
+
+	getBooksToDisplay(): Observable<BookData[]> {
+		return this.stateService.getBooksToDisplay();
+	}
+
+	setBooksToDisplay(books: BookData[]): void {
+		return this.stateService.setBooksToDisplay([...books]);
+	}
+
 	addNewBook(book: BookData, destroy$: Subject<boolean>): void {
 		this.stateService
 			.getBooks()

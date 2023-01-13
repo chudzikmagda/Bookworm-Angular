@@ -9,7 +9,7 @@ import { GoToTopComponent } from './components/footer/components/go-to-top/go-to
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BooksComponent } from './components/sections/books/books.component';
-import { SearchBarComponent } from './components/sections/books/components/table/search-bar/search-bar.component';
+import { SearchBarComponent } from './components/sections/books/components/search-bar/search-bar.component';
 import { TableComponent } from './components/sections/books/components/table/table.component';
 import { IntroComponent } from './components/sections/intro/intro.component';
 import { MotivateQuoteComponent } from './components/sections/motivational-quote/motivational-quote.component';

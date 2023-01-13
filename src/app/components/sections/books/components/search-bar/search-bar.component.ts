@@ -14,7 +14,7 @@ import { BookData } from 'src/app/models/models';
 })
 export class SearchBarComponent implements OnInit {
 	@Input() books: BookData[] = [];
-	@Output() filteredBook: EventEmitter<BookData[]> = new EventEmitter();
+	@Output() filteredBook: EventEmitter<string> = new EventEmitter();
 
 	searchForm: FormGroup<{ input: FormControl<string> }>;
 
@@ -25,21 +25,8 @@ export class SearchBarComponent implements OnInit {
 	}
 
 	onSearchBtnClick(): void {
-		this.onSearchBook(this.phraseSearch());
-	}
-
-	private onSearchBook(books: BookData[]) {
-		this.filteredBook.emit(books);
-	}
-
-	private phraseSearch(): BookData[] {
 		const searchValue = this.searchForm.get('input')?.getRawValue();
-		return this.books.filter((book: BookData) => {
-			return (
-				book.author.toLowerCase().includes(searchValue.toLowerCase()) ||
-				book.title.toLowerCase().includes(searchValue.toLowerCase())
-			);
-		});
+		this.filteredBook.emit(searchValue);
 	}
 
 	private createForm(): FormGroup<{ input: FormControl<string> }> {
