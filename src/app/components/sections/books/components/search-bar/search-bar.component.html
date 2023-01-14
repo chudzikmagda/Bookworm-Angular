@@ -10,6 +10,7 @@
 			class="search-bar__btn"
 			[disabled]="!searchForm.valid"
 			(click)="onSearchBtnClick()"
+			(keyup.enter)="onSearchBtnClick()"
 			><i class="fa-solid fa-magnifying-glass"></i
 		></c-button>
 	</form>
