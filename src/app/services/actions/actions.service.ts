@@ -2,15 +2,7 @@ import { Injectable } from '@angular/core';
 import { ViewportScroller } from '@angular/common';
 import { ApiService } from '../api/api.service';
 import { StateService } from '../state/state.service';
-import {
-	Subscription,
-	tap,
-	take,
-	Observable,
-	takeUntil,
-	Subject,
-	map,
-} from 'rxjs';
+import { Subscription, tap, take, Observable, map } from 'rxjs';
 import { BookData, Quote } from 'src/app/models/models';
 
 @Injectable({
@@ -37,6 +29,10 @@ export class ActionsService {
 		return this.stateService.getBooks();
 	}
 
+	getBooksStateSnapshot(): BookData[] {
+		return this.stateService.getBooksStateSnapshot();
+	}
+
 	setBooks(books: BookData[]): void {
 		return this.stateService.setBooks([...books]);
 	}
@@ -49,12 +45,8 @@ export class ActionsService {
 		return this.stateService.setBooksToDisplay([...books]);
 	}
 
-	addNewBook(book: BookData, destroy$: Subject<boolean>): void {
-		this.stateService
-			.getBooks()
-			.pipe(takeUntil(destroy$))
-			.subscribe((books: BookData[]) => (this.books = books));
-		return this.stateService.setBooks([...this.books, book]);
+	addNewBook(book: BookData): void {
+		this.stateService.setBooks([...this.getBooksStateSnapshot(), book]);
 	}
 
 	deleteBook(id: number, books: BookData[]): void {
