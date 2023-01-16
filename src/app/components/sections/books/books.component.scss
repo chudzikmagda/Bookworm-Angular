@@ -1,1 +1,16 @@
 @import '../../../../assets/css/sections.scss';
+
+.section {
+	&__search-bar {
+		width: 100%;
+
+		@include from-desktop {
+			max-width: 1600px;
+			margin: 32px auto;
+		}
+	}
+
+	&__pagination {
+		margin-top: auto;
+	}
+}

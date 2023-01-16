@@ -2,14 +2,18 @@
 	*ngIf="booksToDisplay$ | async as books"
 	class="section section--books"
 	[id]="sectionName.BookList">
-	<c-search-bar
-		[books]="books"
-		(filteredBook)="onSearchBook($event)"></c-search-bar>
+	<div class="section__search-bar">
+		<c-search-bar
+			[books]="books"
+			(filteredBook)="onSearchBook($event)"></c-search-bar>
+	</div>
 	<c-table [books]="books" (deleteBook)="onDeleteBook($event)"></c-table>
-	<c-pagination
-		[currentPage]="currentPage"
-		[totalPages]="totalPages"
-		(goToPage)="onPageChange($event)"
-		(nextPage)="onPageChange($event, 1)"
-		(prevPage)="onPageChange($event, -1)"></c-pagination>
+	<div class="section__pagination">
+		<c-pagination
+			[currentPage]="currentPage"
+			[totalPages]="totalPages"
+			(goToPage)="onPageChange($event)"
+			(nextPage)="onPageChange($event, 1)"
+			(prevPage)="onPageChange($event, -1)"></c-pagination>
+	</div>
 </section>

@@ -3,11 +3,6 @@
 .search-bar {
 	max-width: 100%;
 
-	@include from-desktop {
-		max-width: 1600px;
-		margin: 32px auto;
-	}
-
 	&__form {
 		@include flex($justifyContent: flex-start);
 		border: 1px solid $color-primary;

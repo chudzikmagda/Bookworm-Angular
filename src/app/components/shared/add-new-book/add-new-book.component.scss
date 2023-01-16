@@ -22,9 +22,13 @@
 	}
 
 	&__btn {
-		@include flex($justifyContent: flex-end);
+		@include flex($justifyContent: flex-start);
 		width: 100%;
 		gap: 16px;
+
+		@include from-desktop {
+			justify-content: flex-end;
+		}
 	}
 
 	&__btn,

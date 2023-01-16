@@ -25,6 +25,11 @@
 
 	&--books {
 		height: auto;
+		@include flex($direction: column, $justifyContent: flex-start);
+
+		@include from-tablet {
+			min-height: 100vh;
+		}
 	}
 
 	&--motivational-quote {
