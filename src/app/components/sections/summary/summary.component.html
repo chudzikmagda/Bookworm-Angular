@@ -1,6 +1,6 @@
 <section class="section section--summary" [id]="sectionName.Summary">
 	<div class="summary">
-		<c-stats></c-stats>
+		<c-stats [stats]="stats"></c-stats>
 		<c-best-book [bestBook]="bestBook"></c-best-book>
 		<c-quote *ngIf="quote$ | async as quote" [quote]="quote"></c-quote>
 		<c-last-added-book></c-last-added-book>

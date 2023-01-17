@@ -3,6 +3,7 @@ import { Observable, skip, Subject, takeUntil, tap } from 'rxjs';
 import { SectionNames, Quote, BookData } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { StateService } from 'src/app/services/state/state.service';
+import { BookStats } from './models/models';
 
 @Component({
 	selector: 'c-summary',
@@ -15,6 +16,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
 	quote$: Observable<Quote | null>;
 	bestBook$: Observable<BookData[]>;
 	bestBook: BookData;
+	stats: BookStats;
 
 	private onDestroy$: Subject<void> = new Subject<void>();
 
@@ -45,6 +47,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
 				skip(1),
 				tap((books: BookData[]) => {
 					this.bestBook = this.setBestBook(books);
+					this.stats = this.setStats(books);
 				})
 			)
 			.subscribe();
@@ -54,6 +57,26 @@ export class SummaryComponent implements OnInit, OnDestroy {
 		return books.reduce((prevBook: BookData, currBook: BookData) =>
 			prevBook.rating > currBook.rating ? prevBook : currBook
 		);
+	}
+
+	private avgRating(books: BookData[]): number {
+		const ratings: number[] = books.map((book: BookData) => book.rating);
+		return (
+			ratings.reduce(
+				(prevBookRating: number, currBookRating: number) =>
+					prevBookRating + currBookRating
+			) / books.length
+		);
+	}
+
+	private setStats(books: BookData[]): BookStats {
+		return {
+			booksLength: books.length,
+			bestBook: this.setBestBook(books) ?? 'Add new book...',
+			lastAddedBook:
+				this.actionsService.lastAddedBook(books) ?? 'Add new book...',
+			avgRating: this.avgRating(books) ?? 0,
+		};
 	}
 
 	public ngOnDestroy(): void {
