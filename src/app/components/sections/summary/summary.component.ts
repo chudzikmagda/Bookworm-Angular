@@ -17,6 +17,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
 	bestBook$: Observable<BookData[]>;
 	bestBook: BookData;
 	stats: BookStats;
+	lastAddedBook: BookData;
 
 	private onDestroy$: Subject<void> = new Subject<void>();
 
@@ -47,6 +48,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
 				skip(1),
 				tap((books: BookData[]) => {
 					this.bestBook = this.setBestBook(books);
+					this.lastAddedBook = this.setLastAddedBook(books);
 					this.stats = this.setStats(books);
 				})
 			)
@@ -72,11 +74,18 @@ export class SummaryComponent implements OnInit, OnDestroy {
 	private setStats(books: BookData[]): BookStats {
 		return {
 			booksLength: books.length,
-			bestBook: this.setBestBook(books) ?? 'Add new book...',
-			lastAddedBook:
-				this.actionsService.lastAddedBook(books) ?? 'Add new book...',
+			bestBook: this.bestBook ?? 'Add new book...',
+			lastAddedBook: this.lastAddedBook ?? 'Add new book...',
 			avgRating: this.avgRating(books) ?? 0,
 		};
+	}
+
+	private setLastAddedBook(books: BookData[]): BookData {
+		return books.reduce((prevBook: BookData, currBook: BookData) =>
+			Date.parse(prevBook.date_add) > Date.parse(currBook.date_add)
+				? prevBook
+				: currBook
+		);
 	}
 
 	public ngOnDestroy(): void {

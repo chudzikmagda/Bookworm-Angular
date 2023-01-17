@@ -1,16 +1,14 @@
-import { Injectable } from '@angular/core';
 import { ViewportScroller } from '@angular/common';
+import { Injectable } from '@angular/core';
+import { Observable, tap, map, Subscription, take } from 'rxjs';
+import { BookData, Quote } from 'src/app/models/models';
 import { ApiService } from '../api/api.service';
 import { StateService } from '../state/state.service';
-import { Subscription, tap, take, Observable, map } from 'rxjs';
-import { BookData, Quote } from 'src/app/models/models';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class ActionsService {
-	private books: BookData[];
-
 	constructor(
 		private apiService: ApiService,
 		private stateService: StateService,
@@ -53,21 +51,6 @@ export class ActionsService {
 		return this.stateService.setBooks(
 			books.filter((book: BookData) => book.id !== id)
 		);
-	}
-
-	lastAddedBook(books: BookData[]): BookData {
-		const dates: any[] = books.map(item => new Date(item.date_add));
-		const lastAddedBook =
-			books[
-				dates.indexOf(
-					dates.reduce((a, b) => {
-						return new Date(a.MeasureDate) > new Date(b.MeasureDate)
-							? a
-							: b;
-					})
-				)
-			];
-		return lastAddedBook;
 	}
 
 	getLastBookId(): Observable<number> {

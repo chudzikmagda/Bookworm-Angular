@@ -1,9 +1,12 @@
 <div *ngIf="lastAddedBook" class="last-added-book">
 	<div class="last-added-book__data">
 		<h4 class="last-added-book__heading">Last added book:</h4>
-		<span class="last-added-book__category">
+		<span class="last-added-book__item">
 			"{{ lastAddedBook.title }}", <br />
 			{{ lastAddedBook.author }}
+		</span>
+		<span class="last-added-book__item">
+			Added: {{ lastAddedBook.date_add | date: 'mediumDate' }}
 		</span>
 	</div>
 	<picture class="last-added-book__cover">
