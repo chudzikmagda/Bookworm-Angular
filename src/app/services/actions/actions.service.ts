@@ -55,11 +55,6 @@ export class ActionsService {
 		);
 	}
 
-	bestBook(books: BookData[]): BookData {
-		const ratings: number[] = books.map((item: BookData) => item.rating);
-		return books[ratings.indexOf(Math.max(...ratings))];
-	}
-
 	lastAddedBook(books: BookData[]): BookData {
 		const dates: any[] = books.map(item => new Date(item.date_add));
 		const lastAddedBook =
