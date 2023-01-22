@@ -16,8 +16,13 @@ import { BookData } from 'src/app/models/models';
 export class TableComponent {
 	@Input() books: BookData[];
 	@Output() deleteBook: EventEmitter<HTMLElement> = new EventEmitter();
+	@Output() editBook: EventEmitter<BookData> = new EventEmitter();
 
-	onDeleteBook(tableRow: HTMLElement) {
+	onDeleteBook(tableRow: HTMLElement): void {
 		this.deleteBook.emit(tableRow);
+	}
+
+	onEditBook(tableRow: HTMLElement): void {
+		this.editBook.emit(this.books[+tableRow.id - 1]);
 	}
 }

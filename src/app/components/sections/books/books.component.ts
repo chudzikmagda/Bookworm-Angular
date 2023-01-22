@@ -35,6 +35,10 @@ export class BooksComponent implements OnInit, OnDestroy {
 		this.actionsService.deleteBook(+tableRow.id, this.books);
 	}
 
+	onEditBook(tableRow: BookData): void {
+		console.log(tableRow);
+	}
+
 	onSearchBook(searchedValue: string): void {
 		const filteredBooks = this.filterBooks(searchedValue);
 		this.loadBooksToDisplay(filteredBooks);

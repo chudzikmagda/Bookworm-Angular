@@ -43,6 +43,9 @@
 			book.rating | number: '1.1'
 		}}</c-table-cell>
 		<c-table-cell [valignCenter]="true">
+			<c-button [variant]="'icon'" (click)="onEditBook(tabelRow)"
+				><i class="fa-regular fa-pen-to-square"></i
+			></c-button>
 			<c-button [variant]="'icon'" (click)="onDeleteBook(tabelRow)"
 				><i class="fa-regular fa-trash-can"></i
 			></c-button>
