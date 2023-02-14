@@ -15,7 +15,7 @@ export class ActionsService {
 		private scroller: ViewportScroller
 	) {}
 
-	getBookListFromApi(): Observable<BookData[]> {
+	public getBookListFromApi(): Observable<BookData[]> {
 		return this.apiService.getBookData().pipe(
 			tap((books: BookData[]) => {
 				this.stateService.setBooks(books);
@@ -23,43 +23,54 @@ export class ActionsService {
 		);
 	}
 
-	getBooks(): Observable<BookData[]> {
+	public getBooks(): Observable<BookData[]> {
 		return this.stateService.getBooks();
 	}
 
-	getBooksStateSnapshot(): BookData[] {
+	public getBooksStateSnapshot(): BookData[] {
 		return this.stateService.getBooksStateSnapshot();
 	}
 
-	setBooks(books: BookData[]): void {
+	public setBooks(books: BookData[]): void {
 		return this.stateService.setBooks([...books]);
 	}
 
-	getBooksToDisplay(): Observable<BookData[]> {
+	public getBooksToDisplay(): Observable<BookData[]> {
 		return this.stateService.getBooksToDisplay();
 	}
 
-	setBooksToDisplay(books: BookData[]): void {
+	public setBooksToDisplay(books: BookData[]): void {
 		return this.stateService.setBooksToDisplay([...books]);
 	}
 
-	addNewBook(book: BookData): void {
+	public addNewBook(book: BookData): void {
 		this.stateService.setBooks([...this.getBooksStateSnapshot(), book]);
 	}
 
-	deleteBook(id: number, books: BookData[]): void {
+	public deleteBook(id: number, books: BookData[]): void {
 		return this.stateService.setBooks(
 			books.filter((book: BookData) => book.id !== id)
 		);
 	}
 
-	getLastBookId(): Observable<number> {
+	public updateBook(bookToUpdate: BookData) {
+		const updatedBooks = this.stateService
+			.getBooksStateSnapshot()
+			.map((book: BookData) =>
+				book.id === bookToUpdate.id
+					? { ...book, ...bookToUpdate }
+					: book
+			);
+		this.stateService.setBooks([...updatedBooks]);
+	}
+
+	public getLastBookId(): Observable<number> {
 		return this.stateService
 			.getBooks()
 			.pipe(map((books: BookData[]) => books.length));
 	}
 
-	getSummaryQuoteFormApi(tags: string): Subscription {
+	public getSummaryQuoteFormApi(tags: string): Subscription {
 		return this.apiService
 			.getQuotes(tags)
 			.pipe(
@@ -69,7 +80,7 @@ export class ActionsService {
 			.subscribe();
 	}
 
-	getSectionQuoteFormApi(tags: string): Subscription {
+	public getSectionQuoteFormApi(tags: string): Subscription {
 		return this.apiService
 			.getQuotes(tags)
 			.pipe(
@@ -79,7 +90,7 @@ export class ActionsService {
 			.subscribe();
 	}
 
-	scrollToTheId(id: string): void {
+	public scrollToTheId(id: string): void {
 		this.scroller.scrollToAnchor(id);
 	}
 }

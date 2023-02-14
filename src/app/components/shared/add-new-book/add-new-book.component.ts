@@ -10,7 +10,7 @@ import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Subject, Subscription, takeUntil } from 'rxjs';
 import { Errors, BookData } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
-import { DialogService } from '../ui-elements/dialog/service/dialog.service';
+import { DialogService } from '../ui-elements/dialog/services/dialog.service';
 import { AddNewForm } from './models/models';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ADD_NEW_BOOK_PATH } from 'src/app/models/models';
-import { DialogService } from '../shared/ui-elements/dialog/service/dialog.service';
+import { DialogService } from '../shared/ui-elements/dialog/services/dialog.service';
 
 @Component({
 	selector: 'c-header',

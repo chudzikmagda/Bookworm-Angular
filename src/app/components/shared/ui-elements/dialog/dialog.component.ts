@@ -8,7 +8,7 @@ import {
 	Renderer2,
 } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
-import { DialogService } from './service/dialog.service';
+import { DialogService } from './services/dialog.service';
 
 @Component({
 	selector: 'c-dialog',

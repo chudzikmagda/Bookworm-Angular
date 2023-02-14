@@ -9,6 +9,7 @@ import { GoToTopComponent } from './components/footer/components/go-to-top/go-to
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BooksComponent } from './components/sections/books/books.component';
+import { EditBookComponent } from './components/sections/books/components/edit-book/edit-book.component';
 import { SearchBarComponent } from './components/sections/books/components/search-bar/search-bar.component';
 import { TableComponent } from './components/sections/books/components/table/table.component';
 import { IntroComponent } from './components/sections/intro/intro.component';
@@ -51,6 +52,7 @@ import { TextareaComponent } from './components/shared/ui-elements/textarea/text
 		MotivateQuoteComponent,
 		PaginationComponent,
 		SearchBarComponent,
+		EditBookComponent,
 	],
 	imports: [
 		AppRoutingModule,

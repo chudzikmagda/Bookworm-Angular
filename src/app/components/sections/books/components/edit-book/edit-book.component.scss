@@ -1,0 +1,51 @@
+@import '../../../../../../assets/css/global-styles-components.scss';
+
+.edit-book {
+	&__heading {
+		margin: 0;
+	}
+
+	&__form {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 16px;
+		width: 100%;
+
+		@include from-tablet {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			max-width: 800px;
+		}
+	}
+	&__form-item {
+		height: 96px;
+	}
+
+	&__btn {
+		@include flex($justifyContent: flex-start);
+		width: 100%;
+		gap: 16px;
+
+		@include from-desktop {
+			justify-content: flex-end;
+		}
+	}
+
+	&__btn,
+	&__cover,
+	&__description,
+	&__heading {
+		@include from-tablet {
+			grid-column: span 2;
+		}
+	}
+}
+
+.error {
+	&__message {
+		font-size: $font-size-small;
+		color: $color-danger;
+		padding-top: 2px;
+		margin-bottom: 0;
+	}
+}

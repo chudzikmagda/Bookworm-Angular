@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { SectionNames, ADD_NEW_BOOK_PATH } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
-import { DialogService } from '../../shared/ui-elements/dialog/service/dialog.service';
+import { DialogService } from '../../shared/ui-elements/dialog/services/dialog.service';
 
 @Component({
 	selector: 'c-intro',
