@@ -14,7 +14,6 @@ export class SummaryComponent implements OnInit, OnDestroy {
 	QUOTE_TAG: string = 'famous-quotes';
 	sectionName: typeof SectionNames = SectionNames;
 	quote$: Observable<Quote | null>;
-	bestBook$: Observable<BookData[]>;
 	bestBook: BookData;
 	stats: BookStats;
 	lastAddedBook: BookData;

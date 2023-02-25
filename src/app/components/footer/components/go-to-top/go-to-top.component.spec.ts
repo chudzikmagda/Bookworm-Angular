@@ -3,7 +3,7 @@ import { ButtonComponent } from 'src/app/components/shared/ui-elements/button/bu
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { GoToTopComponent } from './go-to-top.component';
 
-fdescribe('GoToTopComponent', () => {
+describe('GoToTopComponent', () => {
 	let component: GoToTopComponent;
 	let fixture: ComponentFixture<GoToTopComponent>;
 	let fakeActionService: jasmine.SpyObj<ActionsService>;
