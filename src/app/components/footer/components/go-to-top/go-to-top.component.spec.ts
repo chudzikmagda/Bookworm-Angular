@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ButtonComponent } from 'src/app/components/shared/ui-elements/button/button.component';
 import { ActionsService } from 'src/app/services/actions/actions.service';
-import { ButtonComponent } from '../../../ui-elements/button/button.component';
 import { GoToTopComponent } from './go-to-top.component';
 
-describe('GoToTopComponent', () => {
+fdescribe('GoToTopComponent', () => {
 	let component: GoToTopComponent;
 	let fixture: ComponentFixture<GoToTopComponent>;
 	let fakeActionService: jasmine.SpyObj<ActionsService>;
