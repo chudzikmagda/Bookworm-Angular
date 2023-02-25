@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ActionsService } from 'src/app/services/actions/actions.service';
+import { ButtonComponent } from '../shared/ui-elements/button/button.component';
+import { LogotypeComponent } from '../shared/ui-elements/logotype/logotype.component';
 import { GoToTopComponent } from './components/go-to-top/go-to-top.component';
-import { ButtonComponent } from '../ui-elements/button/button.component';
-import { LogotypeComponent } from '../ui-elements/logotype/logotype.component';
 import { FooterComponent } from './footer.component';
 
 describe('FooterComponent', () => {
