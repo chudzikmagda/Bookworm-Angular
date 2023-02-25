@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs';
-import { Quote } from 'src/app/components/shared/models/models';
+import { Quote } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { StateService } from 'src/app/services/state/state.service';
 
@@ -10,9 +10,9 @@ import { MotivateQuoteComponent } from './motivational-quote.component';
 describe('MotivateQuoteComponent', () => {
 	let component: MotivateQuoteComponent;
 	let fixture: ComponentFixture<MotivateQuoteComponent>;
-	let fakeActionsService: ActionsService;
-	let fakeStateService: StateService;
-	let fakeQuote$ = new BehaviorSubject<Quote[]>([]);
+	let fakeActionsService: jasmine.SpyObj<ActionsService>;
+	let fakeStateService: jasmine.SpyObj<StateService>;
+	let fakeQuote$ = new BehaviorSubject<Quote>({} as Quote);
 
 	beforeEach(() => {
 		fakeActionsService = jasmine.createSpyObj('ActionsService', [
@@ -23,7 +23,7 @@ describe('MotivateQuoteComponent', () => {
 			'getSectionQuote',
 		]);
 
-		fakeQuote$.next(quoteMock);
+		fakeQuote$.next(fakeQuoteMock());
 
 		TestBed.configureTestingModule({
 			declarations: [MotivateQuoteComponent],
@@ -51,8 +51,7 @@ describe('MotivateQuoteComponent', () => {
 	it('should set section name', () => {
 		component.quote$ = fakeQuote$;
 		fixture.detectChanges();
-
-		const section: HTMLElement = fixture.debugElement.query(
+		const section: HTMLDivElement = fixture.debugElement.query(
 			By.css('.section--motivational-quote')
 		).nativeElement;
 
@@ -60,27 +59,29 @@ describe('MotivateQuoteComponent', () => {
 	});
 
 	it('should load quote on init', done => {
-		component.ngOnInit();
-
 		component.quote$ = fakeQuote$;
 
 		component.quote$.subscribe((data: Quote) => {
-			expect(data.length).toEqual(1);
+			expect(data).toEqual(fakeQuoteMock());
 			done();
 		});
+		expect(fakeActionsService.getSectionQuoteFormApi).toHaveBeenCalledTimes(
+			1
+		);
+		expect(fakeStateService.getSectionQuote).toHaveBeenCalled();
 	});
-});
 
-const quoteMock: Quote[] = [
-	{
-		author: 'Alfred Tennyson',
-		authorSlug: 'alfred-tennyson',
-		content:
-			'The happiness of a man in this life does not consist in the absence but in the mastery of his passions.',
-		dateAdded: '2022-04-14',
-		dateModified: '2022-04-14',
-		length: 103,
-		tags: ['famous-quotes', 'happiness'],
-		_id: 'dHwWmstTfXUC',
-	},
-];
+	const fakeQuoteMock = (): Quote => {
+		return {
+			author: 'Alfred Tennyson',
+			authorSlug: 'alfred-tennyson',
+			content:
+				'The happiness of a man in this life does not consist in the absence but in the mastery of his passions.',
+			dateAdded: '2022-04-14',
+			dateModified: '2022-04-14',
+			length: 103,
+			tags: ['famous-quotes', 'happiness'],
+			_id: 'dHwWmstTfXUC',
+		};
+	};
+});
