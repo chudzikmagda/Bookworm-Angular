@@ -1,24 +1,28 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { ActionsService } from 'src/app/services/actions/actions.service';
-import { ButtonComponent } from '../ui-elements/button/button.component';
-import { LogotypeComponent } from '../ui-elements/logotype/logotype.component';
+import { MockComponents } from 'ng-mocks';
+import { ButtonComponent } from '../shared/ui-elements/button/button.component';
+import { DialogService } from '../shared/ui-elements/dialog/services/dialog.service';
+import { LogotypeComponent } from '../shared/ui-elements/logotype/logotype.component';
 import { HeaderComponent } from './header.component';
 
-describe('HeaderComponent', () => {
+fdescribe('HeaderComponent', () => {
 	let component: HeaderComponent;
 	let fixture: ComponentFixture<HeaderComponent>;
-	let fakeActionsService: jasmine.SpyObj<ActionsService>;
+	let fakeDialogService: jasmine.SpyObj<DialogService>;
 
 	beforeEach(() => {
-		fakeActionsService = jasmine.createSpyObj('ActionsService', [
+		fakeDialogService = jasmine.createSpyObj('DialogService', [
 			'openDialog',
 		]);
 
 		TestBed.configureTestingModule({
-			declarations: [HeaderComponent, LogotypeComponent, ButtonComponent],
+			declarations: [
+				HeaderComponent,
+				MockComponents(LogotypeComponent, ButtonComponent),
+			],
 			providers: [
-				{ provide: ActionsService, useValue: fakeActionsService },
+				{ provide: DialogService, useValue: fakeDialogService },
 			],
 		}).compileComponents();
 
@@ -39,7 +43,7 @@ describe('HeaderComponent', () => {
 
 		button.click();
 
-		expect(fakeActionsService.openDialog).toHaveBeenCalledOnceWith(
+		expect(fakeDialogService.openDialog).toHaveBeenCalledOnceWith(
 			modalPath
 		);
 	});
