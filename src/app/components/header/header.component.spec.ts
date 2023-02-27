@@ -6,7 +6,7 @@ import { DialogService } from '../shared/ui-elements/dialog/services/dialog.serv
 import { LogotypeComponent } from '../shared/ui-elements/logotype/logotype.component';
 import { HeaderComponent } from './header.component';
 
-fdescribe('HeaderComponent', () => {
+describe('HeaderComponent', () => {
 	let component: HeaderComponent;
 	let fixture: ComponentFixture<HeaderComponent>;
 	let fakeDialogService: jasmine.SpyObj<DialogService>;
