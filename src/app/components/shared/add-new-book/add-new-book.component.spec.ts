@@ -4,10 +4,11 @@ import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { of } from 'rxjs';
-import { Errors } from 'src/app/components/shared/models/models';
+import { Errors } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { ButtonComponent } from '../ui-elements/button/button.component';
 import { DialogComponent } from '../ui-elements/dialog/dialog.component';
+import { DialogService } from '../ui-elements/dialog/services/dialog.service';
 import { InputComponent } from '../ui-elements/input/input.component';
 import { TextareaComponent } from '../ui-elements/textarea/textarea.component';
 import { AddNewBookComponent } from './add-new-book.component';
@@ -17,15 +18,19 @@ describe('AddNewBookComponent', () => {
 	let component: AddNewBookComponent;
 	let fixture: ComponentFixture<AddNewBookComponent>;
 	let fakeActionsService: jasmine.SpyObj<ActionsService>;
+	let fakeDialogService: jasmine.SpyObj<DialogService>;
 
 	beforeEach(() => {
 		fakeActionsService = jasmine.createSpyObj('ActionsService', [
 			'addNewBook',
-			'closeDialog',
 			'getLastBookId',
 		]);
 
 		fakeActionsService.getLastBookId.and.returnValue(of(0));
+
+		fakeDialogService = jasmine.createSpyObj('DialogService', [
+			'closeDialog',
+		]);
 
 		TestBed.configureTestingModule({
 			declarations: [
@@ -40,6 +45,10 @@ describe('AddNewBookComponent', () => {
 				{
 					provide: ActionsService,
 					useValue: fakeActionsService,
+				},
+				{
+					provide: DialogService,
+					useValue: fakeDialogService,
 				},
 			],
 		}).compileComponents();
