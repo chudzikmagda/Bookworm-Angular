@@ -1,17 +1,5 @@
-import {
-	Component,
-	Input,
-	Output,
-	EventEmitter,
-	OnInit,
-	OnDestroy,
-} from '@angular/core';
-import {
-	AbstractControl,
-	FormGroup,
-	NonNullableFormBuilder,
-	Validators,
-} from '@angular/forms';
+import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
+import { AbstractControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Subject, takeUntil, tap } from 'rxjs';
 import { DialogService } from 'src/app/components/shared/ui-elements/dialog/services/dialog.service';
 import { BookData, Errors } from 'src/app/models/models';
@@ -26,8 +14,7 @@ import { EditBookForm } from './models/models';
 })
 export class EditBookComponent implements OnInit, OnDestroy {
 	@Input() public visible: boolean = true;
-	@Output() public visibleChange: EventEmitter<boolean> =
-		new EventEmitter<boolean>();
+	@Output() public visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 	public editedBook: BookData;
 	public editBookForm: FormGroup<EditBookForm>;
@@ -86,21 +73,12 @@ export class EditBookComponent implements OnInit, OnDestroy {
 
 	private loadForm(): FormGroup<EditBookForm> {
 		return (this.editBookForm = this.formBuilder.group({
-			author: [
-				this.editedBook.author,
-				[Validators.required, Validators.minLength(2)],
-			],
+			author: [this.editedBook.author, [Validators.required, Validators.minLength(2)]],
 			cover: [this.editedBook.cover],
 			description: [this.editedBook.description],
-			language: [
-				this.editedBook.language,
-				[Validators.required, Validators.minLength(2)],
-			],
+			language: [this.editedBook.language, [Validators.required, Validators.minLength(2)]],
 			rating: [+this.editedBook.rating, [Validators.required]],
-			title: [
-				this.editedBook.title,
-				[Validators.required, Validators.minLength(2)],
-			],
+			title: [this.editedBook.title, [Validators.required, Validators.minLength(2)]],
 		}));
 	}
 

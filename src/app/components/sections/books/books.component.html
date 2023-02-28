@@ -1,16 +1,8 @@
-<section
-	*ngIf="booksToDisplay$ | async as books"
-	class="section section--books"
-	[id]="sectionName.BookList">
+<section *ngIf="booksToDisplay$ | async as books" class="section section--books" [id]="sectionName.BookList">
 	<div class="section__search-bar">
-		<c-search-bar
-			[books]="books"
-			(filteredBook)="onSearchBook($event)"></c-search-bar>
+		<c-search-bar [books]="books" (filteredBook)="onSearchBook($event)"></c-search-bar>
 	</div>
-	<c-table
-		[books]="books"
-		(deleteBook)="onDeleteBook($event)"
-		(editBook)="onEditBook($event)"></c-table>
+	<c-table [books]="books" (deleteBook)="onDeleteBook($event)" (editBook)="onEditBook($event)"></c-table>
 	<div class="section__pagination">
 		<c-pagination
 			[currentPage]="currentPage"

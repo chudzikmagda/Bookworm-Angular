@@ -27,26 +27,16 @@ describe('BooksComponent', () => {
 		]);
 
 		fakeActionsService.getBooks.and.returnValue(of(fakeBookList()));
-		fakeActionsService.getBooksToDisplay.and.returnValue(
-			of(fakeBookList())
-		);
+		fakeActionsService.getBooksToDisplay.and.returnValue(of(fakeBookList()));
 
-		fakeDialogService = jasmine.createSpyObj('DialogService', [
-			'openDialog',
-		]);
+		fakeDialogService = jasmine.createSpyObj('DialogService', ['openDialog']);
 
-		fakeFormService = jasmine.createSpyObj('FormService', [
-			'setEditedBook$',
-		]);
+		fakeFormService = jasmine.createSpyObj('FormService', ['setEditedBook$']);
 
 		TestBed.configureTestingModule({
 			declarations: [
 				BooksComponent,
-				MockComponents(
-					SearchBarComponent,
-					TableComponent,
-					PaginationComponent
-				),
+				MockComponents(SearchBarComponent, TableComponent, PaginationComponent),
 			],
 			providers: [
 				{
@@ -74,9 +64,7 @@ describe('BooksComponent', () => {
 	});
 
 	it('should set section name', () => {
-		const section: HTMLElement = fixture.debugElement.query(
-			By.css('.section--books')
-		).nativeElement;
+		const section: HTMLElement = fixture.debugElement.query(By.css('.section--books')).nativeElement;
 
 		expect(section.id).toEqual(component.sectionName.BookList);
 	});
@@ -108,12 +96,8 @@ describe('BooksComponent', () => {
 
 		component.onEditBook(idOfEditedBook);
 
-		expect(fakeFormService.setEditedBook$).toHaveBeenCalledOnceWith(
-			fakeEditedBook()
-		);
-		expect(fakeDialogService.openDialog).toHaveBeenCalledOnceWith(
-			`edit-book/${idOfEditedBook}`
-		);
+		expect(fakeFormService.setEditedBook$).toHaveBeenCalledOnceWith(fakeEditedBook());
+		expect(fakeDialogService.openDialog).toHaveBeenCalledOnceWith(`edit-book/${idOfEditedBook}`);
 		expect(component.books.length).toBe(6);
 	});
 
@@ -126,17 +110,15 @@ describe('BooksComponent', () => {
 
 	it('should search for inserted phrase', () => {
 		const searchedPhrase: string = 'fakeTitle2';
-		const expedtedFilteredBooks: BookData[] = fakeBookList().filter(
-			(book: BookData) => book.title.includes(searchedPhrase)
+		const expedtedFilteredBooks: BookData[] = fakeBookList().filter((book: BookData) =>
+			book.title.includes(searchedPhrase)
 		);
 
 		component.onSearchBook(searchedPhrase);
 
 		expect(component.currentPage).toBe(1);
 		expect(component.totalPages).toBe(1);
-		expect(fakeActionsService.setBooksToDisplay).toHaveBeenCalledWith(
-			expedtedFilteredBooks
-		);
+		expect(fakeActionsService.setBooksToDisplay).toHaveBeenCalledWith(expedtedFilteredBooks);
 		expect(fakeActionsService.getBooksToDisplay).toHaveBeenCalledTimes(1);
 	});
 

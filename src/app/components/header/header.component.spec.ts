@@ -12,18 +12,11 @@ describe('HeaderComponent', () => {
 	let fakeDialogService: jasmine.SpyObj<DialogService>;
 
 	beforeEach(() => {
-		fakeDialogService = jasmine.createSpyObj('DialogService', [
-			'openDialog',
-		]);
+		fakeDialogService = jasmine.createSpyObj('DialogService', ['openDialog']);
 
 		TestBed.configureTestingModule({
-			declarations: [
-				HeaderComponent,
-				MockComponents(LogotypeComponent, ButtonComponent),
-			],
-			providers: [
-				{ provide: DialogService, useValue: fakeDialogService },
-			],
+			declarations: [HeaderComponent, MockComponents(LogotypeComponent, ButtonComponent)],
+			providers: [{ provide: DialogService, useValue: fakeDialogService }],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(HeaderComponent);
@@ -36,15 +29,11 @@ describe('HeaderComponent', () => {
 	});
 
 	it('should open dialog on button click', () => {
-		const button: HTMLElement = fixture.debugElement.query(
-			By.directive(ButtonComponent)
-		).nativeElement;
+		const button: HTMLElement = fixture.debugElement.query(By.directive(ButtonComponent)).nativeElement;
 		const modalPath: string = 'add-new-book';
 
 		button.click();
 
-		expect(fakeDialogService.openDialog).toHaveBeenCalledOnceWith(
-			modalPath
-		);
+		expect(fakeDialogService.openDialog).toHaveBeenCalledOnceWith(modalPath);
 	});
 });

@@ -13,10 +13,7 @@ export interface BookData {
 	cover: string;
 }
 
-export type BookForm = Pick<
-	BookData,
-	'id' | 'author' | 'title' | 'language' | 'rating' | 'cover'
->;
+export type BookForm = Pick<BookData, 'id' | 'author' | 'title' | 'language' | 'rating' | 'cover'>;
 
 export interface Quote {
 	author: string;

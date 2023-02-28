@@ -20,10 +20,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
 
 	private onDestroy$: Subject<void> = new Subject<void>();
 
-	constructor(
-		private actionsService: ActionsService,
-		private stateService: StateService
-	) {}
+	constructor(private actionsService: ActionsService, private stateService: StateService) {}
 
 	ngOnInit(): void {
 		this.loadData();
@@ -64,8 +61,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
 		const ratings: number[] = books.map((book: BookData) => book.rating);
 		return (
 			ratings.reduce(
-				(prevBookRating: number, currBookRating: number) =>
-					prevBookRating + currBookRating
+				(prevBookRating: number, currBookRating: number) => prevBookRating + currBookRating
 			) / books.length
 		);
 	}
@@ -81,9 +77,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
 
 	private setLastAddedBook(books: BookData[]): BookData {
 		return books.reduce((prevBook: BookData, currBook: BookData) =>
-			Date.parse(prevBook.date_add) > Date.parse(currBook.date_add)
-				? prevBook
-				: currBook
+			Date.parse(prevBook.date_add) > Date.parse(currBook.date_add) ? prevBook : currBook
 		);
 	}
 

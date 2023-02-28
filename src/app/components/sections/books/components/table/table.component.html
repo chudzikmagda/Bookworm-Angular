@@ -1,13 +1,9 @@
 <div *ngIf="books" class="table">
 	<div class="table__row table__row--heading">
 		<div class="table__col-50">
-			<c-table-cell [variant]="'cover'" [valignCenter]="true"
-				>Cover</c-table-cell
-			>
+			<c-table-cell [variant]="'cover'" [valignCenter]="true">Cover</c-table-cell>
 			<div class="table__col-50--info">
-				<c-table-cell [variant]="'title'" [valignCenter]="true"
-					>Title</c-table-cell
-				>
+				<c-table-cell [variant]="'title'" [valignCenter]="true">Title</c-table-cell>
 				<c-table-cell [valignCenter]="true">Author</c-table-cell>
 				<c-table-cell [valignCenter]="true">Language</c-table-cell>
 			</div>
@@ -19,29 +15,19 @@
 	<div *ngFor="let book of books" [id]="book.id" class="table__row" #tabelRow>
 		<div class="table__col-50">
 			<c-table-cell [variant]="'cover'">
-				<img
-					*ngIf="book.cover"
-					[src]="book.cover"
-					alt="Book"
-					class="book__cover" />
+				<img *ngIf="book.cover" [src]="book.cover" alt="Book" class="book__cover" />
 				<span class="book__no-img">
-					<i
-						*ngIf="!book.cover"
-						class="fa-regular fa-image book__no-img-icon"></i>
+					<i *ngIf="!book.cover" class="fa-regular fa-image book__no-img-icon"></i>
 				</span>
 			</c-table-cell>
 			<div class="table__col-50--info">
-				<c-table-cell [variant]="'title'">{{
-					book.title
-				}}</c-table-cell>
+				<c-table-cell [variant]="'title'">{{ book.title }}</c-table-cell>
 				<c-table-cell>{{ book.author }}</c-table-cell>
 				<c-table-cell>{{ book.language }}</c-table-cell>
 			</div>
 		</div>
 		<c-table-cell>{{ book.description }}</c-table-cell>
-		<c-table-cell [valignCenter]="true">{{
-			book.rating | number: '1.1'
-		}}</c-table-cell>
+		<c-table-cell [valignCenter]="true">{{ book.rating | number: '1.1' }}</c-table-cell>
 		<c-table-cell [valignCenter]="true">
 			<c-button [variant]="'icon'" (click)="onEditBook(tabelRow)"
 				><i class="fa-regular fa-pen-to-square"></i

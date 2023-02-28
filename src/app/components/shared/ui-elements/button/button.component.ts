@@ -10,12 +10,7 @@ export class ButtonComponent {
 	@Input() disabled: boolean;
 	@Input() class: string;
 	@Input() type: string;
-	@Input() variant:
-		| 'primary'
-		| 'secondary'
-		| 'primary-outline'
-		| 'secondary-outline'
-		| 'icon';
+	@Input() variant: 'primary' | 'secondary' | 'primary-outline' | 'secondary-outline' | 'icon';
 
 	@Input() size: 'large' | 'small';
 

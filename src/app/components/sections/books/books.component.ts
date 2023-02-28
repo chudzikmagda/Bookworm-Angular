@@ -1,9 +1,4 @@
-import {
-	ChangeDetectionStrategy,
-	Component,
-	OnDestroy,
-	OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subject, takeUntil, tap } from 'rxjs';
 import { BookData, EDIT_BOOK_PATH, SectionNames } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
@@ -42,9 +37,7 @@ export class BooksComponent implements OnInit, OnDestroy {
 	}
 
 	public onEditBook(bookId: number): void {
-		const editedBook: BookData[] = this.books.filter(
-			(book: BookData) => book.id === bookId
-		);
+		const editedBook: BookData[] = this.books.filter((book: BookData) => book.id === bookId);
 		this.formService.setEditedBook$(editedBook);
 		this.openModal(bookId);
 	}
@@ -65,9 +58,7 @@ export class BooksComponent implements OnInit, OnDestroy {
 	private filterBooks(searchedValue: string): BookData[] {
 		return this.books.filter((book: BookData) => {
 			return (
-				book.author
-					.toLowerCase()
-					.includes(searchedValue.toLowerCase()) ||
+				book.author.toLowerCase().includes(searchedValue.toLowerCase()) ||
 				book.title.toLowerCase().includes(searchedValue.toLowerCase())
 			);
 		});
@@ -88,21 +79,11 @@ export class BooksComponent implements OnInit, OnDestroy {
 	}
 
 	private loadBooksToDisplay(books: BookData[]): void {
-		this.actionsService.setBooksToDisplay(
-			this.setPagination(books, this.booksPerPage, this.currentPage)
-		);
+		this.actionsService.setBooksToDisplay(this.setPagination(books, this.booksPerPage, this.currentPage));
 	}
 
-	private setPagination(
-		books: BookData[],
-		booksPerPage: number,
-		currentPage: number
-	): BookData[] {
-		return [
-			...books
-				.slice((currentPage - 1) * booksPerPage)
-				.slice(0, booksPerPage),
-		];
+	private setPagination(books: BookData[], booksPerPage: number, currentPage: number): BookData[] {
+		return [...books.slice((currentPage - 1) * booksPerPage).slice(0, booksPerPage)];
 	}
 
 	private setTotalPages(books: BookData[]): void {

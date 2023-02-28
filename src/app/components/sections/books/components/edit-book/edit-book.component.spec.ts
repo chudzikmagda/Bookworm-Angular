@@ -147,9 +147,7 @@ describe('EditBookComponent', () => {
 		component.addBookForm.get('title')?.markAsTouched();
 		fixture.detectChanges();
 
-		const errorMsg: DebugElement[] = fixture.debugElement.queryAll(
-			By.css('.error__message')
-		);
+		const errorMsg: DebugElement[] = fixture.debugElement.queryAll(By.css('.error__message'));
 
 		expect(component.addBookForm?.valid).toBeFalse();
 		expect(component.addBookForm.get('author')?.touched).toBeTrue();
@@ -166,9 +164,7 @@ describe('EditBookComponent', () => {
 		expect(errorMsg.length).toBe(3);
 
 		errorMsg.forEach(item => {
-			expect(item.nativeElement.innerHTML).toContain(
-				expectedErrorMsg().required
-			);
+			expect(item.nativeElement.innerHTML).toContain(expectedErrorMsg().required);
 		});
 	});
 
@@ -181,9 +177,7 @@ describe('EditBookComponent', () => {
 		component.addBookForm.get('title')?.markAsTouched();
 		fixture.detectChanges();
 
-		const errorMsg: DebugElement[] = fixture.debugElement.queryAll(
-			By.css('.error__message')
-		);
+		const errorMsg: DebugElement[] = fixture.debugElement.queryAll(By.css('.error__message'));
 
 		expect(component.addBookForm?.valid).toBeFalse();
 		expect(component.addBookForm.get('author')?.touched).toBeTrue();
@@ -195,9 +189,7 @@ describe('EditBookComponent', () => {
 		expect(errorMsg.length).toBe(3);
 
 		errorMsg.forEach(item => {
-			expect(item.nativeElement.innerHTML).toContain(
-				expectedErrorMsg().minLength
-			);
+			expect(item.nativeElement.innerHTML).toContain(expectedErrorMsg().minLength);
 		});
 	});
 });

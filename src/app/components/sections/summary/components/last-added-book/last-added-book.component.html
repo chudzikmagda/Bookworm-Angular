@@ -5,14 +5,9 @@
 			"{{ lastAddedBook.title }}", <br />
 			{{ lastAddedBook.author }}
 		</span>
-		<span class="last-added-book__item">
-			Added: {{ lastAddedBook.date_add | date: 'mediumDate' }}
-		</span>
+		<span class="last-added-book__item"> Added: {{ lastAddedBook.date_add | date: 'mediumDate' }} </span>
 	</div>
 	<picture class="last-added-book__cover">
-		<img
-			[src]="lastAddedBook.cover"
-			alt="Last added book cover"
-			class="last-added-book__image" />
+		<img [src]="lastAddedBook.cover" alt="Last added book cover" class="last-added-book__image" />
 	</picture>
 </div>

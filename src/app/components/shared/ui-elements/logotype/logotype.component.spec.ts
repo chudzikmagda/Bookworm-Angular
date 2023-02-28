@@ -25,18 +25,14 @@ describe('LogotypeComponent', () => {
 		component.version = 'small';
 		fixture.detectChanges();
 
-		const logotype: DebugElement = fixture.debugElement.query(
-			By.css('.logotype')
-		);
+		const logotype: DebugElement = fixture.debugElement.query(By.css('.logotype'));
 
 		expect(logotype.classes['logotype']).toBeTrue();
 		expect(logotype.classes['logotype__small']).toBeTrue();
 	});
 
 	it('should create default version of LogotypeComponent', () => {
-		const logotype: DebugElement = fixture.debugElement.query(
-			By.css('.logotype')
-		);
+		const logotype: DebugElement = fixture.debugElement.query(By.css('.logotype'));
 
 		expect(logotype.classes['logotype']).toBeTrue();
 		expect(logotype.classes['logotype__small']).not.toBeTrue();

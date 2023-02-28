@@ -15,13 +15,9 @@ describe('MotivateQuoteComponent', () => {
 	let fakeQuote$ = new BehaviorSubject<Quote>({} as Quote);
 
 	beforeEach(() => {
-		fakeActionsService = jasmine.createSpyObj('ActionsService', [
-			'getSectionQuoteFormApi',
-		]);
+		fakeActionsService = jasmine.createSpyObj('ActionsService', ['getSectionQuoteFormApi']);
 
-		fakeStateService = jasmine.createSpyObj('StateService', [
-			'getSectionQuote',
-		]);
+		fakeStateService = jasmine.createSpyObj('StateService', ['getSectionQuote']);
 
 		fakeQuote$.next(fakeQuoteMock());
 
@@ -65,9 +61,7 @@ describe('MotivateQuoteComponent', () => {
 			expect(data).toEqual(fakeQuoteMock());
 			done();
 		});
-		expect(fakeActionsService.getSectionQuoteFormApi).toHaveBeenCalledTimes(
-			1
-		);
+		expect(fakeActionsService.getSectionQuoteFormApi).toHaveBeenCalledTimes(1);
 		expect(fakeStateService.getSectionQuote).toHaveBeenCalled();
 	});
 

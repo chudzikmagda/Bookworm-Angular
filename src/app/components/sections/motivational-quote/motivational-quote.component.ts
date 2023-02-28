@@ -14,10 +14,7 @@ export class MotivateQuoteComponent implements OnInit {
 
 	quote$: Observable<Quote>;
 
-	constructor(
-		private actionService: ActionsService,
-		private stateService: StateService
-	) {}
+	constructor(private actionService: ActionsService, private stateService: StateService) {}
 
 	ngOnInit(): void {
 		this.loadQuote();

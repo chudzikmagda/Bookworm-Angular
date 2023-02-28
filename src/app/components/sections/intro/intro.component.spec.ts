@@ -9,9 +9,7 @@ describe('IntroComponent', () => {
 	let fakeActionsService: ActionsService;
 
 	beforeEach(() => {
-		fakeActionsService = jasmine.createSpyObj('ActionsService', [
-			'scrollToTheId',
-		]);
+		fakeActionsService = jasmine.createSpyObj('ActionsService', ['scrollToTheId']);
 
 		TestBed.configureTestingModule({
 			declarations: [IntroComponent],
@@ -33,9 +31,7 @@ describe('IntroComponent', () => {
 	});
 
 	it('should set section name', () => {
-		const section: HTMLElement = fixture.debugElement.query(
-			By.css('.section--intro')
-		).nativeElement;
+		const section: HTMLElement = fixture.debugElement.query(By.css('.section--intro')).nativeElement;
 
 		expect(section.id).toEqual(component.sectionName.Intro);
 	});

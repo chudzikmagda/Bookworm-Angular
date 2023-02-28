@@ -14,9 +14,7 @@ describe('DialogComponent', () => {
 	let dialog: HTMLElement;
 
 	beforeEach(() => {
-		fakeActionsService = jasmine.createSpyObj('ActionsService', [
-			'closeDialog',
-		]);
+		fakeActionsService = jasmine.createSpyObj('ActionsService', ['closeDialog']);
 
 		TestBed.configureTestingModule({
 			declarations: [DialogComponent, ButtonComponent],
@@ -58,9 +56,7 @@ describe('DialogComponent', () => {
 	});
 
 	it('should be DialogComponent not visible', () => {
-		const dialogWrapper: DebugElement = fixture.debugElement.query(
-			By.css('dialog-wrapper')
-		);
+		const dialogWrapper: DebugElement = fixture.debugElement.query(By.css('dialog-wrapper'));
 		component.visible = false;
 		fixture.detectChanges();
 
@@ -68,12 +64,8 @@ describe('DialogComponent', () => {
 	});
 
 	it('should close DialogComponent on button click', () => {
-		const dialogWrapper: DebugElement = fixture.debugElement.query(
-			By.css('dialog-wrapper')
-		);
-		const button: HTMLElement = fixture.debugElement.query(
-			By.directive(ButtonComponent)
-		).nativeElement;
+		const dialogWrapper: DebugElement = fixture.debugElement.query(By.css('dialog-wrapper'));
+		const button: HTMLElement = fixture.debugElement.query(By.directive(ButtonComponent)).nativeElement;
 
 		button.click();
 

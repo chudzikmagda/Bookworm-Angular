@@ -26,17 +26,15 @@ describe('QuoteComponent', () => {
 	});
 
 	it('should display a quote content', () => {
-		const quoteContent: string = fixture.debugElement.query(
-			By.css('.quote__paragraph')
-		).nativeElement.innerText;
+		const quoteContent: string = fixture.debugElement.query(By.css('.quote__paragraph')).nativeElement
+			.innerText;
 
 		expect(quoteContent).toBe(fakeQuote().content);
 	});
 
 	it('should display an author of quote', () => {
-		const quoteAuthor: string = fixture.debugElement.query(
-			By.css('.quote__source')
-		).nativeElement.innerText;
+		const quoteAuthor: string = fixture.debugElement.query(By.css('.quote__source')).nativeElement
+			.innerText;
 
 		expect(quoteAuthor).toBe('— ' + fakeQuote().author + ' —');
 	});

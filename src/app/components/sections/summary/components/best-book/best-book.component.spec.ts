@@ -16,9 +16,7 @@ describe('BestBookComponent', () => {
 	beforeEach(() => {
 		fakeApiService = jasmine.createSpyObj('ApiService', ['getBookData']);
 
-		fakeActionsService = jasmine.createSpyObj('ActionsService', [
-			'bestBook',
-		]);
+		fakeActionsService = jasmine.createSpyObj('ActionsService', ['bestBook']);
 
 		fakeApiService.getBookData.and.returnValue(of(bookList()));
 		fakeActionsService.bestBook.and.returnValue(bestBook());

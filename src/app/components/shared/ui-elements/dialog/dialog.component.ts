@@ -1,12 +1,4 @@
-import {
-	Component,
-	EventEmitter,
-	Input,
-	OnDestroy,
-	OnInit,
-	Output,
-	Renderer2,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2 } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { DialogService } from './services/dialog.service';
 
@@ -20,37 +12,23 @@ import { DialogService } from './services/dialog.service';
 				style({ opacity: 0 }),
 				animate('200ms ease-in-out', style({ opacity: 1 })),
 			]),
-			transition(':leave', [
-				animate('200ms ease-in-out', style({ opacity: 0 })),
-			]),
+			transition(':leave', [animate('200ms ease-in-out', style({ opacity: 0 }))]),
 		]),
 		trigger('slideInOut', [
 			transition(':enter', [
 				style({ transform: 'translateY(100%)' }),
-				animate(
-					'500ms ease-in-out',
-					style({ transform: 'translateY(0%)' })
-				),
+				animate('500ms ease-in-out', style({ transform: 'translateY(0%)' })),
 			]),
-			transition(':leave', [
-				animate(
-					'200ms ease-in-out',
-					style({ transform: 'translateY(100%)' })
-				),
-			]),
+			transition(':leave', [animate('200ms ease-in-out', style({ transform: 'translateY(100%)' }))]),
 		]),
 	],
 })
 export class DialogComponent implements OnInit, OnDestroy {
 	@Input() variant: 'center' | 'bottom' = 'bottom';
 	@Input() visible = true;
-	@Output() visibleChange: EventEmitter<boolean> =
-		new EventEmitter<boolean>();
+	@Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-	constructor(
-		private dialogService: DialogService,
-		private renderer: Renderer2
-	) {}
+	constructor(private dialogService: DialogService, private renderer: Renderer2) {}
 
 	ngOnInit(): void {
 		this.renderer.addClass(document.body, 'dialog-open');

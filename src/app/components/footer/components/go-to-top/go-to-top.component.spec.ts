@@ -9,15 +9,11 @@ describe('GoToTopComponent', () => {
 	let fakeActionService: jasmine.SpyObj<ActionsService>;
 
 	beforeEach(() => {
-		fakeActionService = jasmine.createSpyObj('ActionsService', [
-			'scrollToTheId',
-		]);
+		fakeActionService = jasmine.createSpyObj('ActionsService', ['scrollToTheId']);
 
 		TestBed.configureTestingModule({
 			declarations: [GoToTopComponent, ButtonComponent],
-			providers: [
-				{ provide: ActionsService, useValue: fakeActionService },
-			],
+			providers: [{ provide: ActionsService, useValue: fakeActionService }],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(GoToTopComponent);

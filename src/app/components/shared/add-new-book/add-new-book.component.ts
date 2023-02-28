@@ -1,11 +1,4 @@
-import {
-	Component,
-	OnInit,
-	OnDestroy,
-	Input,
-	Output,
-	EventEmitter,
-} from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Subject, Subscription, takeUntil } from 'rxjs';
 import { Errors, BookData } from 'src/app/models/models';
@@ -20,8 +13,7 @@ import { AddNewForm } from './models/models';
 })
 export class AddNewBookComponent implements OnInit, OnDestroy {
 	@Input() visible = true;
-	@Output() visibleChange: EventEmitter<boolean> =
-		new EventEmitter<boolean>();
+	@Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 	addBookForm: FormGroup<AddNewForm>;
 	errors: Errors = {
@@ -101,9 +93,7 @@ export class AddNewBookComponent implements OnInit, OnDestroy {
 		return this.actionsService
 			.getLastBookId()
 			.pipe(takeUntil(this.destroy$))
-			.subscribe(
-				(lastBookId: number) => (this.newBookId = lastBookId + 1)
-			);
+			.subscribe((lastBookId: number) => (this.newBookId = lastBookId + 1));
 	}
 
 	ngOnDestroy() {

@@ -1,18 +1,10 @@
 <c-dialog class="edit-book">
-	<form
-		[formGroup]="editBookForm"
-		class="edit-book__form"
-		(ngSubmit)="onFormSave()">
+	<form [formGroup]="editBookForm" class="edit-book__form" (ngSubmit)="onFormSave()">
 		<h3 class="edit-book__heading">Edit book</h3>
 		<div class="edit-book__form-item">
-			<c-input
-				label="Title*"
-				placeholder="Add a author of a new book"
-				formControlName="title">
+			<c-input label="Title*" placeholder="Add a author of a new book" formControlName="title">
 			</c-input>
-			<div
-				*ngIf="title?.invalid && (title?.dirty || title?.touched)"
-				class="error">
+			<div *ngIf="title?.invalid && (title?.dirty || title?.touched)" class="error">
 				<p *ngIf="title?.errors?.['required']" class="error__message">
 					{{ errors.required }}
 				</p>
@@ -22,14 +14,9 @@
 			</div>
 		</div>
 		<div class="edit-book__form-item">
-			<c-input
-				label="Author*"
-				placeholder="Add a title of a new book"
-				formControlName="author">
+			<c-input label="Author*" placeholder="Add a title of a new book" formControlName="author">
 			</c-input>
-			<div
-				*ngIf="author?.invalid && (author?.dirty || author?.touched)"
-				class="error">
+			<div *ngIf="author?.invalid && (author?.dirty || author?.touched)" class="error">
 				<p *ngIf="author?.errors?.['required']" class="error__message">
 					{{ errors.required }}
 				</p>
@@ -51,53 +38,31 @@
 			formControlName="cover">
 		</c-input>
 		<div class="edit-book__form-item">
-			<c-input
-				label="Language*"
-				placeholder="Add a language of a new book"
-				formControlName="language">
+			<c-input label="Language*" placeholder="Add a language of a new book" formControlName="language">
 			</c-input>
-			<div
-				*ngIf="
-					language?.invalid && (language?.dirty || language?.touched)
-				"
-				class="error">
-				<p
-					*ngIf="language?.errors?.['required']"
-					class="error__message">
+			<div *ngIf="language?.invalid && (language?.dirty || language?.touched)" class="error">
+				<p *ngIf="language?.errors?.['required']" class="error__message">
 					{{ errors.required }}
 				</p>
-				<p
-					*ngIf="language?.errors?.['minlength']"
-					class="error__message">
+				<p *ngIf="language?.errors?.['minlength']" class="error__message">
 					{{ errors.minLength }}
 				</p>
 			</div>
 		</div>
 		<div class="edit-book__form-item">
-			<c-input
-				label="Rating*"
-				placeholder="Add a title of a new book"
-				formControlName="rating">
+			<c-input label="Rating*" placeholder="Add a title of a new book" formControlName="rating">
 			</c-input>
-			<div
-				*ngIf="rating?.invalid && (rating?.dirty || rating?.touched)"
-				class="error">
+			<div *ngIf="rating?.invalid && (rating?.dirty || rating?.touched)" class="error">
 				<p *ngIf="rating?.errors?.['required']" class="error__message">
 					{{ errors.required }}
 				</p>
 			</div>
 		</div>
 		<div class="edit-book__btn">
-			<c-button
-				type="reset"
-				variant="primary-outline"
-				class="header__btn"
-				(click)="resetForm()">
+			<c-button type="reset" variant="primary-outline" class="header__btn" (click)="resetForm()">
 				Clear the form
 			</c-button>
-			<c-button type="submit" variant="secondary" class="header__btn">
-				Save
-			</c-button>
+			<c-button type="submit" variant="secondary" class="header__btn"> Save </c-button>
 		</div>
 	</form>
 </c-dialog>

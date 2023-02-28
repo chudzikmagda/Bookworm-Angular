@@ -12,10 +12,7 @@ export class IntroComponent {
 	sectionName: typeof SectionNames = SectionNames;
 	private addNewBookPath = ADD_NEW_BOOK_PATH;
 
-	constructor(
-		private actionService: ActionsService,
-		private dialogService: DialogService
-	) {}
+	constructor(private actionService: ActionsService, private dialogService: DialogService) {}
 
 	goToSummary(): void {
 		this.actionService.scrollToTheId(SectionNames.Summary);

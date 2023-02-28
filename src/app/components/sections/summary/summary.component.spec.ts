@@ -20,14 +20,9 @@ describe('SummaryComponent', () => {
 	let fakeQuote$ = new BehaviorSubject<Quote>({} as Quote);
 
 	beforeEach(() => {
-		fakeActionsService = jasmine.createSpyObj('ActionsService', [
-			'getSummaryQuoteFormApi',
-			'getBooks',
-		]);
+		fakeActionsService = jasmine.createSpyObj('ActionsService', ['getSummaryQuoteFormApi', 'getBooks']);
 
-		fakeStateService = jasmine.createSpyObj('StateService', [
-			'getSummaryQuote',
-		]);
+		fakeStateService = jasmine.createSpyObj('StateService', ['getSummaryQuote']);
 
 		fakeQuote$.next(fakeQuoteMock());
 
@@ -35,12 +30,7 @@ describe('SummaryComponent', () => {
 			imports: [RouterTestingModule],
 			declarations: [
 				SummaryComponent,
-				MockComponents(
-					StatsComponent,
-					BestBookComponent,
-					QuoteComponent,
-					LastAddedBookComponent
-				),
+				MockComponents(StatsComponent, BestBookComponent, QuoteComponent, LastAddedBookComponent),
 			],
 			providers: [
 				{
@@ -66,9 +56,7 @@ describe('SummaryComponent', () => {
 	});
 
 	it('should set section name', () => {
-		const section: HTMLElement = fixture.debugElement.query(
-			By.css('.section--summary')
-		).nativeElement;
+		const section: HTMLElement = fixture.debugElement.query(By.css('.section--summary')).nativeElement;
 
 		expect(section.id).toEqual(component.sectionName.Summary);
 	});

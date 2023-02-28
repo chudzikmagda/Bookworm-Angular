@@ -1,11 +1,4 @@
-import {
-	Component,
-	EventEmitter,
-	Input,
-	OnChanges,
-	Output,
-	SimpleChanges,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 
 @Component({
 	selector: 'c-pagination',
@@ -22,10 +15,7 @@ export class PaginationComponent implements OnChanges {
 
 	ngOnChanges(changes: SimpleChanges): void {
 		const { currentPage, totalPages } = changes;
-		if (
-			(currentPage && currentPage.currentValue) ||
-			(totalPages && totalPages.currentValue)
-		) {
+		if ((currentPage && currentPage.currentValue) || (totalPages && totalPages.currentValue)) {
 			this.pages = this.getPages(this.currentPage, this.totalPages);
 		}
 	}
@@ -49,15 +39,7 @@ export class PaginationComponent implements OnChanges {
 
 		if (current > 5) {
 			if (current >= total - 4) {
-				return [
-					1,
-					-1,
-					total - 4,
-					total - 3,
-					total - 2,
-					total - 1,
-					total,
-				];
+				return [1, -1, total - 4, total - 3, total - 2, total - 1, total];
 			} else {
 				return [1, -1, current - 1, current, current + 1, -1, total];
 			}

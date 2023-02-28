@@ -34,9 +34,7 @@ describe('InputComponent', () => {
 		component.label = label;
 		fixture.detectChanges();
 
-		const textareaLabel = fixture.debugElement.query(
-			By.css('.input-label')
-		);
+		const textareaLabel = fixture.debugElement.query(By.css('.input-label'));
 
 		expect(textareaLabel.nativeElement.innerText).toEqual(label);
 	});
@@ -46,9 +44,7 @@ describe('InputComponent', () => {
 		component.placeholder = placeholder;
 		fixture.detectChanges();
 
-		const input: DebugElement = fixture.debugElement.query(
-			By.css('.input')
-		);
+		const input: DebugElement = fixture.debugElement.query(By.css('.input'));
 
 		expect(input.nativeElement.placeholder).toEqual(placeholder);
 	});
@@ -57,9 +53,7 @@ describe('InputComponent', () => {
 		component.required = true;
 		fixture.detectChanges();
 
-		const input: DebugElement = fixture.debugElement.query(
-			By.css('.input')
-		);
+		const input: DebugElement = fixture.debugElement.query(By.css('.input'));
 
 		expect(input.nativeElement.required).toBeTrue();
 	});
@@ -68,9 +62,7 @@ describe('InputComponent', () => {
 		component.setDisabledState(true);
 		fixture.detectChanges();
 
-		const input: DebugElement = fixture.debugElement.query(
-			By.css('.input')
-		);
+		const input: DebugElement = fixture.debugElement.query(By.css('.input'));
 
 		expect(input.nativeElement.disabled).toBeTrue();
 	});

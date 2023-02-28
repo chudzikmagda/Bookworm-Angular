@@ -34,9 +34,7 @@ describe('TextareaComponent', () => {
 		component.label = label;
 		fixture.detectChanges();
 
-		const textareaLabel = fixture.debugElement.query(
-			By.css('.textarea-label')
-		);
+		const textareaLabel = fixture.debugElement.query(By.css('.textarea-label'));
 
 		expect(textareaLabel.nativeElement.innerText).toEqual(label);
 	});
@@ -46,9 +44,7 @@ describe('TextareaComponent', () => {
 		component.placeholder = placeholder;
 		fixture.detectChanges();
 
-		const textarea: DebugElement = fixture.debugElement.query(
-			By.css('.textarea')
-		);
+		const textarea: DebugElement = fixture.debugElement.query(By.css('.textarea'));
 
 		expect(textarea.nativeElement.placeholder).toEqual(placeholder);
 	});
@@ -57,9 +53,7 @@ describe('TextareaComponent', () => {
 		component.required = true;
 		fixture.detectChanges();
 
-		const textarea: DebugElement = fixture.debugElement.query(
-			By.css('.textarea')
-		);
+		const textarea: DebugElement = fixture.debugElement.query(By.css('.textarea'));
 
 		expect(textarea.nativeElement.required).toBeTrue();
 	});
@@ -68,9 +62,7 @@ describe('TextareaComponent', () => {
 		component.setDisabledState(true);
 		fixture.detectChanges();
 
-		const textarea: DebugElement = fixture.debugElement.query(
-			By.css('.textarea')
-		);
+		const textarea: DebugElement = fixture.debugElement.query(By.css('.textarea'));
 
 		expect(textarea.nativeElement.disabled).toBeTrue();
 	});

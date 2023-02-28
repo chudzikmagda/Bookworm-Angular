@@ -48,26 +48,18 @@ export class ActionsService {
 	}
 
 	public deleteBook(id: number, books: BookData[]): void {
-		return this.stateService.setBooks(
-			books.filter((book: BookData) => book.id !== id)
-		);
+		return this.stateService.setBooks(books.filter((book: BookData) => book.id !== id));
 	}
 
 	public updateBook(bookToUpdate: BookData) {
 		const updatedBooks = this.stateService
 			.getBooksStateSnapshot()
-			.map((book: BookData) =>
-				book.id === bookToUpdate.id
-					? { ...book, ...bookToUpdate }
-					: book
-			);
+			.map((book: BookData) => (book.id === bookToUpdate.id ? { ...book, ...bookToUpdate } : book));
 		this.stateService.setBooks([...updatedBooks]);
 	}
 
 	public getLastBookId(): Observable<number> {
-		return this.stateService
-			.getBooks()
-			.pipe(map((books: BookData[]) => books.length));
+		return this.stateService.getBooks().pipe(map((books: BookData[]) => books.length));
 	}
 
 	public getSummaryQuoteFormApi(tags: string): Subscription {

@@ -1,10 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {
-	FormGroup,
-	FormControl,
-	NonNullableFormBuilder,
-	Validators,
-} from '@angular/forms';
+import { FormGroup, FormControl, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { BookData } from 'src/app/models/models';
 
 @Component({

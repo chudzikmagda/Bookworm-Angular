@@ -13,12 +13,7 @@ describe('FooterComponent', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			declarations: [
-				FooterComponent,
-				LogotypeComponent,
-				GoToTopComponent,
-				ButtonComponent,
-			],
+			declarations: [FooterComponent, LogotypeComponent, GoToTopComponent, ButtonComponent],
 			providers: [
 				{
 					provide: ActionsService,

@@ -53,17 +53,13 @@ describe('TableCellComponent', () => {
 
 		component.setClassBasedOnVariant();
 
-		expect(tableCell.nativeElement).toHaveClass(
-			'table-cell--valign-center'
-		);
+		expect(tableCell.nativeElement).toHaveClass('table-cell--valign-center');
 	});
 
 	it('should create editable table cell', () => {
 		component.editable = true;
 		fixture.detectChanges();
 
-		expect(
-			!!tableCell.nativeElement.getAttribute('contenteditable')
-		).toBeTrue();
+		expect(!!tableCell.nativeElement.getAttribute('contenteditable')).toBeTrue();
 	});
 });

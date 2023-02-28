@@ -64,11 +64,7 @@
 		width: 100%;
 
 		&--info {
-			@include flex(
-				$direction: column,
-				$justifyContent: flex-start,
-				$alignItems: flex-start
-			);
+			@include flex($direction: column, $justifyContent: flex-start, $alignItems: flex-start);
 
 			@include from-desktop {
 				display: grid;
