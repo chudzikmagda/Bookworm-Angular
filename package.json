@@ -8,8 +8,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test-cc": "ng test --code-coverage",
-    "lint": "npx eslint \"src/**/*.{js,jsx,ts,tsx,html}\" --quiet --fix",
-    "format": "npx prettier \"src/**/*.{js,jsx,ts,tsx,html,css,scss}\" --write"
+    "lint": "npx eslint \"src/**/*.{js,jsx,ts,tsx,html}\"",
+    "lint:fix": "npx eslint \"src/**/*.{js,jsx,ts,tsx,html}\" --quiet --fix",
+    "format": "npx prettier \"src/**/*.{js,jsx,ts,tsx,html,css,scss}\"",
+    "format:fix": "npx prettier \"src/**/*.{js,jsx,ts,tsx,html,css,scss}\" --write"
   },
   "private": true,
   "dependencies": {
@@ -29,9 +31,9 @@
     "@angular-devkit/build-angular": "^15.2.4",
     "@angular-eslint/builder": "15.2.0",
     "@angular-eslint/eslint-plugin": "15.2.0",
-    "@angular-eslint/eslint-plugin-template": "15.2.0",
+    "@angular-eslint/eslint-plugin-template": "^15.2.0",
     "@angular-eslint/schematics": "15.2.0",
-    "@angular-eslint/template-parser": "15.2.0",
+    "@angular-eslint/template-parser": "^15.2.0",
     "@angular/cli": "^15.2.4",
     "@angular/compiler-cli": "^15.2.3",
     "@ngneat/spectator": "^14.0.0",
