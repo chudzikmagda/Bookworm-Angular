@@ -7,15 +7,15 @@ import { BookData, Quote } from 'src/app/models/models';
 	providedIn: 'root',
 })
 export class ApiService {
-	private apiUrl = 'https://api.quotable.io/random?tags=';
+	private apiUrl: string = 'https://api.quotable.io/random?tags=';
 
 	constructor(private http: HttpClient) {}
 
-	getBookData(): Observable<BookData[]> {
+	public getBookData(): Observable<BookData[]> {
 		return this.http.get<BookData[]>('../../assets/store/books-data.json');
 	}
 
-	getQuotes(tags: string) {
+	public getQuotes(tags: string): Observable<Quote> {
 		return this.http.get<Quote>(`${this.apiUrl}${tags}`);
 	}
 }

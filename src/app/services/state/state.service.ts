@@ -6,44 +6,44 @@ import { BookData, Quote } from 'src/app/models/models';
 	providedIn: 'root',
 })
 export class StateService {
-	private books$ = new BehaviorSubject<BookData[]>([]);
-	private booksToDisplay$ = new Subject<BookData[]>();
-	private quoteSummary$ = new Subject<Quote>();
-	private quoteSection$ = new Subject<Quote>();
+	private books$: BehaviorSubject<BookData[]> = new BehaviorSubject<BookData[]>([]);
+	private booksToDisplay$: Subject<BookData[]> = new Subject<BookData[]>();
+	private quoteSummary$: Subject<Quote> = new Subject<Quote>();
+	private quoteSection$: Subject<Quote> = new Subject<Quote>();
 
-	getBooks(): Observable<BookData[]> {
+	public getBooks(): Observable<BookData[]> {
 		return this.books$.asObservable();
 	}
 
-	getBooksStateSnapshot(): BookData[] {
+	public getBooksStateSnapshot(): BookData[] {
 		return this.books$.getValue();
 	}
 
-	setBooks(books: BookData[]): void {
+	public setBooks(books: BookData[]): void {
 		return this.books$.next([...books]);
 	}
 
-	getBooksToDisplay(): Observable<BookData[]> {
+	public getBooksToDisplay(): Observable<BookData[]> {
 		return this.booksToDisplay$.asObservable();
 	}
 
-	setBooksToDisplay(books: BookData[]): void {
+	public setBooksToDisplay(books: BookData[]): void {
 		return this.booksToDisplay$.next(books);
 	}
 
-	getSummaryQuote(): Observable<Quote> {
+	public getSummaryQuote(): Observable<Quote> {
 		return this.quoteSummary$.asObservable();
 	}
 
-	setSummaryQuote(quote: Quote): void {
+	public setSummaryQuote(quote: Quote): void {
 		return this.quoteSummary$.next(quote);
 	}
 
-	getSectionQuote(): Observable<Quote> {
+	public getSectionQuote(): Observable<Quote> {
 		return this.quoteSection$.asObservable();
 	}
 
-	setSectionQuote(quote: Quote): void {
+	public setSectionQuote(quote: Quote): void {
 		return this.quoteSection$.next(quote);
 	}
 }

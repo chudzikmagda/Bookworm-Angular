@@ -11,15 +11,15 @@ export class SearchBarComponent implements OnInit {
 	@Input() books: BookData[] = [];
 	@Output() filteredBook: EventEmitter<string> = new EventEmitter();
 
-	searchForm: FormGroup<{ input: FormControl<string> }>;
+	public searchForm: FormGroup<{ input: FormControl<string> }>;
 
 	constructor(private fb: NonNullableFormBuilder) {}
 
-	ngOnInit(): void {
+	public ngOnInit(): void {
 		this.searchForm = this.createForm();
 	}
 
-	onSearchBtnClick(): void {
+	public onSearchBtnClick(): void {
 		const searchValue = this.searchForm.get('input')?.getRawValue();
 		this.filteredBook.emit(searchValue);
 	}

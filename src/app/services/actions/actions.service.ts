@@ -51,7 +51,7 @@ export class ActionsService {
 		return this.stateService.setBooks(books.filter((book: BookData) => book.id !== id));
 	}
 
-	public updateBook(bookToUpdate: BookData) {
+	public updateBook(bookToUpdate: BookData): void {
 		const updatedBooks = this.stateService
 			.getBooksStateSnapshot()
 			.map((book: BookData) => (book.id === bookToUpdate.id ? { ...book, ...bookToUpdate } : book));

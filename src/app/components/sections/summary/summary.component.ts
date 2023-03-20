@@ -11,18 +11,18 @@ import { BookStats } from './models/models';
 	styleUrls: ['./summary.component.scss'],
 })
 export class SummaryComponent implements OnInit, OnDestroy {
-	QUOTE_TAG: string = 'famous-quotes';
-	sectionName: typeof SectionNames = SectionNames;
-	quote$: Observable<Quote | null>;
-	bestBook: BookData;
-	stats: BookStats;
-	lastAddedBook: BookData;
+	public QUOTE_TAG: string = 'famous-quotes';
+	public sectionName: typeof SectionNames = SectionNames;
+	public quote$: Observable<Quote | null>;
+	public bestBook: BookData;
+	public stats: BookStats;
+	public lastAddedBook: BookData;
 
 	private onDestroy$: Subject<void> = new Subject<void>();
 
 	constructor(private actionsService: ActionsService, private stateService: StateService) {}
 
-	ngOnInit(): void {
+	public ngOnInit(): void {
 		this.loadData();
 	}
 

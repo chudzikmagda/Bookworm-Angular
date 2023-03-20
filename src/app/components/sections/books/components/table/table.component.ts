@@ -12,11 +12,11 @@ export class TableComponent {
 	@Output() deleteBook: EventEmitter<HTMLElement> = new EventEmitter();
 	@Output() editBook: EventEmitter<number> = new EventEmitter();
 
-	onDeleteBook(tableRow: HTMLElement): void {
+	public onDeleteBook(tableRow: HTMLElement): void {
 		this.deleteBook.emit(tableRow);
 	}
 
-	onEditBook(tableRow: HTMLElement): void {
+	public onEditBook(tableRow: HTMLElement): void {
 		this.editBook.emit(+tableRow.id);
 	}
 }

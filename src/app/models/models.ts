@@ -1,5 +1,5 @@
-export const ADD_NEW_BOOK_PATH = 'add-new-book';
-export const EDIT_BOOK_PATH = 'edit-book';
+export const ADD_NEW_BOOK_PATH: string = 'add-new-book';
+export const EDIT_BOOK_PATH: string = 'edit-book';
 
 export interface BookData {
 	id: number;

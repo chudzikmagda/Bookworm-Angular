@@ -9,16 +9,16 @@ import { DialogService } from '../../shared/ui-elements/dialog/services/dialog.s
 	styleUrls: ['./intro.component.scss'],
 })
 export class IntroComponent {
-	sectionName: typeof SectionNames = SectionNames;
-	private addNewBookPath = ADD_NEW_BOOK_PATH;
+	public sectionName: typeof SectionNames = SectionNames;
+	private addNewBookPath: string = ADD_NEW_BOOK_PATH;
 
 	constructor(private actionService: ActionsService, private dialogService: DialogService) {}
 
-	goToSummary(): void {
+	public goToSummary(): void {
 		this.actionService.scrollToTheId(SectionNames.Summary);
 	}
 
-	openDialog() {
+	public openDialog(): void {
 		this.dialogService.openDialog(this.addNewBookPath);
 	}
 }

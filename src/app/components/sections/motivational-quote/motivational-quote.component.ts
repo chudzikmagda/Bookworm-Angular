@@ -10,13 +10,13 @@ import { StateService } from 'src/app/services/state/state.service';
 	styleUrls: ['./motivational-quote.component.scss'],
 })
 export class MotivateQuoteComponent implements OnInit {
-	sectionName: typeof SectionNames = SectionNames;
+	public sectionName: typeof SectionNames = SectionNames;
 
-	quote$: Observable<Quote>;
+	public quote$: Observable<Quote>;
 
 	constructor(private actionService: ActionsService, private stateService: StateService) {}
 
-	ngOnInit(): void {
+	public ngOnInit(): void {
 		this.loadQuote();
 	}
 

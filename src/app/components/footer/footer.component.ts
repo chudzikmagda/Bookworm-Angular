@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
 	styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {
-	logotypeVersion: 'small' | undefined = 'small';
+	public logotypeVersion: 'small' | undefined = 'small';
 }

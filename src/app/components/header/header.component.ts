@@ -8,11 +8,11 @@ import { DialogService } from '../shared/ui-elements/dialog/services/dialog.serv
 	styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-	private addNewBookPath = ADD_NEW_BOOK_PATH;
+	private addNewBookPath: string = ADD_NEW_BOOK_PATH;
 
 	constructor(private dialogService: DialogService) {}
 
-	openDialog() {
+	public openDialog(): void {
 		this.dialogService.openDialog(this.addNewBookPath);
 	}
 }

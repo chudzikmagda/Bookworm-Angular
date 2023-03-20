@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
-import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Subject, Subscription, takeUntil } from 'rxjs';
 import { Errors, BookData } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
@@ -12,11 +12,11 @@ import { AddNewForm } from './models/models';
 	styleUrls: ['./add-new-book.component.scss'],
 })
 export class AddNewBookComponent implements OnInit, OnDestroy {
-	@Input() visible = true;
+	@Input() visible: boolean = true;
 	@Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-	addBookForm: FormGroup<AddNewForm>;
-	errors: Errors = {
+	public addBookForm: FormGroup<AddNewForm>;
+	public errors: Errors = {
 		required: 'This field is required.',
 		minLength: 'Value is too short. A minimum length is 2.',
 	};
@@ -30,12 +30,12 @@ export class AddNewBookComponent implements OnInit, OnDestroy {
 		private dialogService: DialogService
 	) {}
 
-	ngOnInit(): void {
+	public ngOnInit(): void {
 		this.loadForm();
 		this.setCurrentDateAndTime();
 	}
 
-	addNewBook(): void {
+	public addNewBook(): void {
 		this.setIdForNewBook();
 		if (this.addBookForm.valid) {
 			(this.newBook = {
@@ -48,23 +48,23 @@ export class AddNewBookComponent implements OnInit, OnDestroy {
 		}
 	}
 
-	get author() {
+	public get author(): AbstractControl<string, string> | null {
 		return this.addBookForm.get('author');
 	}
 
-	get language() {
+	public get language(): AbstractControl<string, string> | null {
 		return this.addBookForm.get('language');
 	}
 
-	get rating() {
+	public get rating(): AbstractControl<number, number> | null {
 		return this.addBookForm.get('rating');
 	}
 
-	get title() {
+	public get title(): AbstractControl<string, string> | null {
 		return this.addBookForm.get('title');
 	}
 
-	resetForm(): void {
+	public resetForm(): void {
 		this.addBookForm.reset();
 	}
 
@@ -96,7 +96,7 @@ export class AddNewBookComponent implements OnInit, OnDestroy {
 			.subscribe((lastBookId: number) => (this.newBookId = lastBookId + 1));
 	}
 
-	ngOnDestroy() {
+	public ngOnDestroy(): void {
 		this.destroy$.next(true);
 		this.destroy$.unsubscribe();
 	}

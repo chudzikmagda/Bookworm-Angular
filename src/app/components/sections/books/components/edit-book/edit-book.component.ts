@@ -37,19 +37,19 @@ export class EditBookComponent implements OnInit, OnDestroy {
 		this.loadForm();
 	}
 
-	get author(): AbstractControl | null {
+	public get author(): AbstractControl<string, string> | null {
 		return this.editBookForm.get('author');
 	}
 
-	get language(): AbstractControl | null {
+	public get language(): AbstractControl<string, string> | null {
 		return this.editBookForm.get('language');
 	}
 
-	get rating(): AbstractControl | null {
+	public get rating(): AbstractControl<number, number> | null {
 		return this.editBookForm.get('rating');
 	}
 
-	get title(): AbstractControl | null {
+	public get title(): AbstractControl<string, string> | null {
 		return this.editBookForm.get('title');
 	}
 

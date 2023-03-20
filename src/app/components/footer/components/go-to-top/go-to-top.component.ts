@@ -9,7 +9,7 @@ import { ActionsService } from 'src/app/services/actions/actions.service';
 export class GoToTopComponent {
 	constructor(private actionService: ActionsService) {}
 
-	goToTop(): void {
+	public goToTop(): void {
 		this.actionService.scrollToTheId('header');
 	}
 }
