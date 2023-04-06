@@ -28,7 +28,7 @@
 		</div>
 		<c-table-cell>{{ book.description }}</c-table-cell>
 		<c-table-cell [valignCenter]="true">{{ book.rating | number: '1.1' }}</c-table-cell>
-		<c-table-cell [valignCenter]="true">
+		<c-table-cell [valignCenter]="true" [variant]="'icons'">
 			<c-button [variant]="'icon'" (click)="onEditBook(tabelRow)"
 				><i class="fa-regular fa-pen-to-square"></i
 			></c-button>

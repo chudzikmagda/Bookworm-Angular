@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 interface setClassInterface {
 	'table-cell': boolean;
 	'table-cell--cover': boolean;
+	'table-cell--icons': boolean;
 	'table-cell--title': boolean;
 	'table-cell--valign-center': boolean;
 }
@@ -13,19 +14,20 @@ interface setClassInterface {
 	styleUrls: ['./table-cell.component.scss'],
 })
 export class TableCellComponent implements OnInit {
-	@Input() editable: boolean = false;
-	@Input() variant: 'cover' | 'title' | undefined;
-	@Input() valignCenter: boolean = false;
+	@Input() public editable: boolean = false;
+	@Input() public variant: 'cover' | 'icons' | 'title' | undefined;
+	@Input() public valignCenter: boolean = false;
 
-	setClassBasedOnVariant(): setClassInterface {
+	public setClassBasedOnVariant(): setClassInterface {
 		return {
 			'table-cell': true,
 			'table-cell--cover': this.variant === 'cover',
+			'table-cell--icons': this.variant === 'icons',
 			'table-cell--title': this.variant === 'title',
 			'table-cell--valign-center': this.valignCenter === true,
 		};
 	}
-	ngOnInit() {
+	public ngOnInit(): void {
 		this.setClassBasedOnVariant();
 	}
 }

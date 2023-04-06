@@ -12,12 +12,22 @@
 			padding: 16px;
 		}
 
+		&--cover {
+			width: 100%;
+		}
+
 		&--valign-center {
 			@include flex($justifyContent: flex-start);
 		}
 
-		&--cover {
-			width: 100%;
+		&--icons {
+			justify-content: flex-end;
+			gap: 16px;
+			padding: 0;
+
+			@include from-desktop {
+				gap: 0;
+			}
 		}
 	}
 }
