@@ -1,0 +1,10 @@
+@import '../../../../../../assets/css/global-styles-components.scss';
+
+.error {
+	&__message {
+		font-size: $font-size-small;
+		color: $color-danger;
+		padding-top: 2px;
+		margin-bottom: 0;
+	}
+}

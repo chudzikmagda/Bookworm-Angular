@@ -1,0 +1,37 @@
+<form [formGroup]="bookForm" (ngSubmit)="onBookSubmit()" class="book-form__form">
+	<h3 class="book-form__heading">{{ bookFormTitle }}</h3>
+	<div class="book-form__form-item">
+		<c-input label="Title*" placeholder="Add a author of a new book" formControlName="title"> </c-input>
+		<c-form-error [controlName]="title"></c-form-error>
+	</div>
+	<div class="book-form__form-item">
+		<c-input label="Author*" placeholder="Add a title of a new book" formControlName="author"> </c-input>
+		<c-form-error [controlName]="author"></c-form-error>
+	</div>
+	<c-textarea
+		label="Description"
+		placeholder="Add a short descritpion of a new book"
+		formControlName="description"
+		author
+		class="book-form__description">
+	</c-textarea>
+	<c-input label="Cover" placeholder="Add cover image url" class="book-form__cover" formControlName="cover">
+	</c-input>
+	<div class="book-form__form-item">
+		<c-input label="Language*" placeholder="Add a language of a new book" formControlName="language">
+		</c-input>
+		<c-form-error [controlName]="language"></c-form-error>
+	</div>
+	<div class="book-form__form-item">
+		<c-input label="Rating*" placeholder="Add a title of a new book" formControlName="rating"> </c-input>
+		<c-form-error [controlName]="rating"></c-form-error>
+	</div>
+	<div class="book-form__btn">
+		<c-button type="reset" variant="primary-outline" class="header__btn" (click)="resetForm()">
+			Clear the form
+		</c-button>
+		<c-button type="submit" variant="secondary" class="header__btn" [disabled]="bookForm.invalid">
+			{{ submitButtonCopy }}
+		</c-button>
+	</div>
+</form>

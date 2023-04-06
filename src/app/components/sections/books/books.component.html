@@ -1,4 +1,4 @@
-<section *ngIf="booksToDisplay$ | async as books" class="section section--books" [id]="sectionName.BookList">
+<section *ngIf="booksToDisplay$ | async as books" class="section section--books" [id]="sectionName.BOOK_LIST">
 	<div class="section__search-bar">
 		<c-search-bar [books]="books" (filteredBook)="onSearchBook($event)"></c-search-bar>
 	</div>

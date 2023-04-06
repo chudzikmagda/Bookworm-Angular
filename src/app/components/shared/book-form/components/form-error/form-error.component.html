@@ -1,0 +1,5 @@
+<div *ngIf="controlName?.invalid && (controlName?.dirty || controlName?.touched)" class="error">
+	<p class="error__message">
+		{{ controlName?.errors?.['required'] ? errorMessage.REQUIRED : errorMessage.MIN_LENGTH }}
+	</p>
+</div>

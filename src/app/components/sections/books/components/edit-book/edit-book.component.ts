@@ -1,11 +1,11 @@
 import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
-import { AbstractControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Subject, takeUntil, tap } from 'rxjs';
 import { DialogService } from 'src/app/components/shared/ui-elements/dialog/services/dialog.service';
-import { BookData, Errors } from 'src/app/models/models';
+import { BookData, BookFormData } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
-import { FormService } from '../../services/form.service';
-import { EditBookForm } from './models/models';
+import { BookForm } from 'src/app/components/shared/book-form/models/models';
+import { BookFormService } from 'src/app/components/shared/book-form/services/book-form.service';
 
 @Component({
 	selector: 'c-edit-book',
@@ -16,77 +16,46 @@ export class EditBookComponent implements OnInit, OnDestroy {
 	@Input() public visible: boolean = true;
 	@Output() public visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-	public editedBook: BookData;
-	public editBookForm: FormGroup<EditBookForm>;
-	public errors: Errors = {
-		required: 'This field is required.',
-		minLength: 'Value is too short. A minimum length is 2.',
-	};
+	public editBookForm: FormGroup<BookForm>;
 
-	private onDestroy$: Subject<void> = new Subject<void>();
+	private readonly destroy$: Subject<boolean> = new Subject<boolean>();
+	private editedBook: BookData;
 
 	constructor(
-		private actionsService: ActionsService,
-		private dialogService: DialogService,
-		private formBuilder: NonNullableFormBuilder,
-		private formService: FormService
+		private readonly dialogService: DialogService,
+		private readonly bookFormService: BookFormService,
+		private readonly actionsService: ActionsService,
+		private readonly formService: BookFormService
 	) {}
 
 	public ngOnInit(): void {
-		this.getEditedBook();
-		this.loadForm();
+		this.bookFormInit();
 	}
 
-	public get author(): AbstractControl<string, string> | null {
-		return this.editBookForm.get('author');
-	}
-
-	public get language(): AbstractControl<string, string> | null {
-		return this.editBookForm.get('language');
-	}
-
-	public get rating(): AbstractControl<number, number> | null {
-		return this.editBookForm.get('rating');
-	}
-
-	public get title(): AbstractControl<string, string> | null {
-		return this.editBookForm.get('title');
-	}
-
-	public onFormSave(): void {
+	public editBook(book: BookFormData): void {
 		this.actionsService.updateBook({
 			...this.editedBook,
-			...this.editBookForm.value,
+			...book,
 			date_edit: new Date().toLocaleDateString().toString(),
 		});
 		this.dialogService.closeDialog(this.visible, this.visibleChange);
 	}
 
-	public resetForm(): void {
-		this.editBookForm.reset();
+	private bookFormInit(): void {
+		this.getEditedBook();
+		this.editBookForm = this.bookFormService.setBookForm(this.editedBook);
 	}
 
 	public ngOnDestroy(): void {
-		this.onDestroy$.next();
-		this.onDestroy$.complete();
-	}
-
-	private loadForm(): FormGroup<EditBookForm> {
-		return (this.editBookForm = this.formBuilder.group({
-			author: [this.editedBook.author, [Validators.required, Validators.minLength(2)]],
-			cover: [this.editedBook.cover],
-			description: [this.editedBook.description],
-			language: [this.editedBook.language, [Validators.required, Validators.minLength(2)]],
-			rating: [+this.editedBook.rating, [Validators.required]],
-			title: [this.editedBook.title, [Validators.required, Validators.minLength(2)]],
-		}));
+		this.destroy$.next(true);
+		this.destroy$.unsubscribe();
 	}
 
 	private getEditedBook(): void {
 		this.formService
 			.getEditedBook$()
 			.pipe(
-				takeUntil(this.onDestroy$),
+				takeUntil(this.destroy$),
 				tap((books: BookData[]) => {
 					this.editedBook = books[0];
 				})

@@ -15,7 +15,7 @@ export class IntroComponent {
 	constructor(private actionService: ActionsService, private dialogService: DialogService) {}
 
 	public goToSummary(): void {
-		this.actionService.scrollToTheId(SectionNames.Summary);
+		this.actionService.scrollToTheId(SectionNames.SUMMARY);
 	}
 
 	public openDialog(): void {

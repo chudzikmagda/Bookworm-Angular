@@ -3,7 +3,7 @@ import { Observable, Subject, takeUntil, tap } from 'rxjs';
 import { BookData, EDIT_BOOK_PATH, SectionNames } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { DialogService } from '../../shared/ui-elements/dialog/services/dialog.service';
-import { FormService } from './services/form.service';
+import { BookFormService } from '../../shared/book-form/services/book-form.service';
 
 @Component({
 	selector: 'c-books',
@@ -19,12 +19,12 @@ export class BooksComponent implements OnInit, OnDestroy {
 	public booksPerPage: number = 5;
 	public totalPages: number;
 
-	private onDestroy$: Subject<void> = new Subject<void>();
+	private readonly onDestroy$: Subject<void> = new Subject<void>();
 
 	constructor(
-		private actionsService: ActionsService,
-		private dialogService: DialogService,
-		private formService: FormService
+		private readonly actionsService: ActionsService,
+		private readonly dialogService: DialogService,
+		private readonly formService: BookFormService
 	) {}
 
 	public ngOnInit(): void {

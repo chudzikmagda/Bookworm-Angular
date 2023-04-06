@@ -27,6 +27,8 @@ import { LogotypeComponent } from './components/shared/ui-elements/logotype/logo
 import { PaginationComponent } from './components/shared/ui-elements/pagination/pagination.component';
 import { TableCellComponent } from './components/shared/ui-elements/table-cell/table-cell.component';
 import { TextareaComponent } from './components/shared/ui-elements/textarea/textarea.component';
+import { BookFormComponent } from './components/shared/book-form/book-form.component';
+import { FormErrorComponent } from './components/shared/book-form/components/form-error/form-error.component';
 
 @NgModule({
 	declarations: [
@@ -53,6 +55,8 @@ import { TextareaComponent } from './components/shared/ui-elements/textarea/text
 		PaginationComponent,
 		SearchBarComponent,
 		EditBookComponent,
+		BookFormComponent,
+		FormErrorComponent,
 	],
 	imports: [
 		AppRoutingModule,
