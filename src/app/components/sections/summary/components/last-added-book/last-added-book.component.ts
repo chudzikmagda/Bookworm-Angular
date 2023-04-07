@@ -7,5 +7,5 @@ import { BookData } from 'src/app/models/models';
 	styleUrls: ['./last-added-book.component.scss'],
 })
 export class LastAddedBookComponent {
-	@Input() lastAddedBook: BookData;
+	@Input() public lastAddedBook: BookData;
 }

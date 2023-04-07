@@ -6,7 +6,7 @@ import { ActionsService } from './services/actions/actions.service';
 	templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit {
-	constructor(private actionsService: ActionsService) {}
+	constructor(private readonly actionsService: ActionsService) {}
 
 	public ngOnInit(): void {
 		this.loadSampleData();

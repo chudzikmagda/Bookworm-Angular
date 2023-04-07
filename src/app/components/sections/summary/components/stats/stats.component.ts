@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { BookStats } from '../../models/models';
+import { BookStats } from '../../models/summary.models';
 
 @Component({
 	selector: 'c-stats',
@@ -7,5 +7,5 @@ import { BookStats } from '../../models/models';
 	styleUrls: ['./stats.component.scss'],
 })
 export class StatsComponent {
-	@Input() stats: BookStats;
+	@Input() public stats: BookStats;
 }

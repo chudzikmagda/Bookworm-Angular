@@ -3,7 +3,7 @@ import { Observable, skip, Subject, takeUntil, tap } from 'rxjs';
 import { SectionNames, Quote, BookData } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { StateService } from 'src/app/services/state/state.service';
-import { BookStats } from './models/models';
+import { BookStats } from './models/summary.models';
 
 @Component({
 	selector: 'c-summary',
@@ -18,9 +18,12 @@ export class SummaryComponent implements OnInit, OnDestroy {
 	public stats: BookStats;
 	public lastAddedBook: BookData;
 
-	private onDestroy$: Subject<void> = new Subject<void>();
+	private readonly onDestroy$: Subject<void> = new Subject<void>();
 
-	constructor(private actionsService: ActionsService, private stateService: StateService) {}
+	constructor(
+		private readonly actionsService: ActionsService,
+		private readonly stateService: StateService
+	) {}
 
 	public ngOnInit(): void {
 		this.loadData();
@@ -51,7 +54,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
 			.subscribe();
 	}
 
-	private setBestBook(books: BookData[]) {
+	private setBestBook(books: BookData[]): BookData {
 		return books.reduce((prevBook: BookData, currBook: BookData) =>
 			prevBook.rating > currBook.rating ? prevBook : currBook
 		);

@@ -6,29 +6,29 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from
 	styleUrls: ['./pagination.component.scss'],
 })
 export class PaginationComponent implements OnChanges {
-	@Input() currentPage: number = 0;
-	@Input() totalPages: number = 0;
-	@Output() goToPage: EventEmitter<number> = new EventEmitter<number>();
-	@Output() nextPage: EventEmitter<number> = new EventEmitter<number>();
-	@Output() prevPage: EventEmitter<number> = new EventEmitter<number>();
-	pages: number[] = [];
+	@Input() public currentPage: number = 0;
+	@Input() public totalPages: number = 0;
+	@Output() private readonly goToPage: EventEmitter<number> = new EventEmitter<number>();
+	@Output() private readonly nextPage: EventEmitter<number> = new EventEmitter<number>();
+	@Output() private readonly prevPage: EventEmitter<number> = new EventEmitter<number>();
+	public pages: number[] = [];
 
-	ngOnChanges(changes: SimpleChanges): void {
+	public ngOnChanges(changes: SimpleChanges): void {
 		const { currentPage, totalPages } = changes;
 		if ((currentPage && currentPage.currentValue) || (totalPages && totalPages.currentValue)) {
 			this.pages = this.getPages(this.currentPage, this.totalPages);
 		}
 	}
 
-	onGoToChange(page: number): void {
+	public onGoToChange(page: number): void {
 		this.goToPage.emit(page);
 	}
 
-	onNextPageChange(): void {
+	public onNextPageChange(): void {
 		this.nextPage.emit(this.currentPage);
 	}
 
-	onPrevPageChange(): void {
+	public onPrevPageChange(): void {
 		this.prevPage.next(this.currentPage);
 	}
 

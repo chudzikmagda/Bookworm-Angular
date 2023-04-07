@@ -4,7 +4,7 @@ import { Subject, takeUntil, tap } from 'rxjs';
 import { DialogService } from 'src/app/components/shared/ui-elements/dialog/services/dialog.service';
 import { BookData, BookFormData } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
-import { BookForm } from 'src/app/components/shared/book-form/models/models';
+import { BookForm } from 'src/app/components/shared/book-form/models/book-form.models';
 import { BookFormService } from 'src/app/components/shared/book-form/services/book-form.service';
 
 @Component({

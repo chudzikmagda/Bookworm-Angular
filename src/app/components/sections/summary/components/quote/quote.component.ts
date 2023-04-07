@@ -7,5 +7,5 @@ import { Quote } from 'src/app/models/models';
 	styleUrls: ['./quote.component.scss'],
 })
 export class QuoteComponent {
-	@Input() quote: Quote;
+	@Input() public quote: Quote;
 }

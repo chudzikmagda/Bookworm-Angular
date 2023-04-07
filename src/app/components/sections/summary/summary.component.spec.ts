@@ -58,12 +58,11 @@ describe('SummaryComponent', () => {
 	it('should set section name', () => {
 		const section: HTMLElement = fixture.debugElement.query(By.css('.section--summary')).nativeElement;
 
-		expect(section.id).toEqual(component.sectionName.Summary);
+		expect(section.id).toEqual(component.sectionName.SUMMARY);
 	});
 
 	it('should set best book on component init', async () => {
 		fixture.detectChanges();
-		console.log(component.bestBook);
 
 		expect(fakeActionsService.getBooks).toHaveBeenCalledTimes(1);
 	});

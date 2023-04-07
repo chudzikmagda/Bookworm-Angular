@@ -7,40 +7,42 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
 	styleUrls: ['./input.component.scss'],
 })
 export class InputComponent implements ControlValueAccessor {
-	@Input() class: string;
-	@Input() disabled: boolean;
-	@Input() label = '';
-	@Input() placeholder = '';
-	@Input() required: true | false = false;
-	@Input() type: string;
-	value = '';
+	@Input() public class: string;
+	@Input() public disabled: boolean;
+	@Input() public label = '';
+	@Input() public placeholder = '';
+	@Input() public required: true | false = false;
+	@Input() public type: string;
+	public value = '';
 
 	constructor(
 		@Self()
 		@Optional()
-		private ngControl: NgControl
+		private readonly ngControl: NgControl
 	) {
 		if (this.ngControl) {
 			this.ngControl.valueAccessor = this;
 		}
 	}
 
-	writeValue(value: string): void {
+	public writeValue(value: string): void {
 		this.value = value;
 	}
 
-	registerOnChange(fn: any): void {
+	// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+	public registerOnChange(fn: any): void {
 		this.onChange = fn;
 	}
 
-	registerOnTouched(fn: any): void {
+	// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+	public registerOnTouched(fn: any): void {
 		this.onTouched = fn;
 	}
 
-	onChange(value: string) {}
-	onTouched() {}
+	public onChange(value: string): void {}
+	public onTouched(): void {}
 
-	setDisabledState(isDisabled: boolean): void {
+	public setDisabledState(isDisabled: boolean): void {
 		this.disabled = isDisabled;
 	}
 }

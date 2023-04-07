@@ -10,9 +10,12 @@ import { DialogService } from '../../shared/ui-elements/dialog/services/dialog.s
 })
 export class IntroComponent {
 	public sectionName: typeof SectionNames = SectionNames;
-	private addNewBookPath: string = ADD_NEW_BOOK_PATH;
+	private readonly addNewBookPath: string = ADD_NEW_BOOK_PATH;
 
-	constructor(private actionService: ActionsService, private dialogService: DialogService) {}
+	constructor(
+		private readonly actionService: ActionsService,
+		private readonly dialogService: DialogService
+	) {}
 
 	public goToSummary(): void {
 		this.actionService.scrollToTheId(SectionNames.SUMMARY);

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ButtonClasses } from './models/button.models';
 
 @Component({
 	selector: 'c-button',
@@ -13,7 +14,7 @@ export class ButtonComponent {
 	@Input() public variant: 'primary' | 'secondary' | 'primary-outline' | 'secondary-outline' | 'icon';
 	@Input() public size: 'large' | 'small';
 
-	public setClasses(): { [key: string]: boolean } {
+	public setClasses(): ButtonClasses {
 		return {
 			btn: true,
 			'btn--primary': this.variant === 'primary',

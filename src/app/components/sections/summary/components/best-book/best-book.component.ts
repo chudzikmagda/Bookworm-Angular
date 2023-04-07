@@ -7,5 +7,5 @@ import { BookData } from 'src/app/models/models';
 	styleUrls: ['./best-book.component.scss'],
 })
 export class BestBookComponent {
-	@Input() bestBook: BookData;
+	@Input() public bestBook: BookData;
 }

@@ -8,12 +8,12 @@ import { BookData } from 'src/app/models/models';
 	styleUrls: ['./search-bar.component.scss'],
 })
 export class SearchBarComponent implements OnInit {
-	@Input() books: BookData[] = [];
-	@Output() filteredBook: EventEmitter<string> = new EventEmitter();
+	@Input() public books: BookData[] = [];
+	@Output() private readonly filteredBook: EventEmitter<string> = new EventEmitter();
 
 	public searchForm: FormGroup<{ input: FormControl<string> }>;
 
-	constructor(private fb: NonNullableFormBuilder) {}
+	constructor(private readonly fb: NonNullableFormBuilder) {}
 
 	public ngOnInit(): void {
 		this.searchForm = this.createForm();

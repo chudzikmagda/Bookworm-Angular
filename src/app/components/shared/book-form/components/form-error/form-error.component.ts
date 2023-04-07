@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
-import { BookFormErrors } from '../../models/models';
+import { BookFormErrors } from '../../models/book-form.models';
 
 @Component({
 	selector: 'c-form-error',

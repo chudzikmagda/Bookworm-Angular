@@ -6,13 +6,13 @@ import { Router } from '@angular/router';
 	providedIn: 'root',
 })
 export class DialogService {
-	constructor(private location: Location, private route: Router) {}
+	constructor(private readonly location: Location, private readonly route: Router) {}
 
-	openDialog(path: string): void {
+	public openDialog(path: string): void {
 		this.route.navigate([path]);
 	}
 
-	closeDialog(visible: boolean, visibleChange: EventEmitter<boolean>) {
+	public closeDialog(visible: boolean, visibleChange: EventEmitter<boolean>): void {
 		visibleChange.emit(visible);
 		this.location.back();
 	}

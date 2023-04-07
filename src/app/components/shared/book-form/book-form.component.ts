@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { BookFormData } from 'src/app/models/models';
-import { BookForm } from './models/models';
+import { BookForm } from './models/book-form.models';
 
 @Component({
 	selector: 'c-book-form',

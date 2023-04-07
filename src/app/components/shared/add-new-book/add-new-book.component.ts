@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { BookForm } from '../book-form/models/models';
+import { BookForm } from '../book-form/models/book-form.models';
 import { BookFormService } from '../book-form/services/book-form.service';
 import { DialogService } from '../ui-elements/dialog/services/dialog.service';
 import { BookFormData } from 'src/app/models/models';

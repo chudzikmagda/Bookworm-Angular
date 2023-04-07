@@ -8,9 +8,9 @@ import { BookData } from 'src/app/models/models';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableComponent {
-	@Input() books: BookData[];
-	@Output() deleteBook: EventEmitter<HTMLElement> = new EventEmitter();
-	@Output() editBook: EventEmitter<number> = new EventEmitter();
+	@Input() public books: BookData[];
+	@Output() private readonly deleteBook: EventEmitter<HTMLElement> = new EventEmitter();
+	@Output() private readonly editBook: EventEmitter<number> = new EventEmitter();
 
 	public onDeleteBook(tableRow: HTMLElement): void {
 		this.deleteBook.emit(tableRow);

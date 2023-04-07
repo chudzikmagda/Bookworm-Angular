@@ -1,13 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-
-interface setClassInterface {
-	'table-cell': boolean;
-	'table-cell--cover': boolean;
-	'table-cell--icons': boolean;
-	'table-cell--title': boolean;
-	'table-cell--valign-center': boolean;
-}
-
+import { SetClassInterface } from './models/table-cell.models';
 @Component({
 	selector: 'c-table-cell',
 	templateUrl: './table-cell.component.html',
@@ -18,7 +10,7 @@ export class TableCellComponent implements OnInit {
 	@Input() public variant: 'cover' | 'icons' | 'title' | undefined;
 	@Input() public valignCenter: boolean = false;
 
-	public setClassBasedOnVariant(): setClassInterface {
+	public setClassBasedOnVariant(): SetClassInterface {
 		return {
 			'table-cell': true,
 			'table-cell--cover': this.variant === 'cover',

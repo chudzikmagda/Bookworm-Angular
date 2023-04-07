@@ -8,9 +8,9 @@ import { DialogService } from '../shared/ui-elements/dialog/services/dialog.serv
 	styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-	private addNewBookPath: string = ADD_NEW_BOOK_PATH;
+	private readonly addNewBookPath: string = ADD_NEW_BOOK_PATH;
 
-	constructor(private dialogService: DialogService) {}
+	constructor(private readonly dialogService: DialogService) {}
 
 	public openDialog(): void {
 		this.dialogService.openDialog(this.addNewBookPath);

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2 } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { DialogService } from './services/dialog.service';
+import { DialogClasses } from './models/dialog.models';
 
 @Component({
 	selector: 'c-dialog',
@@ -24,17 +25,17 @@ import { DialogService } from './services/dialog.service';
 	],
 })
 export class DialogComponent implements OnInit, OnDestroy {
-	@Input() variant: 'center' | 'bottom' = 'bottom';
-	@Input() visible = true;
-	@Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+	@Input() public variant: 'center' | 'bottom' = 'bottom';
+	@Input() public visible = true;
+	@Output() private readonly visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-	constructor(private dialogService: DialogService, private renderer: Renderer2) {}
+	constructor(private readonly dialogService: DialogService, private readonly renderer: Renderer2) {}
 
-	ngOnInit(): void {
+	public ngOnInit(): void {
 		this.renderer.addClass(document.body, 'dialog-open');
 	}
 
-	setClasses() {
+	public setClasses(): DialogClasses {
 		return {
 			dialog: true,
 			'dialog--bottom': this.variant === 'bottom',
@@ -42,12 +43,12 @@ export class DialogComponent implements OnInit, OnDestroy {
 		};
 	}
 
-	closeDialog() {
+	public closeDialog(): void {
 		this.visible = false;
 		this.dialogService.closeDialog(this.visible, this.visibleChange);
 	}
 
-	ngOnDestroy(): void {
+	public ngOnDestroy(): void {
 		this.renderer.removeClass(document.body, 'dialog-open');
 	}
 }

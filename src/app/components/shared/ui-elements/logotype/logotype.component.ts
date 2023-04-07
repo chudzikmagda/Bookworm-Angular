@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
 	styleUrls: ['./logotype.component.scss'],
 })
 export class LogotypeComponent {
-	@Input() version: 'small' | undefined;
+	@Input() public version: 'small' | undefined;
 }

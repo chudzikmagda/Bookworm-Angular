@@ -7,7 +7,7 @@ import { ActionsService } from 'src/app/services/actions/actions.service';
 	styleUrls: ['./go-to-top.component.scss'],
 })
 export class GoToTopComponent {
-	constructor(private actionService: ActionsService) {}
+	constructor(private readonly actionService: ActionsService) {}
 
 	public goToTop(): void {
 		this.actionService.scrollToTheId('header');
