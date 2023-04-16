@@ -24,8 +24,7 @@ export class EditBookComponent implements OnInit, OnDestroy {
 	constructor(
 		private readonly dialogService: DialogService,
 		private readonly bookFormService: BookFormService,
-		private readonly actionsService: ActionsService,
-		private readonly formService: BookFormService
+		private readonly actionsService: ActionsService
 	) {}
 
 	public ngOnInit(): void {
@@ -52,7 +51,7 @@ export class EditBookComponent implements OnInit, OnDestroy {
 	}
 
 	private getEditedBook(): void {
-		this.formService
+		this.bookFormService
 			.getEditedBook$()
 			.pipe(
 				takeUntil(this.destroy$),
