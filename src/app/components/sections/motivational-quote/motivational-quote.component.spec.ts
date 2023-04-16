@@ -51,7 +51,7 @@ describe('MotivateQuoteComponent', () => {
 			By.css('.section--motivational-quote')
 		).nativeElement;
 
-		expect(section.id).toEqual(component.sectionName.MotivationalQuote);
+		expect(section.id).toEqual(component.sectionName.MOTIVATIONAL_QUOTE);
 	});
 
 	it('should load quote on init', done => {
@@ -59,8 +59,8 @@ describe('MotivateQuoteComponent', () => {
 
 		component.quote$.subscribe((data: Quote) => {
 			expect(data).toEqual(fakeQuoteMock());
-			done();
 		});
+		done();
 		expect(fakeActionsService.getSectionQuoteFormApi).toHaveBeenCalledTimes(1);
 		expect(fakeStateService.getSectionQuote).toHaveBeenCalled();
 	});

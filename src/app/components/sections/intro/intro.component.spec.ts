@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { IntroComponent } from './intro.component';
+import { MockComponents } from 'ng-mocks';
+import { ButtonComponent } from '../../shared/ui-elements/button/button.component';
 
 describe('IntroComponent', () => {
 	let component: IntroComponent;
@@ -12,7 +14,7 @@ describe('IntroComponent', () => {
 		fakeActionsService = jasmine.createSpyObj('ActionsService', ['scrollToTheId']);
 
 		TestBed.configureTestingModule({
-			declarations: [IntroComponent],
+			declarations: [IntroComponent, MockComponents(ButtonComponent)],
 			providers: [
 				{
 					provide: ActionsService,
@@ -33,7 +35,7 @@ describe('IntroComponent', () => {
 	it('should set section name', () => {
 		const section: HTMLElement = fixture.debugElement.query(By.css('.section--intro')).nativeElement;
 
-		expect(section.id).toEqual(component.sectionName.Intro);
+		expect(section.id).toEqual(component.sectionName.INTRO);
 	});
 
 	it('should scroll to the summary section', () => {

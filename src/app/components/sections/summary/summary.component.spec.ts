@@ -72,8 +72,8 @@ describe('SummaryComponent', () => {
 
 		component.quote$.subscribe((data: Quote | null) => {
 			expect(data).toEqual(fakeQuoteMock());
-			done();
 		});
+		done();
 		expect(fakeStateService.getSummaryQuote).toHaveBeenCalled();
 	});
 

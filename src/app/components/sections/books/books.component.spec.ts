@@ -9,14 +9,14 @@ import { PaginationComponent } from '../../shared/ui-elements/pagination/paginat
 import { BooksComponent } from './books.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { TableComponent } from './components/table/table.component';
-import { FormService } from './services/form.service';
+import { BookFormService } from '../../shared/book-form/services/book-form.service';
 
 describe('BooksComponent', () => {
 	let component: BooksComponent;
 	let fixture: ComponentFixture<BooksComponent>;
 	let fakeActionsService: jasmine.SpyObj<ActionsService>;
 	let fakeDialogService: jasmine.SpyObj<DialogService>;
-	let fakeFormService: jasmine.SpyObj<FormService>;
+	let fakeBookFormService: jasmine.SpyObj<BookFormService>;
 
 	beforeEach(() => {
 		fakeActionsService = jasmine.createSpyObj('ActionsService', [
@@ -31,7 +31,7 @@ describe('BooksComponent', () => {
 
 		fakeDialogService = jasmine.createSpyObj('DialogService', ['openDialog']);
 
-		fakeFormService = jasmine.createSpyObj('FormService', ['setEditedBook$']);
+		fakeBookFormService = jasmine.createSpyObj('BookFormService', ['setEditedBook$']);
 
 		TestBed.configureTestingModule({
 			declarations: [
@@ -48,8 +48,8 @@ describe('BooksComponent', () => {
 					useValue: fakeDialogService,
 				},
 				{
-					provide: FormService,
-					useValue: fakeFormService,
+					provide: BookFormService,
+					useValue: fakeBookFormService,
 				},
 			],
 		}).compileComponents();
@@ -66,7 +66,7 @@ describe('BooksComponent', () => {
 	it('should set section name', () => {
 		const section: HTMLElement = fixture.debugElement.query(By.css('.section--books')).nativeElement;
 
-		expect(section.id).toEqual(component.sectionName.BookList);
+		expect(section.id).toEqual(component.sectionName.BOOK_LIST);
 	});
 
 	it('should get book list on init', () => {
@@ -96,7 +96,7 @@ describe('BooksComponent', () => {
 
 		component.onEditBook(idOfEditedBook);
 
-		expect(fakeFormService.setEditedBook$).toHaveBeenCalledOnceWith(fakeEditedBook());
+		expect(fakeBookFormService.setEditedBook$).toHaveBeenCalledOnceWith(fakeEditedBook());
 		expect(fakeDialogService.openDialog).toHaveBeenCalledOnceWith(`edit-book/${idOfEditedBook}`);
 		expect(component.books.length).toBe(6);
 	});
