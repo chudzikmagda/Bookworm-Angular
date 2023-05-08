@@ -22,7 +22,23 @@ describe('SearchBarComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	it('should create component', () => {
 		expect(component).toBeTruthy();
+	});
+
+	it('should create search form on init', () => {
+		expect(component.searchForm.get('input')).not.toBeNull();
+		expect(component.searchForm.value.input).toBeFalsy();
+	});
+
+	it('should emit a filteredBook event with data when search button is clicked', () => {
+		const inputValue: string = 'Test Value';
+		const spyEventEmitter: jasmine.Spy = spyOn(component.filteredBook, 'emit');
+		component.searchForm.get('input')?.setValue(inputValue);
+
+		component.onSearchBtnClick();
+
+		expect(component.searchForm.get('input')?.getRawValue()).toBe(inputValue);
+		expect(spyEventEmitter).toHaveBeenCalledWith(inputValue);
 	});
 });
