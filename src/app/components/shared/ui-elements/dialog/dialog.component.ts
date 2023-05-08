@@ -27,7 +27,7 @@ import { DialogClasses } from './models/dialog.models';
 export class DialogComponent implements OnInit, OnDestroy {
 	@Input() public variant: 'center' | 'bottom' = 'bottom';
 	@Input() public visible = true;
-	@Output() private readonly visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+	@Output() public visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 	constructor(private readonly dialogService: DialogService, private readonly renderer: Renderer2) {}
 

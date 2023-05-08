@@ -9,7 +9,7 @@ import { BookData } from 'src/app/models/models';
 })
 export class SearchBarComponent implements OnInit {
 	@Input() public books: BookData[] = [];
-	@Output() private readonly filteredBook: EventEmitter<string> = new EventEmitter();
+	@Output() public filteredBook: EventEmitter<string> = new EventEmitter();
 
 	public searchForm: FormGroup<{ input: FormControl<string> }>;
 
@@ -20,8 +20,7 @@ export class SearchBarComponent implements OnInit {
 	}
 
 	public onSearchBtnClick(): void {
-		const searchValue = this.searchForm.get('input')?.getRawValue();
-		this.filteredBook.emit(searchValue);
+		this.filteredBook.emit(this.searchForm.get('input')?.getRawValue());
 	}
 
 	private createForm(): FormGroup<{ input: FormControl<string> }> {

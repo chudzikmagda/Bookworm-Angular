@@ -8,9 +8,9 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from
 export class PaginationComponent implements OnChanges {
 	@Input() public currentPage: number = 0;
 	@Input() public totalPages: number = 0;
-	@Output() private readonly goToPage: EventEmitter<number> = new EventEmitter<number>();
-	@Output() private readonly nextPage: EventEmitter<number> = new EventEmitter<number>();
-	@Output() private readonly prevPage: EventEmitter<number> = new EventEmitter<number>();
+	@Output() public goToPage: EventEmitter<number> = new EventEmitter<number>();
+	@Output() public nextPage: EventEmitter<number> = new EventEmitter<number>();
+	@Output() public prevPage: EventEmitter<number> = new EventEmitter<number>();
 	public pages: number[] = [];
 
 	public ngOnChanges(changes: SimpleChanges): void {

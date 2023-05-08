@@ -9,8 +9,8 @@ import { BookData } from 'src/app/models/models';
 })
 export class TableComponent {
 	@Input() public books: BookData[];
-	@Output() private readonly deleteBook: EventEmitter<HTMLElement> = new EventEmitter();
-	@Output() private readonly editBook: EventEmitter<number> = new EventEmitter();
+	@Output() public deleteBook: EventEmitter<HTMLElement> = new EventEmitter();
+	@Output() public editBook: EventEmitter<number> = new EventEmitter();
 
 	public onDeleteBook(tableRow: HTMLElement): void {
 		this.deleteBook.emit(tableRow);
