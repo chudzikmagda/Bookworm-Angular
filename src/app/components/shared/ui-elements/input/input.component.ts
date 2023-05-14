@@ -29,17 +29,15 @@ export class InputComponent implements ControlValueAccessor {
 		this.value = value;
 	}
 
-	// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-	public registerOnChange(fn: any): void {
+	public registerOnChange(fn: () => void): void {
 		this.onChange = fn;
 	}
 
-	// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-	public registerOnTouched(fn: any): void {
+	public registerOnTouched(fn: () => void): void {
 		this.onTouched = fn;
 	}
 
-	public onChange(value: string): void {}
+	public onChange(_value: string): void {}
 	public onTouched(): void {}
 
 	public setDisabledState(isDisabled: boolean): void {
