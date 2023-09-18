@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { ADD_NEW_BOOK_PATH } from 'src/app/models/models';
+import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 import { DialogService } from '../shared/ui-elements/dialog/services/dialog.service';
+import { AddNewBookComponent } from '../shared/add-new-book/add-new-book.component';
 
 @Component({
 	selector: 'c-header',
@@ -8,11 +8,11 @@ import { DialogService } from '../shared/ui-elements/dialog/services/dialog.serv
 	styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-	private readonly addNewBookPath: string = ADD_NEW_BOOK_PATH;
+	@ViewChild('addNewBookDialog', { read: ViewContainerRef }) public addNewBookDialog!: ViewContainerRef;
 
 	constructor(private readonly dialogService: DialogService) {}
 
 	public openDialog(): void {
-		this.dialogService.openDialog(this.addNewBookPath);
+		this.dialogService.openDialog(this.addNewBookDialog, AddNewBookComponent);
 	}
 }

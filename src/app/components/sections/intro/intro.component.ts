@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { SectionNames, ADD_NEW_BOOK_PATH } from 'src/app/models/models';
+import { Component, ViewChild, ViewContainerRef } from '@angular/core';
+import { SectionNames } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { DialogService } from '../../shared/ui-elements/dialog/services/dialog.service';
+import { AddNewBookComponent } from '../../shared/add-new-book/add-new-book.component';
 
 @Component({
 	selector: 'c-intro',
@@ -9,8 +10,9 @@ import { DialogService } from '../../shared/ui-elements/dialog/services/dialog.s
 	styleUrls: ['./intro.component.scss'],
 })
 export class IntroComponent {
+	@ViewChild('addNewBookDialog', { read: ViewContainerRef }) public addNewBookDialog!: ViewContainerRef;
+
 	public sectionName: typeof SectionNames = SectionNames;
-	private readonly addNewBookPath: string = ADD_NEW_BOOK_PATH;
 
 	constructor(
 		private readonly actionService: ActionsService,
@@ -22,6 +24,6 @@ export class IntroComponent {
 	}
 
 	public openDialog(): void {
-		this.dialogService.openDialog(this.addNewBookPath);
+		this.dialogService.openDialog(this.addNewBookDialog, AddNewBookComponent);
 	}
 }

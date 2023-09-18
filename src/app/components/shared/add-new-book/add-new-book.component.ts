@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { BookForm } from '../book-form/models/book-form.models';
 import { BookFormService } from '../book-form/services/book-form.service';
@@ -13,13 +13,10 @@ import { Subject, Subscription, takeUntil } from 'rxjs';
 	styleUrls: ['./add-new-book.component.scss'],
 })
 export class AddNewBookComponent implements OnInit, OnDestroy {
-	@Input() public visible: boolean = true;
-	@Output() public visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-
 	public addBookForm: FormGroup<BookForm>;
 
-	private readonly destroy$: Subject<boolean> = new Subject<boolean>();
 	private newBookId: number;
+	private readonly destroy$: Subject<boolean> = new Subject<boolean>();
 
 	constructor(
 		private readonly dialogService: DialogService,
@@ -39,7 +36,7 @@ export class AddNewBookComponent implements OnInit, OnDestroy {
 			id: this.newBookId,
 			date_add: new Date().toLocaleDateString().toString(),
 		});
-		this.dialogService.closeDialog(this.visible, this.visibleChange);
+		this.dialogService.closeDialog();
 	}
 
 	private bookFormInit(): void {

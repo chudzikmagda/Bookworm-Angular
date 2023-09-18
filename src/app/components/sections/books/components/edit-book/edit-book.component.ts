@@ -13,9 +13,6 @@ import { BookFormService } from 'src/app/components/shared/book-form/services/bo
 	styleUrls: ['./edit-book.component.scss'],
 })
 export class EditBookComponent implements OnInit, OnDestroy {
-	@Input() public visible: boolean = true;
-	@Output() public visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-
 	public editBookForm: FormGroup<BookForm>;
 
 	private readonly destroy$: Subject<boolean> = new Subject<boolean>();
@@ -37,7 +34,7 @@ export class EditBookComponent implements OnInit, OnDestroy {
 			...book,
 			date_edit: new Date().toLocaleDateString().toString(),
 		});
-		this.dialogService.closeDialog(this.visible, this.visibleChange);
+		this.dialogService.closeDialog();
 	}
 
 	private bookFormInit(): void {

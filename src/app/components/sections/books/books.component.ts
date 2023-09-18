@@ -1,9 +1,17 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	OnDestroy,
+	OnInit,
+	ViewChild,
+	ViewContainerRef,
+} from '@angular/core';
 import { Observable, Subject, takeUntil, tap } from 'rxjs';
-import { BookData, EDIT_BOOK_PATH, SectionNames } from 'src/app/models/models';
+import { BookData, SectionNames } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { DialogService } from '../../shared/ui-elements/dialog/services/dialog.service';
 import { BookFormService } from '../../shared/book-form/services/book-form.service';
+import { EditBookComponent } from './components/edit-book/edit-book.component';
 
 @Component({
 	selector: 'c-books',
@@ -12,6 +20,8 @@ import { BookFormService } from '../../shared/book-form/services/book-form.servi
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BooksComponent implements OnInit, OnDestroy {
+	@ViewChild('editBookDialog', { read: ViewContainerRef }) public editBookDialog!: ViewContainerRef;
+
 	public sectionName: typeof SectionNames = SectionNames;
 	public booksToDisplay$: Observable<BookData[]>;
 	public books: BookData[];
@@ -39,7 +49,7 @@ export class BooksComponent implements OnInit, OnDestroy {
 	public onEditBook(bookId: number): void {
 		const editedBook: BookData[] = this.books.filter((book: BookData) => book.id === bookId);
 		this.formService.setEditedBook$(editedBook);
-		this.openModal(bookId);
+		this.openModal();
 	}
 
 	public onSearchBook(searchedValue: string): void {
@@ -90,8 +100,8 @@ export class BooksComponent implements OnInit, OnDestroy {
 		this.totalPages = Math.ceil(books.length / this.booksPerPage);
 	}
 
-	private openModal(id: number): void {
-		this.dialogService.openDialog(`${EDIT_BOOK_PATH}/${id}`);
+	private openModal(): void {
+		this.dialogService.openDialog(this.editBookDialog, EditBookComponent);
 	}
 
 	public ngOnDestroy(): void {

@@ -1,4 +1,4 @@
-<div *ngIf="visible" [@slideInOut] class="dialog-wrapper" #dialog>
+<div [@slideInOut] class="dialog-wrapper">
 	<dialog open [ngClass]="setClasses()">
 		<div class="dialog__close">
 			<c-button variant="icon" (click)="closeDialog()">
@@ -11,4 +11,4 @@
 	</dialog>
 </div>
 
-<div *ngIf="visible" [@fadeInOut] class="dialog-bg"></div>
+<div [@fadeInOut] class="dialog-bg"></div>

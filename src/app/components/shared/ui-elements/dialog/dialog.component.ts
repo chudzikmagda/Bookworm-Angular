@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2 } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
-import { DialogService } from './services/dialog.service';
 import { DialogClasses } from './models/dialog.models';
+import { DialogService } from './services/dialog.service';
 
 @Component({
 	selector: 'c-dialog',
@@ -26,8 +26,6 @@ import { DialogClasses } from './models/dialog.models';
 })
 export class DialogComponent implements OnInit, OnDestroy {
 	@Input() public variant: 'center' | 'bottom' = 'bottom';
-	@Input() public visible = true;
-	@Output() public visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 	constructor(private readonly dialogService: DialogService, private readonly renderer: Renderer2) {}
 
@@ -44,8 +42,7 @@ export class DialogComponent implements OnInit, OnDestroy {
 	}
 
 	public closeDialog(): void {
-		this.visible = false;
-		this.dialogService.closeDialog(this.visible, this.visibleChange);
+		this.dialogService.closeDialog();
 	}
 
 	public ngOnDestroy(): void {
