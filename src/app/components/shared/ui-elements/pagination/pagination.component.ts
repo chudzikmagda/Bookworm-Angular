@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { ButtonVariant } from '../button/models/button.models';
 
 @Component({
 	selector: 'c-pagination',
@@ -11,6 +12,8 @@ export class PaginationComponent implements OnChanges {
 	@Output() public goToPage: EventEmitter<number> = new EventEmitter<number>();
 	@Output() public nextPage: EventEmitter<number> = new EventEmitter<number>();
 	@Output() public prevPage: EventEmitter<number> = new EventEmitter<number>();
+
+	public readonly BUTTON_VARIANT: typeof ButtonVariant = ButtonVariant;
 	public pages: number[] = [];
 
 	public ngOnChanges(changes: SimpleChanges): void {

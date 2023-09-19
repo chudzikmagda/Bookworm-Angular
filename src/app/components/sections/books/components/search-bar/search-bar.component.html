@@ -6,7 +6,7 @@
 			class="search-bar__input"
 			formControlName="input"></c-input>
 		<c-button
-			variant="icon"
+			[variant]="BUTTON_VARIANT.ICON"
 			class="search-bar__btn"
 			[disabled]="!searchForm.valid"
 			(click)="onSearchBtnClick()"

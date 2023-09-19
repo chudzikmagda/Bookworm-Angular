@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ButtonVariant } from 'src/app/components/shared/ui-elements/button/models/button.models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 
 @Component({
@@ -7,6 +8,8 @@ import { ActionsService } from 'src/app/services/actions/actions.service';
 	styleUrls: ['./go-to-top.component.scss'],
 })
 export class GoToTopComponent {
+	public readonly BUTTON_VARIANT: typeof ButtonVariant = ButtonVariant;
+
 	constructor(private readonly actionService: ActionsService) {}
 
 	public goToTop(): void {

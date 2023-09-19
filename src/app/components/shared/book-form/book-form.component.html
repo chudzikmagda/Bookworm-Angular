@@ -27,10 +27,18 @@
 		<c-form-error [controlName]="rating"></c-form-error>
 	</div>
 	<div class="book-form__btn">
-		<c-button type="reset" variant="primary-outline" class="header__btn" (click)="resetForm()">
+		<c-button
+			type="reset"
+			[variant]="BUTTON_VARIANT.PRIMARY_OUTLINE"
+			class="header__btn"
+			(click)="resetForm()">
 			Clear the form
 		</c-button>
-		<c-button type="submit" variant="secondary" class="header__btn" [disabled]="bookForm.invalid">
+		<c-button
+			type="submit"
+			[variant]="BUTTON_VARIANT.SECONDARY"
+			class="header__btn"
+			[disabled]="bookForm.invalid">
 			{{ submitButtonCopy }}
 		</c-button>
 	</div>

@@ -1,14 +1,21 @@
-<section class="section section--intro" [id]="sectionName.INTRO">
+<section class="section section--intro" [id]="SECTION_NAME.INTRO">
 	<div class="welcome">
 		<div class="welcome__msg">
 			<div class="welcome__copy">
 				<h2 class="welcome__hi">Hi Johnny,</h2>
 				<h4 class="welcome__question">how many pages did you read yesterday?</h4>
 				<div class="welcome__btns">
-					<c-button variant="secondary" size="large" class="header__btn" (click)="openDialog()"
+					<c-button
+						[variant]="BUTTON_VARIANT.SECONDARY"
+						[size]="BUTTON_SIZE.LARGE"
+						class="header__btn"
+						(click)="openDialog()"
 						>Add a new book</c-button
 					>
-					<c-button variant="primary" size="large" (click)="goToSummary()"
+					<c-button
+						[variant]="BUTTON_VARIANT.PRIMARY"
+						[size]="BUTTON_SIZE.LARGE"
+						(click)="goToSummary()"
 						>Check your stats</c-button
 					>
 				</div>

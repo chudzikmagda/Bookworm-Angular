@@ -1,7 +1,7 @@
 <div [@slideInOut] class="dialog-wrapper">
 	<dialog open [ngClass]="setClasses()">
 		<div class="dialog__close">
-			<c-button variant="icon" (click)="closeDialog()">
+			<c-button [variant]="BUTTON_VARIANT.ICON" (click)="closeDialog()">
 				<i class="fa-solid fa-xmark"></i>
 			</c-button>
 		</div>

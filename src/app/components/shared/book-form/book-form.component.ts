@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { BookFormData } from 'src/app/models/models';
 import { BookForm } from './models/book-form.models';
+import { ButtonVariant } from '../ui-elements/button/models/button.models';
 
 @Component({
 	selector: 'c-book-form',
@@ -13,6 +14,8 @@ export class BookFormComponent {
 	@Input() public bookFormTitle: string;
 	@Input() public submitButtonCopy: string;
 	@Output() public bookSubmit: EventEmitter<BookFormData> = new EventEmitter<BookFormData>();
+
+	public readonly BUTTON_VARIANT: typeof ButtonVariant = ButtonVariant;
 
 	public get author(): AbstractControl<string, string> | null {
 		return this.bookForm.get('author');

@@ -9,3 +9,16 @@ export type ButtonClasses = {
 	'btn--large': boolean;
 	'btn--small': boolean;
 };
+
+export enum ButtonVariant {
+	PRIMARY = 'primary',
+	SECONDARY = 'secondary',
+	PRIMARY_OUTLINE = 'primary-outline',
+	SECONDARY_OUTLINE = 'secondary-outline',
+	ICON = 'icon',
+}
+
+export enum ButtonSize {
+	LARGE = 'large',
+	SMALL = 'small',
+}

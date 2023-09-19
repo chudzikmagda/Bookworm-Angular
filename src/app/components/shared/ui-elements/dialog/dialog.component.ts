@@ -2,6 +2,7 @@ import { Component, Input, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { DialogClasses, DialogVariant } from './models/dialog.models';
 import { DialogService } from './services/dialog.service';
+import { ButtonVariant } from '../button/models/button.models';
 
 @Component({
 	selector: 'c-dialog',
@@ -26,6 +27,8 @@ import { DialogService } from './services/dialog.service';
 })
 export class DialogComponent implements OnInit, OnDestroy {
 	@Input() public variant!: DialogVariant;
+
+	public readonly BUTTON_VARIANT: typeof ButtonVariant = ButtonVariant;
 
 	constructor(private readonly dialogService: DialogService, private readonly renderer: Renderer2) {}
 
