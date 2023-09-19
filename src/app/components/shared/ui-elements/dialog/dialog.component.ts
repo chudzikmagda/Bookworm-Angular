@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
-import { DialogClasses } from './models/dialog.models';
+import { DialogClasses, DialogVariant } from './models/dialog.models';
 import { DialogService } from './services/dialog.service';
 
 @Component({
@@ -25,7 +25,7 @@ import { DialogService } from './services/dialog.service';
 	],
 })
 export class DialogComponent implements OnInit, OnDestroy {
-	@Input() public variant: 'center' | 'bottom' = 'bottom';
+	@Input() public variant!: DialogVariant;
 
 	constructor(private readonly dialogService: DialogService, private readonly renderer: Renderer2) {}
 
@@ -36,8 +36,8 @@ export class DialogComponent implements OnInit, OnDestroy {
 	public setClasses(): DialogClasses {
 		return {
 			dialog: true,
-			'dialog--bottom': this.variant === 'bottom',
-			'dialog--center': this.variant === 'center',
+			'dialog--bottom': this.variant === DialogVariant.BOTTOM,
+			'dialog--center': this.variant === DialogVariant.CENTER,
 		};
 	}
 

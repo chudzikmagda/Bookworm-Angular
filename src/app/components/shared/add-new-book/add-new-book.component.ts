@@ -6,6 +6,7 @@ import { DialogService } from '../ui-elements/dialog/services/dialog.service';
 import { BookFormData } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { Subject, Subscription, takeUntil } from 'rxjs';
+import { DialogVariant } from '../ui-elements/dialog/models/dialog.models';
 
 @Component({
 	selector: 'c-add-new-book',
@@ -13,6 +14,7 @@ import { Subject, Subscription, takeUntil } from 'rxjs';
 	styleUrls: ['./add-new-book.component.scss'],
 })
 export class AddNewBookComponent implements OnInit, OnDestroy {
+	public readonly DIALOG_VARIANT: typeof DialogVariant = DialogVariant;
 	public addBookForm: FormGroup<BookForm>;
 
 	private newBookId: number;
