@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { LogotypeVersion } from './models/logotype.models';
 
 @Component({
 	selector: 'c-logotype',
@@ -6,5 +7,7 @@ import { Component, Input } from '@angular/core';
 	styleUrls: ['./logotype.component.scss'],
 })
 export class LogotypeComponent {
-	@Input() public version: 'small' | undefined;
+	@Input() public version: LogotypeVersion | undefined;
+
+	public readonly VERSION: typeof LogotypeVersion = LogotypeVersion;
 }

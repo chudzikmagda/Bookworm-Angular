@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LogotypeVersion } from '../shared/ui-elements/logotype/models/logotype.models';
 
 @Component({
 	selector: 'c-footer',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
 	styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {
-	public logotypeVersion: 'small' | undefined = 'small';
+	public logotypeVersion: LogotypeVersion | undefined = LogotypeVersion.SMALL;
 }
