@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { ButtonVariant } from 'src/app/components/shared/ui-elements/button/models/button.models';
+import { TableCellVariant } from 'src/app/components/shared/ui-elements/table-cell/models/table-cell.models';
 import { BookData } from 'src/app/models/models';
 
 @Component({
@@ -14,6 +15,7 @@ export class TableComponent {
 	@Output() public editBook: EventEmitter<number> = new EventEmitter();
 
 	public readonly BUTTON_VARIANT: typeof ButtonVariant = ButtonVariant;
+	public readonly TABLE_CELL_VARIANT: typeof TableCellVariant = TableCellVariant;
 
 	public onDeleteBook(tableRow: HTMLElement): void {
 		this.deleteBook.emit(tableRow);
