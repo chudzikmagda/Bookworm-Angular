@@ -10,5 +10,5 @@ import { BookFormErrors } from '../../models/book-form.models';
 export class FormErrorComponent {
 	@Input() public controlName: AbstractControl<string | number, string | number> | null;
 
-	public errorMessage: typeof BookFormErrors = BookFormErrors;
+	public readonly BOOK_FORM_ERRORS: typeof BookFormErrors = BookFormErrors;
 }

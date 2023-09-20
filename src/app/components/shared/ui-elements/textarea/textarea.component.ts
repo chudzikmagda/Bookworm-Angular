@@ -9,7 +9,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
 export class TextareaComponent implements ControlValueAccessor {
 	@Input() public label = '';
 	@Input() public placeholder = '';
-	@Input() public required: true | false = false;
+	@Input() public required: boolean = false;
 	@Input() public disabled: boolean;
 	public value = '';
 

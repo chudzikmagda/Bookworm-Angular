@@ -7,5 +7,5 @@ import { LogotypeVersion } from '../shared/ui-elements/logotype/models/logotype.
 	styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {
-	public logotypeVersion: LogotypeVersion | undefined = LogotypeVersion.SMALL;
+	public readonly LOGOTYPE_VERSION: typeof LogotypeVersion = LogotypeVersion;
 }

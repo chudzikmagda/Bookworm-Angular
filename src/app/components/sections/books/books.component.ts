@@ -22,7 +22,7 @@ import { EditBookComponent } from './components/edit-book/edit-book.component';
 export class BooksComponent implements OnInit, OnDestroy {
 	@ViewChild('editBookDialog', { read: ViewContainerRef }) public editBookDialog!: ViewContainerRef;
 
-	public sectionName: typeof SectionNames = SectionNames;
+	public readonly SECTION_NAME: typeof SectionNames = SectionNames;
 	public booksToDisplay$: Observable<BookData[]>;
 	public books: BookData[];
 	public currentPage: number = 1;

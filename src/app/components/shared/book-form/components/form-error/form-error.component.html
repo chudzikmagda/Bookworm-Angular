@@ -1,5 +1,5 @@
 <div *ngIf="controlName?.invalid && (controlName?.dirty || controlName?.touched)" class="error">
 	<p class="error__message">
-		{{ controlName?.errors?.['required'] ? errorMessage.REQUIRED : errorMessage.MIN_LENGTH }}
+		{{ controlName?.errors?.['required'] ? BOOK_FORM_ERRORS.REQUIRED : BOOK_FORM_ERRORS.MIN_LENGTH }}
 	</p>
 </div>

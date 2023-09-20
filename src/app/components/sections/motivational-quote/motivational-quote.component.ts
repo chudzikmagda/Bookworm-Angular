@@ -10,7 +10,7 @@ import { StateService } from 'src/app/services/state/state.service';
 	styleUrls: ['./motivational-quote.component.scss'],
 })
 export class MotivateQuoteComponent implements OnInit {
-	public sectionName: typeof SectionNames = SectionNames;
+	public readonly SECTION_NAME: typeof SectionNames = SectionNames;
 
 	public quote$: Observable<Quote>;
 

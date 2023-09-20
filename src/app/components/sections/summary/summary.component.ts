@@ -11,14 +11,14 @@ import { BookStats } from './models/summary.models';
 	styleUrls: ['./summary.component.scss'],
 })
 export class SummaryComponent implements OnInit, OnDestroy {
-	public QUOTE_TAG: string = 'famous-quotes';
-	public sectionName: typeof SectionNames = SectionNames;
+	public readonly SECTION_NAME: typeof SectionNames = SectionNames;
 	public quote$: Observable<Quote | null>;
 	public bestBook: BookData;
 	public stats: BookStats;
 	public lastAddedBook: BookData;
 
 	private readonly onDestroy$: Subject<void> = new Subject<void>();
+	private readonly QUOTE_TAG: string = 'famous-quotes';
 
 	constructor(
 		private readonly actionsService: ActionsService,
