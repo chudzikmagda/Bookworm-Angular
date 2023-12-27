@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs';
-import { Quote } from 'src/app/models/models';
+import { Quote, SectionNames } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { StateService } from 'src/app/services/state/state.service';
 
@@ -51,7 +51,7 @@ describe('MotivateQuoteComponent', () => {
 			By.css('.section--motivational-quote')
 		).nativeElement;
 
-		expect(section.id).toEqual(component.sectionName.MOTIVATIONAL_QUOTE);
+		expect(section.id).toEqual(SectionNames.MOTIVATIONAL_QUOTE);
 	});
 
 	it('should load quote on init', done => {

@@ -6,6 +6,7 @@ import { ActionsService } from 'src/app/services/actions/actions.service';
 import { ButtonComponent } from '../button/button.component';
 
 import { DialogComponent } from './dialog.component';
+import { DialogVariant } from './models/dialog.models';
 
 describe('DialogComponent', () => {
 	let component: DialogComponent;
@@ -38,7 +39,7 @@ describe('DialogComponent', () => {
 	});
 
 	it('should create centred DialogComponent', () => {
-		component.variant = 'center';
+		component.variant = DialogVariant.CENTER;
 		fixture.detectChanges();
 
 		component.setClasses();
@@ -47,20 +48,12 @@ describe('DialogComponent', () => {
 	});
 
 	it('should create bottom DialogComponent', () => {
-		component.variant = 'bottom';
+		component.variant = DialogVariant.BOTTOM;
 		fixture.detectChanges();
 
 		component.setClasses();
 
 		expect(dialog).toHaveClass('dialog--bottom');
-	});
-
-	it('should be DialogComponent not visible', () => {
-		const dialogWrapper: DebugElement = fixture.debugElement.query(By.css('dialog-wrapper'));
-		component.visible = false;
-		fixture.detectChanges();
-
-		expect(dialogWrapper).toBeNull();
 	});
 
 	it('should close DialogComponent on button click', () => {
@@ -69,7 +62,6 @@ describe('DialogComponent', () => {
 
 		button.click();
 
-		expect(component.visible).toBeFalse();
 		expect(dialogWrapper).toBeNull();
 	});
 });

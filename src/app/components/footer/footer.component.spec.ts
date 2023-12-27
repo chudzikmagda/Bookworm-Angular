@@ -36,9 +36,6 @@ describe('FooterComponent', () => {
 			By.directive(LogotypeComponent)
 		).nativeElement;
 
-		component.logotypeVersion = 'small';
-		fixture.detectChanges();
-
 		expect(logotype.hasAttribute('ng-reflect-version')).toBeTrue();
 		expect(logotype.getAttribute('ng-reflect-version')).toEqual('small');
 	});

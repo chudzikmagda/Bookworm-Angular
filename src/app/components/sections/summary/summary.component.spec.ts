@@ -10,7 +10,7 @@ import { ActionsService } from 'src/app/services/actions/actions.service';
 import { StateService } from 'src/app/services/state/state.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BehaviorSubject, of, tap } from 'rxjs';
-import { BookData, Quote } from 'src/app/models/models';
+import { BookData, Quote, SectionNames } from 'src/app/models/models';
 
 describe('SummaryComponent', () => {
 	let component: SummaryComponent;
@@ -58,7 +58,7 @@ describe('SummaryComponent', () => {
 	it('should set section name', () => {
 		const section: HTMLElement = fixture.debugElement.query(By.css('.section--summary')).nativeElement;
 
-		expect(section.id).toEqual(component.sectionName.SUMMARY);
+		expect(section.id).toEqual(SectionNames.SUMMARY);
 	});
 
 	it('should set best book on component init', async () => {

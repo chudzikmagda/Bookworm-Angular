@@ -2,6 +2,7 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { LogotypeComponent } from './logotype.component';
+import { LogotypeVersion } from './models/logotype.models';
 
 describe('LogotypeComponent', () => {
 	let component: LogotypeComponent;
@@ -22,7 +23,7 @@ describe('LogotypeComponent', () => {
 	});
 
 	it('should create small version of LogotypeComponent', () => {
-		component.version = 'small';
+		component.version = LogotypeVersion.SMALL;
 		fixture.detectChanges();
 
 		const logotype: DebugElement = fixture.debugElement.query(By.css('.logotype'));

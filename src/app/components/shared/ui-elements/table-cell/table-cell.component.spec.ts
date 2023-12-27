@@ -2,6 +2,7 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { TableCellComponent } from './table-cell.component';
+import { TableCellVariant } from './models/table-cell.models';
 
 describe('TableCellComponent', () => {
 	let component: TableCellComponent;
@@ -30,7 +31,7 @@ describe('TableCellComponent', () => {
 	});
 
 	it('should create cover variant of table cell', () => {
-		component.variant = 'cover';
+		component.variant = TableCellVariant.COVER;
 		fixture.detectChanges();
 
 		component.setClassBasedOnVariant();
@@ -39,7 +40,7 @@ describe('TableCellComponent', () => {
 	});
 
 	it('should create title variant of table cell', () => {
-		component.variant = 'title';
+		component.variant = TableCellVariant.TITLE;
 		fixture.detectChanges();
 
 		component.setClassBasedOnVariant();

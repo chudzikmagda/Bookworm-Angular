@@ -18,10 +18,12 @@ describe('EditBookComponent', () => {
 	let fixture: ComponentFixture<EditBookComponent>;
 	let fakeBookFormService: jasmine.SpyObj<BookFormService>;
 	let fakeActionsService: jasmine.SpyObj<ActionsService>;
+	let fakeDialogService: jasmine.SpyObj<DialogService>;
 
 	beforeEach(() => {
 		fakeBookFormService = jasmine.createSpyObj('BookFormService', ['setBookForm', 'getEditedBook$']);
 		fakeActionsService = jasmine.createSpyObj('ActionsService', ['updateBook']);
+		fakeDialogService = jasmine.createSpyObj('DialogService', ['closeDialog']);
 
 		fakeBookFormService.getEditedBook$.and.returnValue(of(fakeBookList()));
 
@@ -37,6 +39,10 @@ describe('EditBookComponent', () => {
 				{
 					provide: ActionsService,
 					useValue: fakeActionsService,
+				},
+				{
+					provide: DialogService,
+					useValue: fakeDialogService,
 				},
 			],
 		}).compileComponents();
@@ -68,6 +74,7 @@ describe('EditBookComponent', () => {
 		expect(fakeActionsService.updateBook).toHaveBeenCalledWith(
 			expectedUpdatedBook() as unknown as BookData
 		);
+		expect(fakeDialogService.closeDialog).toHaveBeenCalledTimes(1);
 	});
 
 	const fakeBookList = (): BookData[] => {

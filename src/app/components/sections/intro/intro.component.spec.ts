@@ -4,6 +4,7 @@ import { ActionsService } from 'src/app/services/actions/actions.service';
 import { IntroComponent } from './intro.component';
 import { MockComponents } from 'ng-mocks';
 import { ButtonComponent } from '../../shared/ui-elements/button/button.component';
+import { SectionNames } from 'src/app/models/models';
 
 describe('IntroComponent', () => {
 	let component: IntroComponent;
@@ -35,7 +36,7 @@ describe('IntroComponent', () => {
 	it('should set section name', () => {
 		const section: HTMLElement = fixture.debugElement.query(By.css('.section--intro')).nativeElement;
 
-		expect(section.id).toEqual(component.sectionName.INTRO);
+		expect(section.id).toEqual(SectionNames.INTRO);
 	});
 
 	it('should scroll to the summary section', () => {

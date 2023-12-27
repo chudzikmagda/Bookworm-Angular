@@ -1,8 +1,8 @@
-import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { ButtonComponent } from './button.component';
+import { ButtonVariant } from './models/button.models';
 
 describe('ButtonComponent', () => {
 	let component: ButtonComponent;
@@ -25,7 +25,7 @@ describe('ButtonComponent', () => {
 	});
 
 	it('should create primary button', () => {
-		component.variant = 'primary';
+		component.variant = ButtonVariant.PRIMARY;
 		fixture.detectChanges();
 
 		component.setClasses();
@@ -34,7 +34,7 @@ describe('ButtonComponent', () => {
 	});
 
 	it('should create primary-outline button', () => {
-		component.variant = 'primary-outline';
+		component.variant = ButtonVariant.PRIMARY_OUTLINE;
 		fixture.detectChanges();
 
 		component.setClasses();
@@ -43,7 +43,7 @@ describe('ButtonComponent', () => {
 	});
 
 	it('should create secondary button', () => {
-		component.variant = 'secondary';
+		component.variant = ButtonVariant.SECONDARY;
 		fixture.detectChanges();
 
 		component.setClasses();
@@ -52,7 +52,7 @@ describe('ButtonComponent', () => {
 	});
 
 	it('should create secondary-outline button', () => {
-		component.variant = 'secondary-outline';
+		component.variant = ButtonVariant.SECONDARY_OUTLINE;
 		fixture.detectChanges();
 
 		component.setClasses();
@@ -61,7 +61,7 @@ describe('ButtonComponent', () => {
 	});
 
 	it('should create icon button', () => {
-		component.variant = 'icon';
+		component.variant = ButtonVariant.ICON;
 		fixture.detectChanges();
 
 		component.setClasses();

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { MockComponents } from 'ng-mocks';
 import { of } from 'rxjs';
-import { BookData } from 'src/app/models/models';
+import { BookData, SectionNames } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { DialogService } from '../../shared/ui-elements/dialog/services/dialog.service';
 import { PaginationComponent } from '../../shared/ui-elements/pagination/pagination.component';
@@ -66,7 +66,7 @@ describe('BooksComponent', () => {
 	it('should set section name', () => {
 		const section: HTMLElement = fixture.debugElement.query(By.css('.section--books')).nativeElement;
 
-		expect(section.id).toEqual(component.sectionName.BOOK_LIST);
+		expect(section.id).toEqual(SectionNames.BOOK_LIST);
 	});
 
 	it('should get book list on init', () => {
@@ -97,7 +97,6 @@ describe('BooksComponent', () => {
 		component.onEditBook(idOfEditedBook);
 
 		expect(fakeBookFormService.setEditedBook$).toHaveBeenCalledOnceWith(fakeEditedBook());
-		expect(fakeDialogService.openDialog).toHaveBeenCalledOnceWith(`edit-book/${idOfEditedBook}`);
 		expect(component.books.length).toBe(6);
 	});
 

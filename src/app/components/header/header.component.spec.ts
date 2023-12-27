@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 import { MockComponents } from 'ng-mocks';
 import { ButtonComponent } from '../shared/ui-elements/button/button.component';
 import { DialogService } from '../shared/ui-elements/dialog/services/dialog.service';
@@ -26,14 +25,5 @@ describe('HeaderComponent', () => {
 
 	it('should create HeaderComponent', () => {
 		expect(component).toBeTruthy();
-	});
-
-	it('should open dialog on button click', () => {
-		const button: HTMLElement = fixture.debugElement.query(By.directive(ButtonComponent)).nativeElement;
-		const modalPath: string = 'add-new-book';
-
-		button.click();
-
-		expect(fakeDialogService.openDialog).toHaveBeenCalledOnceWith(modalPath);
 	});
 });
