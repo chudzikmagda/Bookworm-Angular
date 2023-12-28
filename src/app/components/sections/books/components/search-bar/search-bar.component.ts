@@ -1,12 +1,23 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import {
+	FormGroup,
+	FormControl,
+	NonNullableFormBuilder,
+	Validators,
+	ReactiveFormsModule,
+} from '@angular/forms';
+import { ButtonComponent } from 'src/app/components/shared/ui-elements/button/button.component';
 import { ButtonVariant } from 'src/app/components/shared/ui-elements/button/models/button.models';
+import { InputComponent } from 'src/app/components/shared/ui-elements/input/input.component';
 import { BookData } from 'src/app/models/models';
 
 @Component({
 	selector: 'c-search-bar',
 	templateUrl: './search-bar.component.html',
 	styleUrls: ['./search-bar.component.scss'],
+	standalone: true,
+	imports: [ReactiveFormsModule, ButtonComponent, InputComponent],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchBarComponent implements OnInit {
 	@Input() public books: BookData[] = [];

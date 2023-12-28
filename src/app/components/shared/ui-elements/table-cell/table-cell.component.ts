@@ -1,9 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { TableCellClasses, TableCellVariant } from './models/table-cell.models';
+import { CommonModule } from '@angular/common';
 @Component({
 	selector: 'c-table-cell',
 	templateUrl: './table-cell.component.html',
 	styleUrls: ['./table-cell.component.scss'],
+	standalone: true,
+	imports: [CommonModule],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableCellComponent implements OnInit {
 	@Input() public editable: boolean = false;

@@ -1,10 +1,23 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	EventEmitter,
+	Input,
+	OnChanges,
+	Output,
+	SimpleChanges,
+} from '@angular/core';
 import { ButtonVariant } from '../button/models/button.models';
+import { CommonModule } from '@angular/common';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
 	selector: 'c-pagination',
 	templateUrl: './pagination.component.html',
 	styleUrls: ['./pagination.component.scss'],
+	standalone: true,
+	imports: [CommonModule, ButtonComponent],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaginationComponent implements OnChanges {
 	@Input() public currentPage: number = 0;

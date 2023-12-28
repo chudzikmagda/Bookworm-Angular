@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { BookForm } from '../book-form/models/book-form.models';
 import { BookFormService } from '../book-form/services/book-form.service';
@@ -7,11 +7,16 @@ import { BookFormData } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { Subject, Subscription, takeUntil } from 'rxjs';
 import { DialogVariant } from '../ui-elements/dialog/models/dialog.models';
+import { DialogComponent } from '../ui-elements/dialog/dialog.component';
+import { BookFormComponent } from '../book-form/book-form.component';
 
 @Component({
 	selector: 'c-add-new-book',
 	templateUrl: './add-new-book.component.html',
 	styleUrls: ['./add-new-book.component.scss'],
+	standalone: true,
+	imports: [BookFormComponent, DialogComponent],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddNewBookComponent implements OnInit, OnDestroy {
 	public readonly DIALOG_VARIANT: typeof DialogVariant = DialogVariant;

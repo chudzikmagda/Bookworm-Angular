@@ -1,8 +1,10 @@
-import { Component, Input, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { DialogClasses, DialogVariant } from './models/dialog.models';
 import { DialogService } from './services/dialog.service';
 import { ButtonVariant } from '../button/models/button.models';
+import { CommonModule } from '@angular/common';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
 	selector: 'c-dialog',
@@ -24,6 +26,9 @@ import { ButtonVariant } from '../button/models/button.models';
 			transition(':leave', [animate('200ms ease-in-out', style({ transform: 'translateY(100%)' }))]),
 		]),
 	],
+	standalone: true,
+	imports: [CommonModule, ButtonComponent],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DialogComponent implements OnInit, OnDestroy {
 	@Input() public variant!: DialogVariant;

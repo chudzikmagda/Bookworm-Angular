@@ -1,12 +1,17 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ButtonComponent } from 'src/app/components/shared/ui-elements/button/button.component';
 import { ButtonVariant } from 'src/app/components/shared/ui-elements/button/models/button.models';
 import { TableCellVariant } from 'src/app/components/shared/ui-elements/table-cell/models/table-cell.models';
+import { TableCellComponent } from 'src/app/components/shared/ui-elements/table-cell/table-cell.component';
 import { BookData } from 'src/app/models/models';
 
 @Component({
 	selector: 'c-table',
 	templateUrl: './table.component.html',
 	styleUrls: ['./table.component.scss'],
+	standalone: true,
+	imports: [CommonModule, ButtonComponent, TableCellComponent],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableComponent {

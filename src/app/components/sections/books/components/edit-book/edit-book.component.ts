@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Subject, takeUntil, tap } from 'rxjs';
 import { DialogService } from 'src/app/components/shared/ui-elements/dialog/services/dialog.service';
 import { BookData, BookFormData } from 'src/app/models/models';
@@ -7,11 +7,16 @@ import { ActionsService } from 'src/app/services/actions/actions.service';
 import { BookForm } from 'src/app/components/shared/book-form/models/book-form.models';
 import { BookFormService } from 'src/app/components/shared/book-form/services/book-form.service';
 import { DialogVariant } from 'src/app/components/shared/ui-elements/dialog/models/dialog.models';
+import { BookFormComponent } from 'src/app/components/shared/book-form/book-form.component';
+import { DialogComponent } from 'src/app/components/shared/ui-elements/dialog/dialog.component';
 
 @Component({
 	selector: 'c-edit-book',
 	templateUrl: './edit-book.component.html',
 	styleUrls: ['./edit-book.component.scss'],
+	standalone: true,
+	imports: [ReactiveFormsModule, BookFormComponent, DialogComponent],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EditBookComponent implements OnInit, OnDestroy {
 	public readonly DIALOG_VARIANT: typeof DialogVariant = DialogVariant;
