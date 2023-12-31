@@ -1,0 +1,40 @@
+@import './global-styles-components.scss';
+
+.section {
+	padding: 32px;
+	height: calc(100vh - $menuHeightMobile);
+
+	@include from-desktop {
+		height: calc(100vh - $menuHeightDesktop);
+	}
+
+	&--intro {
+		background-color: $color-primary-light;
+		padding-bottom: 0;
+	}
+
+	&--summary {
+		height: auto;
+		@include flex;
+		background-color: $color-secondary-light;
+
+		@include from-desktop {
+			height: calc(100vh - $menuHeightDesktop);
+		}
+	}
+
+	&--books {
+		height: auto;
+		@include flex($direction: column, $justifyContent: flex-start);
+
+		@include from-tablet {
+			min-height: 100vh;
+		}
+	}
+
+	&--motivational-quote {
+		@include flex;
+		height: calc(100vh - $menuHeightDesktop);
+		background-color: $color-primary;
+	}
+}
