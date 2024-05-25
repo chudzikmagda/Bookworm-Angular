@@ -10,7 +10,7 @@ import { MotivateQuoteComponent } from './components/sections/motivational-quote
 import { FooterComponent } from './components/footer/footer.component';
 import { BookData } from './models/models';
 import { of } from 'rxjs';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import {} from '@angular/common/http/testing';
 import { fakeAsync, tick } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
