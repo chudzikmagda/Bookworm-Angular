@@ -4,7 +4,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
 @Component({
 	selector: 'c-textarea',
 	templateUrl: './textarea.component.html',
-	styleUrls: ['./textarea.component.scss'],
+	styleUrl: './textarea.component.scss',
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

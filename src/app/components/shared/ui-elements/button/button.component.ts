@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 @Component({
 	selector: 'c-button',
 	templateUrl: './button.component.html',
-	styleUrls: ['./button.component.scss'],
+	styleUrl: './button.component.scss',
 	standalone: true,
 	imports: [CommonModule],
 	changeDetection: ChangeDetectionStrategy.OnPush,

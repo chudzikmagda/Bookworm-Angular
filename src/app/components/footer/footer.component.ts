@@ -6,7 +6,7 @@ import { LogotypeComponent } from '../shared/ui-elements/logotype/logotype.compo
 @Component({
 	selector: 'c-footer',
 	templateUrl: './footer.component.html',
-	styleUrls: ['./footer.component.scss'],
+	styleUrl: './footer.component.scss',
 	standalone: true,
 	imports: [GoToTopComponent, LogotypeComponent],
 	changeDetection: ChangeDetectionStrategy.OnPush,

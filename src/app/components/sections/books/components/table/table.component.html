@@ -1,4 +1,5 @@
-<div *ngIf="books" class="table">
+@if (books) {
+<div class="table">
 	<div class="table__row table__row--heading">
 		<div class="table__col-50">
 			<c-table-cell [variant]="TABLE_CELL_VARIANT.COVER" [valignCenter]="true">Cover</c-table-cell>
@@ -12,13 +13,17 @@
 		<c-table-cell [valignCenter]="true">Rating</c-table-cell>
 		<c-table-cell [valignCenter]="true"></c-table-cell>
 	</div>
-	<div *ngFor="let book of books" [id]="book.id" class="table__row" #tabelRow>
+	@for (book of books; track book.id) {
+	<div class="table__row" #tabelRow>
 		<div class="table__col-50">
 			<c-table-cell [variant]="TABLE_CELL_VARIANT.COVER">
-				<img *ngIf="book.cover" [src]="book.cover" alt="Book" class="book__cover" />
+				@if (book.cover) {
+				<img [src]="book.cover" alt="Book" class="book__cover" />
+				} @else if (!book.cover) {
 				<span class="book__no-img">
-					<i *ngIf="!book.cover" class="fa-regular fa-image book__no-img-icon"></i>
+					<i class="fa-regular fa-image book__no-img-icon"></i>
 				</span>
+				}
 			</c-table-cell>
 			<div class="table__col-50--info">
 				<c-table-cell [variant]="TABLE_CELL_VARIANT.TITLE">{{ book.title }}</c-table-cell>
@@ -37,4 +42,6 @@
 			></c-button>
 		</c-table-cell>
 	</div>
+	}
 </div>
+}

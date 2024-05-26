@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
 import { Observable, skip, Subject, takeUntil, tap } from 'rxjs';
-import { SectionNames, Quote, BookData } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { StateService } from 'src/app/services/state/state.service';
+import { SectionNames, Quote, BookData } from 'src/app/models/models';
 import { BookStats } from './models/summary.models';
-import { CommonModule } from '@angular/common';
 import { BestBookComponent } from './components/best-book/best-book.component';
 import { LastAddedBookComponent } from './components/last-added-book/last-added-book.component';
 import { StatsComponent } from './components/stats/stats.component';
@@ -13,9 +13,9 @@ import { QuoteComponent } from './components/quote/quote.component';
 @Component({
 	selector: 'c-summary',
 	templateUrl: './summary.component.html',
-	styleUrls: ['./summary.component.scss'],
+	styleUrl: './summary.component.scss',
 	standalone: true,
-	imports: [CommonModule, BestBookComponent, LastAddedBookComponent, StatsComponent, QuoteComponent],
+	imports: [AsyncPipe, BestBookComponent, LastAddedBookComponent, StatsComponent, QuoteComponent],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SummaryComponent implements OnInit, OnDestroy {

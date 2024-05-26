@@ -4,7 +4,7 @@ import { LogotypeVersion } from './models/logotype.models';
 @Component({
 	selector: 'c-logotype',
 	templateUrl: './logotype.component.html',
-	styleUrls: ['./logotype.component.scss'],
+	styleUrl: './logotype.component.scss',
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

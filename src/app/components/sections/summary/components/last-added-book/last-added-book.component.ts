@@ -1,13 +1,13 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { BookData } from 'src/app/models/models';
 
 @Component({
 	selector: 'c-last-added-book',
 	templateUrl: './last-added-book.component.html',
-	styleUrls: ['./last-added-book.component.scss'],
+	styleUrl: './last-added-book.component.scss',
 	standalone: true,
-	imports: [CommonModule],
+	imports: [DatePipe],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LastAddedBookComponent {

@@ -14,7 +14,7 @@ import { BookData } from 'src/app/models/models';
 @Component({
 	selector: 'c-search-bar',
 	templateUrl: './search-bar.component.html',
-	styleUrls: ['./search-bar.component.scss'],
+	styleUrl: './search-bar.component.scss',
 	standalone: true,
 	imports: [ReactiveFormsModule, ButtonComponent, InputComponent],
 	changeDetection: ChangeDetectionStrategy.OnPush,

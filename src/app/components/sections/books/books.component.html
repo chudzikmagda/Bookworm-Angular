@@ -1,7 +1,6 @@
-<section
-	*ngIf="booksToDisplay$ | async as books"
-	class="section section--books"
-	[id]="SECTION_NAME.BOOK_LIST">
+@if (booksToDisplay$ | async; as books) {
+
+<section class="section section--books" [id]="SECTION_NAME.BOOK_LIST">
 	<div class="section__search-bar">
 		<c-search-bar [books]="books" (filteredBook)="onSearchBook($event)"></c-search-bar>
 	</div>
@@ -15,5 +14,6 @@
 			(prevPage)="onPageChange($event, -1)"></c-pagination>
 	</div>
 </section>
+}
 
 <ng-template #editBookDialog></ng-template>

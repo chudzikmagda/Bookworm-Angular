@@ -6,7 +6,7 @@ import { ActionsService } from 'src/app/services/actions/actions.service';
 @Component({
 	selector: 'c-go-to-top',
 	templateUrl: './go-to-top.component.html',
-	styleUrls: ['./go-to-top.component.scss'],
+	styleUrl: './go-to-top.component.scss',
 	standalone: true,
 	imports: [ButtonComponent],
 	changeDetection: ChangeDetectionStrategy.OnPush,

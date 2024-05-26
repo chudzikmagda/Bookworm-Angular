@@ -4,7 +4,7 @@ import { Quote } from 'src/app/models/models';
 @Component({
 	selector: 'c-quote',
 	templateUrl: './quote.component.html',
-	styleUrls: ['./quote.component.scss'],
+	styleUrl: './quote.component.scss',
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

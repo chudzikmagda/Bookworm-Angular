@@ -8,7 +8,7 @@ import { LogotypeComponent } from '../shared/ui-elements/logotype/logotype.compo
 @Component({
 	selector: 'c-header',
 	templateUrl: './header.component.html',
-	styleUrls: ['./header.component.scss'],
+	styleUrl: './header.component.scss',
 	standalone: true,
 	imports: [ButtonComponent, LogotypeComponent],
 	changeDetection: ChangeDetectionStrategy.OnPush,

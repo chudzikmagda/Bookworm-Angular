@@ -1,5 +1,7 @@
-<div *ngIf="controlName?.invalid && (controlName?.dirty || controlName?.touched)" class="error">
+@if (controlName?.invalid && (controlName?.dirty || controlName?.touched)) {
+<div class="error">
 	<p class="error__message">
 		{{ controlName?.errors?.['required'] ? BOOK_FORM_ERRORS.REQUIRED : BOOK_FORM_ERRORS.MIN_LENGTH }}
 	</p>
 </div>
+}

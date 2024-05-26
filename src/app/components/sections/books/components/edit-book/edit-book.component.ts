@@ -13,7 +13,7 @@ import { DialogComponent } from 'src/app/components/shared/ui-elements/dialog/di
 @Component({
 	selector: 'c-edit-book',
 	templateUrl: './edit-book.component.html',
-	styleUrls: ['./edit-book.component.scss'],
+	styleUrl: './edit-book.component.scss',
 	standalone: true,
 	imports: [ReactiveFormsModule, BookFormComponent, DialogComponent],
 	changeDetection: ChangeDetectionStrategy.OnPush,

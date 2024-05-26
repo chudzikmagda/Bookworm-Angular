@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 @Component({
 	selector: 'c-table-cell',
 	templateUrl: './table-cell.component.html',
-	styleUrls: ['./table-cell.component.scss'],
+	styleUrl: './table-cell.component.scss',
 	standalone: true,
 	imports: [CommonModule],
 	changeDetection: ChangeDetectionStrategy.OnPush,

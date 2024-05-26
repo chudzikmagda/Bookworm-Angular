@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
 import { BookStats } from '../../models/summary.models';
-import { CommonModule } from '@angular/common';
 
 @Component({
 	selector: 'c-stats',
 	templateUrl: './stats.component.html',
-	styleUrls: ['./stats.component.scss'],
+	styleUrl: './stats.component.scss',
 	standalone: true,
-	imports: [CommonModule],
+	imports: [DecimalPipe],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StatsComponent {

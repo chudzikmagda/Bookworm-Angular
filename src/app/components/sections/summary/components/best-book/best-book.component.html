@@ -1,4 +1,5 @@
-<div *ngIf="bestBook" class="best-book">
+@if (bestBook) {
+<div class="best-book">
 	<div class="best-book__data">
 		<h4 class="best-book__heading">Best book:</h4>
 		<span class="best-book__item">
@@ -11,3 +12,4 @@
 		<img [src]="bestBook.cover" alt="Best book cover" class="best-book__image" />
 	</picture>
 </div>
+}

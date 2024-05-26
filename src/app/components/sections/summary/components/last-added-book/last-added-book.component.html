@@ -1,4 +1,5 @@
-<div *ngIf="lastAddedBook" class="last-added-book">
+@if (lastAddedBook) {
+<div class="last-added-book">
 	<div class="last-added-book__data">
 		<h4 class="last-added-book__heading">Last added book:</h4>
 		<span class="last-added-book__item">
@@ -11,3 +12,4 @@
 		<img [src]="lastAddedBook.cover" alt="Last added book cover" class="last-added-book__image" />
 	</picture>
 </div>
+}

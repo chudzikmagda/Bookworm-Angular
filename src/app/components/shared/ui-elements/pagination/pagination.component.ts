@@ -14,7 +14,7 @@ import { ButtonComponent } from '../button/button.component';
 @Component({
 	selector: 'c-pagination',
 	templateUrl: './pagination.component.html',
-	styleUrls: ['./pagination.component.scss'],
+	styleUrl: './pagination.component.scss',
 	standalone: true,
 	imports: [CommonModule, ButtonComponent],
 	changeDetection: ChangeDetectionStrategy.OnPush,

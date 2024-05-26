@@ -9,7 +9,7 @@ import { ButtonComponent } from '../button/button.component';
 @Component({
 	selector: 'c-dialog',
 	templateUrl: './dialog.component.html',
-	styleUrls: ['./dialog.component.scss'],
+	styleUrl: './dialog.component.scss',
 	animations: [
 		trigger('fadeInOut', [
 			transition(':enter', [

@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 @Component({
 	selector: 'c-book-form',
 	templateUrl: './book-form.component.html',
-	styleUrls: ['./book-form.component.scss'],
+	styleUrl: './book-form.component.scss',
 	standalone: true,
 	imports: [
 		CommonModule,

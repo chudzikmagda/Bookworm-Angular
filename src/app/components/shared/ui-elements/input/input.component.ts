@@ -4,7 +4,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
 @Component({
 	selector: 'c-input',
 	templateUrl: './input.component.html',
-	styleUrls: ['./input.component.scss'],
+	styleUrl: './input.component.scss',
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

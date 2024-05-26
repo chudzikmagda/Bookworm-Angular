@@ -1,7 +1,5 @@
-<section
-	*ngIf="quote$ | async as quote"
-	class="section section--motivational-quote"
-	[id]="SECTION_NAME.MOTIVATIONAL_QUOTE">
+@if (quote$ | async; as quote) {
+<section class="section section--motivational-quote" [id]="SECTION_NAME.MOTIVATIONAL_QUOTE">
 	<div class="quote">
 		<blockquote>
 			<h3 class="quote__paragraph">
@@ -11,3 +9,5 @@
 		<figcaption class="quote__author">— {{ quote.author }} —</figcaption>
 	</div>
 </section>
+
+}

@@ -1,4 +1,5 @@
-<div *ngIf="stats" class="stats">
+@if (stats) {
+<div class="stats">
 	<h4 class="stats__heading">Your stats:</h4>
 
 	<div class="stats__data">
@@ -18,3 +19,4 @@
 		<span class="stats__value">{{ stats.avgRating | number: '1.1-2' }}</span>
 	</div>
 </div>
+}

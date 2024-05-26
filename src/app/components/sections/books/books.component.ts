@@ -6,13 +6,13 @@ import {
 	ViewChild,
 	ViewContainerRef,
 } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
 import { Observable, Subject, takeUntil, tap } from 'rxjs';
-import { BookData, SectionNames } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { DialogService } from '../../shared/ui-elements/dialog/services/dialog.service';
 import { BookFormService } from '../../shared/book-form/services/book-form.service';
+import { BookData, SectionNames } from 'src/app/models/models';
 import { EditBookComponent } from './components/edit-book/edit-book.component';
-import { CommonModule } from '@angular/common';
 import { PaginationComponent } from '../../shared/ui-elements/pagination/pagination.component';
 import { TableComponent } from './components/table/table.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
@@ -20,9 +20,9 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 @Component({
 	selector: 'c-books',
 	templateUrl: './books.component.html',
-	styleUrls: ['./books.component.scss'],
+	styleUrl: './books.component.scss',
 	standalone: true,
-	imports: [CommonModule, PaginationComponent, TableComponent, SearchBarComponent],
+	imports: [AsyncPipe, PaginationComponent, TableComponent, SearchBarComponent],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BooksComponent implements OnInit, OnDestroy {
