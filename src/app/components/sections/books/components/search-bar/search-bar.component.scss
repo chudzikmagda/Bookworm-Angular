@@ -1,9 +1,9 @@
 @import '../../../../../../assets/css/global-styles-components.scss';
 
-.search-bar {
+:host {
 	max-width: 100%;
 
-	&__form {
+	.search-bar-form {
 		@include flex($justifyContent: flex-start);
 		padding-right: 16px;
 		border: 1px solid $color-primary;
@@ -13,20 +13,27 @@
 		@include from-tablet {
 			width: 40%;
 			padding-right: 0;
-		}
-	}
-
-	&__input {
-		flex: 1;
-	}
-
-	::ng-deep {
-		.input-wrapper {
-			display: block;
+			transition: width 0.5s ease;
 		}
 
-		.input {
-			border: 0;
+		&:focus-within {
+			@include from-tablet {
+				width: 100%;
+			}
+		}
+
+		&__input {
+			flex: 1;
+		}
+
+		::ng-deep {
+			.input-wrapper {
+				display: block;
+			}
+
+			.input {
+				border: 0;
+			}
 		}
 	}
 }
