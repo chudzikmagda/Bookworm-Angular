@@ -16,17 +16,17 @@ import { TableCellComponent } from 'src/app/components/shared/ui-elements/table-
 })
 export class TableComponent {
 	@Input() public books: BookData[];
-	@Output() public deleteBook: EventEmitter<HTMLElement> = new EventEmitter();
+	@Output() public deleteBook: EventEmitter<number> = new EventEmitter();
 	@Output() public editBook: EventEmitter<number> = new EventEmitter();
 
 	public readonly BUTTON_VARIANT: typeof ButtonVariant = ButtonVariant;
 	public readonly TABLE_CELL_VARIANT: typeof TableCellVariant = TableCellVariant;
 
-	public onDeleteBook(tableRow: HTMLElement): void {
-		this.deleteBook.emit(tableRow);
+	public onDeleteBook(bookIndex: number): void {
+		this.deleteBook.emit(bookIndex);
 	}
 
-	public onEditBook(tableRow: HTMLElement): void {
-		this.editBook.emit(+tableRow.id);
+	public onEditBook(bookIndex: number): void {
+		this.editBook.emit(bookIndex);
 	}
 }

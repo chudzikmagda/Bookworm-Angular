@@ -13,7 +13,7 @@
 		<c-table-cell [valignCenter]="true">Rating</c-table-cell>
 		<c-table-cell [valignCenter]="true"></c-table-cell>
 	</div>
-	@for (book of books; track book.id) {
+	@for (book of books; track bookIndex; let bookIndex = $index) {
 	<div class="table__row" #tabelRow>
 		<div class="table__col-50">
 			<c-table-cell [variant]="TABLE_CELL_VARIANT.COVER">
@@ -34,10 +34,10 @@
 		<c-table-cell>{{ book.description }}</c-table-cell>
 		<c-table-cell [valignCenter]="true">{{ book.rating | number: '1.1' }}</c-table-cell>
 		<c-table-cell [valignCenter]="true" [variant]="TABLE_CELL_VARIANT.ICONS">
-			<c-button [variant]="BUTTON_VARIANT.ICON" (click)="onEditBook(tabelRow)"
+			<c-button [variant]="BUTTON_VARIANT.ICON" (click)="onEditBook(bookIndex)"
 				><i class="fa-regular fa-pen-to-square"></i
 			></c-button>
-			<c-button [variant]="BUTTON_VARIANT.ICON" (click)="onDeleteBook(tabelRow)"
+			<c-button [variant]="BUTTON_VARIANT.ICON" (click)="onDeleteBook(bookIndex)"
 				><i class="fa-regular fa-trash-can"></i
 			></c-button>
 		</c-table-cell>

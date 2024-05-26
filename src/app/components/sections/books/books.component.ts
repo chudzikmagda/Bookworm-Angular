@@ -48,13 +48,13 @@ export class BooksComponent implements OnInit, OnDestroy {
 		this.loadData();
 	}
 
-	public onDeleteBook(tableRow: HTMLElement): void {
-		this.actionsService.deleteBook(+tableRow.id, this.books);
+	public onDeleteBook(bookIndex: number): void {
+		this.actionsService.deleteBook(bookIndex, this.books);
 	}
 
 	public onEditBook(bookId: number): void {
-		const editedBook: BookData[] = this.books.filter((book: BookData) => book.id === bookId);
-		this.formService.setEditedBook$(editedBook);
+		const editedBook: BookData = this.books[bookId];
+		this.formService.setEditedBook$([editedBook]);
 		this.openModal();
 	}
 
