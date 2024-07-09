@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Subject, takeUntil, tap } from 'rxjs';
 import { DialogService } from 'src/app/components/shared/ui-elements/dialog/services/dialog.service';
@@ -22,14 +22,11 @@ export class EditBookComponent implements OnInit, OnDestroy {
 	public readonly DIALOG_VARIANT: typeof DialogVariant = DialogVariant;
 	public editBookForm: FormGroup<BookForm>;
 
-	private readonly destroy$: Subject<boolean> = new Subject<boolean>();
+	private destroy$: Subject<boolean> = new Subject<boolean>();
 	private editedBook: BookData;
-
-	constructor(
-		private readonly dialogService: DialogService,
-		private readonly bookFormService: BookFormService,
-		private readonly actionsService: ActionsService
-	) {}
+	private dialogService: DialogService = inject(DialogService);
+	private bookFormService: BookFormService = inject(BookFormService);
+	private actionsService: ActionsService = inject(ActionsService);
 
 	public ngOnInit(): void {
 		this.bookFormInit();

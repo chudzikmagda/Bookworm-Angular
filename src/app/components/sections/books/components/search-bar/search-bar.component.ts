@@ -1,4 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import {
+	Component,
+	OnInit,
+	Input,
+	Output,
+	EventEmitter,
+	ChangeDetectionStrategy,
+	inject,
+} from '@angular/core';
 import {
 	FormGroup,
 	FormControl,
@@ -26,7 +34,7 @@ export class SearchBarComponent implements OnInit {
 	public readonly BUTTON_VARIANT: typeof ButtonVariant = ButtonVariant;
 	public searchForm: FormGroup<{ input: FormControl<string> }>;
 
-	constructor(private readonly fb: NonNullableFormBuilder) {}
+	private formBuilder: NonNullableFormBuilder = inject(NonNullableFormBuilder);
 
 	public ngOnInit(): void {
 		this.searchForm = this.createForm();
@@ -37,7 +45,7 @@ export class SearchBarComponent implements OnInit {
 	}
 
 	private createForm(): FormGroup<{ input: FormControl<string> }> {
-		return this.fb.group({
+		return this.formBuilder.group({
 			input: ['', Validators.required],
 		});
 	}

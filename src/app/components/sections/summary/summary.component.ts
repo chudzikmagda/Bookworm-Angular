@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { Observable, skip, Subject, takeUntil, tap } from 'rxjs';
 import { ActionsService } from 'src/app/services/actions/actions.service';
@@ -28,10 +28,8 @@ export class SummaryComponent implements OnInit, OnDestroy {
 	private readonly onDestroy$: Subject<void> = new Subject<void>();
 	private readonly QUOTE_TAG: string = 'famous-quotes';
 
-	constructor(
-		private readonly actionsService: ActionsService,
-		private readonly stateService: StateService
-	) {}
+	private actionsService: ActionsService = inject(ActionsService);
+	private stateService: StateService = inject(StateService);
 
 	public ngOnInit(): void {
 		this.loadData();

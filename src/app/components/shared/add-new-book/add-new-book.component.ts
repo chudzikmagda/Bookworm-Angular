@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { BookForm } from '../book-form/models/book-form.models';
 import { BookFormService } from '../book-form/services/book-form.service';
@@ -24,12 +24,9 @@ export class AddNewBookComponent implements OnInit, OnDestroy {
 
 	private newBookId: number;
 	private readonly destroy$: Subject<boolean> = new Subject<boolean>();
-
-	constructor(
-		private readonly dialogService: DialogService,
-		private readonly bookFormService: BookFormService,
-		private readonly actionsService: ActionsService
-	) {}
+	private actionsService: ActionsService = inject(ActionsService);
+	private dialogService: DialogService = inject(DialogService);
+	private bookFormService: BookFormService = inject(BookFormService);
 
 	public ngOnInit(): void {
 		this.bookFormInit();

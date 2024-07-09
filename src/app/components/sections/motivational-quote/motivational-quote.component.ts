@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
 import { SectionNames, Quote } from 'src/app/models/models';
@@ -18,10 +18,8 @@ export class MotivateQuoteComponent implements OnInit {
 
 	public quote$: Observable<Quote>;
 
-	constructor(
-		private readonly actionService: ActionsService,
-		private readonly stateService: StateService
-	) {}
+	private actionService: ActionsService = inject(ActionsService);
+	private stateService: StateService = inject(StateService);
 
 	public ngOnInit(): void {
 		this.loadQuote();

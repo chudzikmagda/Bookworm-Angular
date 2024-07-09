@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BookData, Quote } from 'src/app/models/models';
 
@@ -8,8 +8,7 @@ import { BookData, Quote } from 'src/app/models/models';
 })
 export class ApiService {
 	private apiUrl: string = 'https://api.quotable.io/random?tags=';
-
-	constructor(private http: HttpClient) {}
+	private http: HttpClient = inject(HttpClient);
 
 	public getBookData(): Observable<BookData[]> {
 		return this.http.get<BookData[]>('../../assets/store/books-data.json');

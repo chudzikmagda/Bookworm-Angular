@@ -5,6 +5,7 @@ import {
 	OnInit,
 	ViewChild,
 	ViewContainerRef,
+	inject,
 } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { Observable, Subject, takeUntil, tap } from 'rxjs';
@@ -35,13 +36,10 @@ export class BooksComponent implements OnInit, OnDestroy {
 	public booksPerPage: number = 5;
 	public totalPages: number;
 
-	private readonly onDestroy$: Subject<void> = new Subject<void>();
-
-	constructor(
-		private readonly actionsService: ActionsService,
-		private readonly dialogService: DialogService,
-		private readonly formService: BookFormService
-	) {}
+	private actionsService: ActionsService = inject(ActionsService);
+	private formService: BookFormService = inject(BookFormService);
+	private dialogService: DialogService = inject(DialogService);
+	private onDestroy$: Subject<void> = new Subject<void>();
 
 	public ngOnInit(): void {
 		this.booksToDisplay$ = this.actionsService.getBooksToDisplay();

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ViewChild, ViewContainerRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewChild, ViewContainerRef, inject } from '@angular/core';
 import { SectionNames } from 'src/app/models/models';
 import { ActionsService } from 'src/app/services/actions/actions.service';
 import { DialogService } from '../../shared/ui-elements/dialog/services/dialog.service';
@@ -20,10 +20,8 @@ export class IntroComponent {
 	public readonly BUTTON_SIZE: typeof ButtonSize = ButtonSize;
 	public readonly BUTTON_VARIANT: typeof ButtonVariant = ButtonVariant;
 
-	constructor(
-		private readonly actionService: ActionsService,
-		private readonly dialogService: DialogService
-	) {}
+	private actionService: ActionsService = inject(ActionsService);
+	private dialogService: DialogService = inject(DialogService);
 
 	public goToSummary(): void {
 		this.actionService.scrollToTheId(SectionNames.SUMMARY);

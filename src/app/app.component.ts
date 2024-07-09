@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { ActionsService } from './services/actions/actions.service';
 import { BooksComponent } from './components/sections/books/books.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -24,7 +24,7 @@ import { SummaryComponent } from './components/sections/summary/summary.componen
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
-	constructor(private readonly actionsService: ActionsService) {}
+	private actionsService: ActionsService = inject(ActionsService);
 
 	public ngOnInit(): void {
 		this.loadSampleData();

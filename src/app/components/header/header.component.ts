@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ViewChild, ViewContainerRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewChild, ViewContainerRef, inject } from '@angular/core';
 import { DialogService } from '../shared/ui-elements/dialog/services/dialog.service';
 import { AddNewBookComponent } from '../shared/add-new-book/add-new-book.component';
 import { ButtonVariant } from '../shared/ui-elements/button/models/button.models';
@@ -18,7 +18,7 @@ export class HeaderComponent {
 
 	public readonly BUTTON_VARIANT: typeof ButtonVariant = ButtonVariant;
 
-	constructor(private readonly dialogService: DialogService) {}
+	private dialogService: DialogService = inject(DialogService);
 
 	public openDialog(): void {
 		this.dialogService.openDialog(this.addNewBookDialog, AddNewBookComponent);

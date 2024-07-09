@@ -1,5 +1,5 @@
 import { ViewportScroller } from '@angular/common';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, tap, map, Subscription, take } from 'rxjs';
 import { BookData, Quote } from 'src/app/models/models';
 import { ApiService } from '../api/api.service';
@@ -9,11 +9,9 @@ import { StateService } from '../state/state.service';
 	providedIn: 'root',
 })
 export class ActionsService {
-	constructor(
-		private apiService: ApiService,
-		private stateService: StateService,
-		private scroller: ViewportScroller
-	) {}
+	private apiService: ApiService = inject(ApiService);
+	private stateService: StateService = inject(StateService);
+	private viewportScroller: ViewportScroller = inject(ViewportScroller);
 
 	public getBookListFromApi(): Observable<BookData[]> {
 		return this.apiService.getBookData().pipe(
@@ -83,6 +81,6 @@ export class ActionsService {
 	}
 
 	public scrollToTheId(id: string): void {
-		this.scroller.scrollToAnchor(id);
+		this.viewportScroller.scrollToAnchor(id);
 	}
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { BookForm } from '../models/book-form.models';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -8,12 +8,11 @@ import { BookData } from 'src/app/models/models';
 	providedIn: 'root',
 })
 export class BookFormService {
-	private readonly editedBook$ = new BehaviorSubject<BookData[]>([]);
-
-	constructor(private readonly fb: NonNullableFormBuilder) {}
+	private editedBook$ = new BehaviorSubject<BookData[]>([]);
+	private formBuilder: NonNullableFormBuilder = inject(NonNullableFormBuilder);
 
 	public setBookForm(book?: BookData): FormGroup<BookForm> {
-		return this.fb.group({
+		return this.formBuilder.group({
 			author: [book?.author ?? '', [Validators.required, Validators.minLength(2)]],
 			cover: [book?.cover ?? ''],
 			description: [book?.description ?? ''],

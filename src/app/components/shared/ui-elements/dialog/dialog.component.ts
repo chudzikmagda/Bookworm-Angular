@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	Input,
+	OnDestroy,
+	OnInit,
+	Renderer2,
+	inject,
+} from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { DialogClasses, DialogVariant } from './models/dialog.models';
 import { DialogService } from './services/dialog.service';
@@ -35,7 +43,8 @@ export class DialogComponent implements OnInit, OnDestroy {
 
 	public readonly BUTTON_VARIANT: typeof ButtonVariant = ButtonVariant;
 
-	constructor(private readonly dialogService: DialogService, private readonly renderer: Renderer2) {}
+	private dialogService: DialogService = inject(DialogService);
+	private renderer: Renderer2 = inject(Renderer2);
 
 	public ngOnInit(): void {
 		this.renderer.addClass(document.body, 'dialog-open');
